@@ -8,7 +8,7 @@ def getStats(country):
     api_url = 'https://api.smartable.ai/coronavirus/stats/'+country
     api_params = {
         'Cache-Control': 'no-cache',
-        'Subscription-Key': '273d955e80af42f0a740351df1b270c7',
+        'Subscription-Key': '**************************',
     }
     r = requests.get(url=api_url, params=api_params) 
     return r.text
