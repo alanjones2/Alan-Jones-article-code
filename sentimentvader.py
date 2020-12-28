@@ -15,10 +15,10 @@ print("{}... {}".format(s3[:30], str(vs)))
 
 import twitter
 
-CONSUMER_KEY = 'sRLpbdbEX07ZJNw3KhFinasKE'
-CONSUMER_SECRET = 'XglmGnO9TGCuu8y5x78MdhS8cMASkC5LkpIhW08kQuJrrxHaR2'
-OAUTH_TOKEN = '1022515213151686657-aena7S5IpKSy5ZQsYFM5234OJ2AloT'
-OAUTH_TOKEN_SECRET = 'kPX6hu7ln6MBHp4QHnDsY3E6z0dvIMS6uVAsiDNnFlbXj'
+CONSUMER_KEY = '*****'
+CONSUMER_SECRET = '*****'
+OAUTH_TOKEN = '*****'
+OAUTH_TOKEN_SECRET = '*****'
 
 auth = twitter.oauth.OAuth(OAUTH_TOKEN, OAUTH_TOKEN_SECRET,
                            CONSUMER_KEY, CONSUMER_SECRET)
