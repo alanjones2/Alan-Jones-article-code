@@ -29,6 +29,7 @@ they will be better appreciated if they are well laid out and formatted - Medium
 
 Example code:
 markdownref.ipynb
+<hr/>
 
 [Web Visualization with Plotly and Flask]
 
