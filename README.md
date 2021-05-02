@@ -30,5 +30,11 @@ they will be better appreciated if they are well laid out and formatted - Medium
 Example code:
 markdownref.ipynb
 
+[Web Visualization with Plotly and Flask]
+
+Why use Dash when Plotly plus Flask is easy and more flexible
+
+
+
 
 
