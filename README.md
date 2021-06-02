@@ -42,6 +42,18 @@ Example code:
 
 <hr/>
 
+## [Python Pandas and SQLite](https://towardsdatascience.com/python-pandas-and-sqlite-a0e2c052456f)
 
+Using SQLite to store your Pandas dataframes gives you a persistent store and a way of easily selecting and filtering your data
+
+Example code:
+[sqlitepandas.ipynb](https://github.com/alanjones2/Alan-Jones-article-code/blob/master/sqlitepandas.ipynb)
+
+<hr/>
+
+If you have found this content useful, please consider this... <br/><br/>
+<a href='https://ko-fi.com/M4M64THKG' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi2.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+
+__*Please note that all the software in this repo is written for educational purposes and should not be considered suitable for production code*__
 
 
