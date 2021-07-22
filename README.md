@@ -42,11 +42,25 @@ they will be better appreciated if they are well laid out and formatted - Medium
 
 <hr/>
 
+## 5 Visualization Libraries for Python
+
+[[Article](https://towardsdatascience.com/5-visualization-libraries-for-python-7705527bcf99)] [[Code](https://github.com/alanjones2/Article-code/blob/master/5vizlibs.ipynb)]
+
+Matplotlib, Pandas, Seaborn, Plotnine and MplFinance all have their strengths — let’s get a feel for each of them
+
 ## Python Pandas and SQLite
 
 [[Article](https://towardsdatascience.com/python-pandas-and-sqlite-a0e2c052456f)] [[Code](https://github.com/alanjones2/Alan-Jones-article-code/blob/master/sqlitepandas.ipynb)]
 
 Using SQLite to store your Pandas dataframes gives you a persistent store and a way of easily selecting and filtering your data
+
+<hr/>
+
+## 5 Visualization Libraries for Python
+
+[[Article](https://towardsdatascience.com/5-visualization-libraries-for-python-7705527bcf99)] [[Code](https://github.com/alanjones2/Article-code/blob/master/5vizlibs.ipynb)]
+
+Matplotlib, Pandas, Seaborn, Plotnine and MplFinance all have their strengths — let’s get a feel for each of them
 
 <hr/>
 
