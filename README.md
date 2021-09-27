@@ -61,7 +61,7 @@ Matplotlib, Pandas, Seaborn, Plotnine and MplFinance all have their strengths �
 ## Topical Plots: Global Warming
 ### What chart will get the message across best
 
-[[Article]()] [[Code](https://raw.githubusercontent.com/alanjones2/Alan-Jones-article-code/master/globalw.ipynb)]
+[[Article]()] [[Code](https://raw.githubusercontent.com/alanjones2/Alan-Jones-article-code/master/globalw.ipynb)][[Notebook](https://github.com/alanjones2/Alan-Jones-article-code/blob/master/globalw.ipynb)]
 
 One degree Celsius doesn't seem very much. Sitting in the sun on lazy summer afternoon, the difference between 25 and 26 degrees is hardly noticable.
 But the Earth is a big place, so the amount of energy required to heat it up by one degree is massive. Which is why, as global temperatures rise, we tend to see more extreme weather events, driven by that increased energy in the atmosphere.
