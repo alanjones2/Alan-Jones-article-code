@@ -57,6 +57,19 @@ Using SQLite to store your Pandas dataframes gives you a persistent store and a 
 Matplotlib, Pandas, Seaborn, Plotnine and MplFinance all have their strengths — let’s get a feel for each of them
 
 <hr/>
+## Topical Plots: Global Warming
+### What chart will get the message across best
+
+[[Article]()] [[Code]()]
+
+One degree Celsius doesn't seem very much. Sitting in the sun on lazy summer afternoon, the difference between 25 and 26 degrees is hardly noticable.
+But the Earth is a big place, so the amount of energy required to heat it up by one degree is massive. Which is why, as global temperatures rise, we tend to see more extreme weather events, driven by that increased energy in the atmosphere.
+
+But how do we communicate the changes in temperatures that are occuring in an effective way. 
+
+First we need some data and then we can look at how it could be represented graphically. I describe the data and then suggest some plots - line plots, scatter plots and heatmaps - that might be suitable.
+
+<hr/>
 
 If you have found this content useful, please consider this... <br/><br/>
 <a href='https://ko-fi.com/M4M64THKG' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi2.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
