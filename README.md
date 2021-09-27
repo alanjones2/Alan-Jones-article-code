@@ -57,6 +57,7 @@ Using SQLite to store your Pandas dataframes gives you a persistent store and a 
 Matplotlib, Pandas, Seaborn, Plotnine and MplFinance all have their strengths — let’s get a feel for each of them
 
 <hr/>
+
 ## Topical Plots: Global Warming
 ### What chart will get the message across best
 
