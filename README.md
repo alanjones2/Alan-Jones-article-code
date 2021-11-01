@@ -69,7 +69,13 @@ But the Earth is a big place, so the amount of energy required to heat it up by 
 But how do we communicate the changes in temperatures that are occuring in an effective way. 
 
 First we need some data and then we can look at how it could be represented graphically. I describe the data and then suggest some plots - line plots, scatter plots and heatmaps - that might be suitable.
+<hr/>
 
+## A Multi-page Interactive Dashboard with Streamlit and Plotly
+### Beautiful interactive multipage dashboards are made easy with Streamlit
+[[Article](https://towardsdatascience.com/a-multi-page-interactive-dashboard-with-streamlit-and-plotly-c3182443871a)] [[Code](https://github.com/alanjones2/Alan-Jones-article-code/blob/master/sttest4.py)]
+
+The great thing about Streamlit is, not only is it beautiful, but it’s simple, too.
 <hr/>
 
 If you have found this content useful, please consider this... <br/><br/>
