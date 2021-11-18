@@ -78,6 +78,13 @@ First we need some data and then we can look at how it could be represented grap
 The great thing about Streamlit is, not only is it beautiful, but it’s simple, too.
 <hr/>
 
+## Rational UI Design with Streamlit
+### An MVC approach
+[[Article](https://towardsdatascience.com/rational-ui-design-with-streamlit-61619f7a6ea4)] [[Code](https://github.com/alanjones2/Alan-Jones-article-code/blob/master/rat1.py)]
+
+From one point of view Streamlit is a retrograde step in web development because it lets you mix up the logic of your app with the way it is presented. But from another it is very much simplifying web design.
+<hr/>
+
 If you have found this content useful, please consider this... <br/><br/>
 <a href='https://ko-fi.com/M4M64THKG' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi2.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
