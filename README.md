@@ -87,7 +87,7 @@ From one point of view Streamlit is a retrograde step in web development because
 
 ## An Interactive CO2 Emissions Dashboard with Plotly and  Streamlit
 ### With Plotly charts and Streamlit's flexible input, layout and theming options, you can build a great interactive data visualization app from live data
-[[Article - not available yet]] [[Code](https://github.com/alanjones2/Alan-Jones-article-code/tree/master/streamlitdark)]
+[[Article](https://towardsdatascience.com/an-interactive-co2-emissions-dashboard-with-plotly-and-streamlit-b0bd4ae80cc8)] [[Code](https://github.com/alanjones2/Alan-Jones-article-code/tree/master/streamlitdark)]
 
 Streamlit doesn't have the most comprehensive set of user interface components but they are easy to use and with a bit of imagination can be combined to good effect.
 We are going to look at the way we can use theming and the various interactive input and layout options in Streamlit, alongside Plotly charts, to produce an attractive and, hopefully informative, web app.
