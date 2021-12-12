@@ -5,7 +5,10 @@ import sqlite3 as sql
 election_df = pd.read_csv("https://researchbriefings.files.parliament.uk/documents/CBP-8749/HoC-GE2019-results-by-constituency-csv.csv")
 
 print (election_df.columns)
-election_df.drop(['ons_id', 
+print(election_df.head(2))
+election_df.drop(['constituency_name', 
+                  'mp_firstname',
+                  'mp_surname',
                   'ons_region_id',
                   'county_name',
                   'region_name',
@@ -16,9 +19,10 @@ election_df.drop(['ons_id',
                   ], axis=1, inplace=True)
 print (election_df.columns)
 
+"""
 # create db
 conn = sql.connect('elections.db')
 election_df.to_sql('elections', conn)
 
 election_df.to_csv('elections.csv')
-
+"""
