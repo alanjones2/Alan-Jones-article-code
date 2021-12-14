@@ -19,10 +19,14 @@ election_df.drop(['constituency_name',
                   ], axis=1, inplace=True)
 print (election_df.columns)
 
-"""
+# delete old files
+#import os
+#os.system("del elections.db")
+#os.system("del elections.csv")
+
 # create db
 conn = sql.connect('elections.db')
 election_df.to_sql('elections', conn)
 
 election_df.to_csv('elections.csv')
-"""
+

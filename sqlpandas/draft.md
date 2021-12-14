@@ -5,17 +5,54 @@
 
 I do not claim to be an SQL expert. In fact it's one of the two things that that I have tried to avoid for most of my professional life (the other one is Visual Basic). But there are those who scoff at the idea of using R or Python for data analysis because... well, that's what SQL was designed for.
 
-Well, certainly SQL has been around for a while - 50 years or so - and is still very much in use today in the database world in popular products like SQLite, MySQL, MariaDB and Postgresql, despite the emergence of no-SQL databases such as MongoDB.
+Well, certainly SQL has been around for a while - 50 years or so - and is still very much in use today in the database world in popular products like SQLite, MySQL, MariaDB and Postgresql, despite the emergence alternative no-SQL databases such as MongoDB.
 
 So, which should you use, Python and Pandas, or SQL?
 
-I'm going to go through some common tasks to do a little analysis on some UK election data and I'm going to use both; that way you can decide for yourself which approach you think is better.
+I wanted to do a little analysis on some UK election data which required me to do a number of fairly common analysis tasks. My initial task was to work out how it is that the UK government has a large majority in Parliament and yet only secured a relatively small percentage of the popular vote.
 
-We'll use data from the UK 2019 General Election, so while we compare SQL and Pandas, we can learn a little bit about how democracy works in Britain, too.
+ To achieve this I decided to use both Pandas and SQL to see which I was happier with. I'll describe what I did and how and that way you can decide for yourself which approach you think is better.
+
+To do the analysis we'll use data from the UK 2019 General Election, and while we compare SQL and Pandas, we can learn a little bit about how democracy works in Britain, too.
 
 There are two files, a CSV file (to be used by Pandas) and a SQLite database - both contain exactly the same data. The data are a matter of public record and were derived from election results held by the House of Commons Library. This data may be used freely under the Open Parliament Licence 3.0 and my version of it is freely downloadable from my Github repo.
 
 My interest here is to see just how representative the UK Parliament is. Given that the current Conservative goverment recieved much less than 50% of the popular vote, how come they have such a large majority in the House of Commons?
 
 Actually, anyone who is familiar with Britains _first past the post_ voting system already knows the answer but let's make it clear and do the analysis anyway.
+
+### The raw data
+As I said there are two identical data sets, one an SQLite database and the other a CSV file. I've anonymised the data to a certain extent in that I have removed the names of the MPs who were elected and the names of the contituencies that they represent - this is not about personalities or areas of the country but just about how the numbers add up.
+
+The tables have the following columns:
+- ons_id: the identifier for the constituency
+- result: The party that won and whether it was a new win or a 'hold'
+- first_party: the party that won
+- second_party: the party that came second
+- electorate: the number of voters
+- valid_votes: the number of valid votes 
+- invalid_votes: the number of invalid votes
+- majority: the difference in votes between the winner and the runner-up
+- con, lab, ld, ,brexit, green, snp, pc, dup, sf, sdlp, uup, alliance, other: the various parties and their share of the votes
+
+To load the data we use the following code:
+
+    import pandas as pd
+    import sqlite3 as sql
+
+    # create df
+    election_df = pd.read_csv('elections.csv')
+
+    # create db
+    conn = sql.connect('elections.db')
+
+This gives us the two forms of the data set.
+
+And if we do this
+
+    election_df.head(4)
+
+we get to see what it looks like.
+
+![The elections table](images/elections_head.png)
 
