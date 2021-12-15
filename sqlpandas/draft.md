@@ -1,7 +1,7 @@
 # SQL, Pandas or Both
 ## Pandas is great for analysing and plotting data but should you store your data in a database and and select it with SQL. Let's take a look at some common operations using Pandas and SQL and see how they compare
 
-![The elections table](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/sqlpandas/images/20211215_123011.png)
+![The elections table](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/sqlpandas/images/20211215_123011.jpg)
 
 I do not claim to be an SQL expert. In fact it's one of the two things that that I have tried to avoid for most of my professional life (the other one is Visual Basic). But there are those who scoff at the idea of using R or Python for data analysis because... well, that's what SQL was designed for.
 
