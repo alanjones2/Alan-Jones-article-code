@@ -1,7 +1,7 @@
 # SQL, Pandas or Both
 ## Pandas is great for analysing and plotting data but should you store your data in a database and and select it with SQL. Let's take a look at some common operations using Pandas and SQL and see how they compare
 
-
+![The elections table](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/sqlpandas/images/20211215_123011.png)
 
 I do not claim to be an SQL expert. In fact it's one of the two things that that I have tried to avoid for most of my professional life (the other one is Visual Basic). But there are those who scoff at the idea of using R or Python for data analysis because... well, that's what SQL was designed for.
 
@@ -52,7 +52,29 @@ And if we do this
 
     election_df.head(4)
 
-we get to see what it looks like.
+we get to see what it looks like. Here is a partial view:
 
-![The elections table](images/elections_head.png)
+![The elections table](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/sqlpandas/images/elections_head.png)
 
+The first thing that we want to do in order to start our analysis is to identify the names all of the individual parties that have won a seat in the House of Commons. We start by getting a list of all the winners from the column _first_party_.
+
+Using Pandas we simply do this:
+
+    election_df['first_party']
+
+We can assign that expression to a variable and we have a lisr of all the winners. How about SQL?
+
+    query = """
+        SELECT first_party 
+        FROM elections
+    """
+    cur = conn.execute(query)
+    rows = cur.fetchall()
+
+The list is now in ```rows```. Not quite as concise as Pandas.
+
+But we want the unique values from this list of winners and in Pandas this is straightforward:
+
+    partiesdf = election_df['first_party'].unique()
+
+We just use the ```unique()``` method to 
