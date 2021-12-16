@@ -5,13 +5,13 @@
 
 I do not claim to be an SQL expert. In fact it's one of the two things that that I have tried to avoid for most of my professional life (the other one is Visual Basic). But there are those who scoff at the idea of using R or Python for data analysis because... well, that's what SQL was designed for.
 
-Well, certainly SQL has been around for a while - 50 years or so - and is still very much in use today in the database world in popular products like SQLite, MySQL, MariaDB and Postgresql, despite the emergence alternative no-SQL databases such as MongoDB.
+Well, certainly SQL has been around for a while - 50 years or so - and is still the de facto query language in the database world. Popular products like SQLite, MySQL, MariaDB and Postgresql, are all SQL based.
 
-So, which should you use, Python and Pandas, or SQL?
+So, if you are a Pythonista doing data analysis, which should you use, Pandas or SQL?
 
-I wanted to do a little analysis on some UK election data which required me to do a number of fairly common analysis tasks. My initial task was to work out how it is that the UK government has a large majority in Parliament and yet only secured a relatively small percentage of the popular vote.
+I wanted to do a little analysis on some UK election data which required me to do a number of fairly common and straightforward analysis tasks. Initially, I wanted to work out how it is that the UK government has a large majority in Parliament and yet only secured a relatively small percentage of the popular vote.
 
- To achieve this I decided to use both Pandas and SQL to see which I was happier with. I'll describe what I did and how and that way you can decide for yourself which approach you think is better.
+ I decided to use both Pandas and SQL to see which I was happier with. I'll describe what I did and how and you can decide for yourself which approach you think is better.
 
 To do the analysis we'll use data from the UK 2019 General Election, and while we compare SQL and Pandas, we can learn a little bit about how democracy works in Britain, too.
 
