@@ -71,7 +71,7 @@ How about SQL?
 
 The first thing is to construct an SQL query and then execute it.
 You can see the query below as a string. We first use the ```SELECT```
-keyword
+keyword to declare the field that we are interested in (```first_party```) and then the table that contains the field (```elections```) in the ```FROM``` clause. 
 
     query = """
         SELECT first_party 
