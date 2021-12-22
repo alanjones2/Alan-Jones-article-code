@@ -40,16 +40,12 @@ To load the data we use the following code. For the CSV file:
 
 
     import pandas as pd
-
-    # create df
     election_df = pd.read_csv('elections.csv')
 
 and for the database:
 
 
     import sqlite3 as sql
-
-    # create db
     conn = sql.connect('elections.db')
 
 This gives us the two forms of the data set.
@@ -62,13 +58,20 @@ we get to see what it looks like. Here is a partial view:
 
 ![The elections table](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/sqlpandas/images/elections_head.png)
 
-The first thing that we want to do in order to start our analysis is to identify the names all of the individual parties that have won a seat in the House of Commons. We start by getting a list of all the winners from the column _first_party_.
+In order to do our analysis, we want to find out just how many votes were cast for each political party.
+So the first thing to do is to identify the names all of the individual parties that have won a seat in the House of Commons.
+We start by getting a list of all the winners from the column _first_party_.
 
 Using Pandas we simply do this:
 
     election_df['first_party']
 
-We can assign that expression to a variable and we have a list of all the winners. How about SQL?
+We can assign that expression to a variable and we have a list of all the winners. 
+How about SQL?
+
+The first thing is to construct an SQL query and then execute it.
+You can see the query below as a string. We first use the ```SELECT```
+keyword
 
     query = """
         SELECT first_party 
