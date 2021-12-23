@@ -69,9 +69,9 @@ Using Pandas we simply do this:
 We can assign that expression to a variable and we have a list of all the winners. 
 How about SQL?
 
-The first thing is to construct an SQL query and then execute it.
+The first thing is to construct an SQL query and then we can execute it.
 You can see the query below as a string. We first use the ```SELECT```
-keyword to declare the field that we are interested in (```first_party```) and then the table that contains the field (```elections```) in the ```FROM``` clause. 
+keyword to declare the field that we are interested in (```first_party```) and then the table that contains the field (```elections```) in the ```FROM``` clause. We execute it with the connection that we create from the database file, earlier. That returns a cursor that we can use to retrieve the rows that contain our data. 
 
     query = """
         SELECT first_party 
@@ -86,4 +86,75 @@ But we want the unique values from this list of winners and in Pandas this is st
 
     partiesdf = election_df['first_party'].unique()
 
-We just use the ```unique()``` method to 
+We just use the ```unique()``` method to filter the result and this is what we assign to the variable ```partiesdf```.
+
+In SQL we use the ```DISTINCT``` keyword in the query to produce the same effect.
+
+    query = """
+        SELECT DISTINCT first_party 
+        FROM elections
+    """
+    cur = conn.execute(query)
+    rows = cur.fetchall()
+    partiesdb = rows
+
+And, in this code, we have assigned the result to the variable ```partiesdb```.
+
+The results that we get with the two techniques are not quite the same. With the Pandas version the result is a list, whereas with the SQL query, the result is a list of tuples. The reason for this is that while we will only get a list of single values from Pandas, we could have specified more than one value in the SQL query ```SELECT``` statement. This is not a big deal as long as we are aware of the difference.
+
+Here's the list from the Pandas version:
+
+    ['Lab', 'Con', 'SNP', 'PC', 'LD', 'DUP', 'SF', 'SDLP', 'Green','Spk', 'Alliance']
+
+And from the SQL we get:
+
+    [('Lab',), ('Con',), ('SNP',), ('PC',), ('LD',), ('DUP',), ('SF',), ('SDLP',), ('Green',), ('Spk',), ('Alliance',)]
+
+All the names in the lists are those of political parties that have at least one set in the British Parliament, with the exception of ```Spk``` which represents the Speaker of the House of Commons. This particular Member of Parliament manages the House, is deemed to be neutral, and is not normally required to vote. Thus he or she does not count as a party member.
+
+We will remove the Speaker from our calculations later.
+
+The next thing we want to do is to find the number of wins that each party has. Each win represents a seat in the House of Commons. Each win is recorded in the ```'first_party'``` column. So, with Pandas we could write:
+
+    election_df['first_party'] == 'Lab'
+
+to get the list of results for the Labour Party. This is it:
+
+    0       True
+    1      False
+    2      False
+    3      False
+    4      False
+        ...  
+    645     True
+    646    False
+    647    False
+    648     True
+    649    False
+    Name: first_party, Length: 650, dtype: bool
+
+So if we ran this code:
+
+    election_df[election_df['first_party']=='Lab']
+
+we would get a list of all of the wins for the Labour Party and the length of this list would represent the number of seats that they gained. Do this fo reach of the parties in the list we created earlier and we have the total number of seats won by each party.
+
+We could do this by appending the count to an empty list like this:
+
+    partyWinsdf = []
+
+    for i in partiesdf:
+        partyWinsdf.append(len(election_df[election_df['first_party']==i]))
+    print(partiesdf)
+
+But a more Pythonic method is to use list comprehension like this:
+
+    partyWinsdf = [len(election_df[election_df['first_party']==i]) 
+            for i in partiesdf]
+
+The result is a list of the number of seats for each party. Here is the list of parties, followed by the list of wins (i.e. seats):
+
+    ['Lab' 'Con' 'SNP' 'PC' 'LD' 'DUP' 'SF' 'SDLP' 'Green' 'Spk' 'Alliance']
+    [202, 365, 48, 4, 11, 8, 7, 2, 1, 1, 1]
+
+
