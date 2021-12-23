@@ -179,4 +179,21 @@ The real work is done by the ```SELECT``` statement which uses a ```WHERE``` cla
     FROM elections
     WHERE first_party = '{i[0]}'
 
-Comparing this to the Pandas version the syntax of the SQL statement is (at least from my point of view) a bit clearer in its intention than the Pandas equivalent.
+Comparing this to the Pandas version the syntax of the SQL statement is (at least from my point of view) a bit clearer in its intention than the Pandas equivalent. Having said that it is still rather more verbose.
+
+Let's take a look at the data we have in chart form. To do that we will use Pandas plotting function, as this is one of the most straightforward charting methods.
+
+Our Pandas only version of this is:
+
+    dfdf = pd.DataFrame(partyWinsdf,partiesdf)
+    dfdf.plot.bar(legend=False,title='Seat allocation per party')
+
+and the SQL version is almost identical:
+
+    import pandas as pd
+    dfdb = pd.DataFrame(partyWinsdb,partiesdb)
+    dfdb.plot.bar(legend=False, title='Seat allocation per party')
+
+And the chart that we get from either of these is this:
+
+![The elections table](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/sqlpandas/images/seatallocparty.png)
