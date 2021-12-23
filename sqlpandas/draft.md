@@ -196,4 +196,4 @@ and the SQL version is almost identical:
 
 And the chart that we get from either of these is this:
 
-![The elections table](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/sqlpandas/images/seatallocparty.png)
+![Seat allocation](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/sqlpandas/images/seatallocparty.png)
