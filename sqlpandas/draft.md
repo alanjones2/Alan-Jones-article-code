@@ -152,9 +152,9 @@ But a more Pythonic method is to use list comprehension like this:
     partyWinsdf = [len(election_df[election_df['first_party']==i]) 
             for i in partiesdf]
 
-The result is a list of the number of seats for each party. Here is the list of parties, followed by the list of wins (i.e. seats):
+The result is a list of the number of seats for each party. Here is the list of parties, followed by the list of wins (i.e. seats) we created, above:
 
     ['Lab' 'Con' 'SNP' 'PC' 'LD' 'DUP' 'SF' 'SDLP' 'Green' 'Spk' 'Alliance']
     [202, 365, 48, 4, 11, 8, 7, 2, 1, 1, 1]
 
-
+We can see from this that the Labour Party gained 202 seats, the Conservatives have 365 seats, the Scottish National Party (SNP) have 48 seats, and so on.
