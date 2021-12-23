@@ -158,3 +158,25 @@ The result is a list of the number of seats for each party. Here is the list of 
     [202, 365, 48, 4, 11, 8, 7, 2, 1, 1, 1]
 
 We can see from this that the Labour Party gained 202 seats, the Conservatives have 365 seats, the Scottish National Party (SNP) have 48 seats, and so on.
+
+This method using Pandas works well but how does it compare to SQL. Here is the equivalent SQL version, again using list comprehension. Most of the procesiing is in a function ```getWins(i)```  which fetches the number of wins for a party represented by ```i```.
+
+    def getWins(i):
+        query = f"""
+            SELECT * 
+            FROM elections
+            WHERE first_party = '{i[0]}'
+        """
+        cur = conn.execute(query)
+        rows = cur.fetchall()
+        return(len(rows))
+
+    partyWinsdb = [ getWins(i) for i in partiesdb]
+
+The real work is done by the ```SELECT``` statement which uses a ```WHERE``` clause to filter the selection such that the value of ```first_party``` is equal to the party name that is passed to the function. Remember that in the SQL version the party names are in tuples hence the party name is ```{i[0]}```, the first (and only) element of the tuple.
+
+    SELECT * 
+    FROM elections
+    WHERE first_party = '{i[0]}'
+
+Comparing this to the Pandas version the syntax of the SQL statement is (at least from my point of view) a bit clearer in its intention than the Pandas equivalent.
