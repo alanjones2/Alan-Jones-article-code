@@ -198,8 +198,15 @@ And the chart that we get from either of these is this:
 
 ![Seat allocation](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/sqlpandas/images/seatallocparty.png)
 
+And you can see from this that the party with the most parliamentary seats is the the Conservative Party with more than 150 seat advantage over the second place Labour Party. The Scottish National Party (SNP) comes in next followed by the other regional parties and the Green Party.
 
-At this point, I think I know what I am more comfortable with. I do quite like the clarity of the SQL statements but that hasn't persuaded me to ditch Pandas in favor of SQL. So the rest of the analysis will be done with Pandas - it is mostly about drawing charts, anyway, so I thinks it is more appropriate (you may disagree, in which case I'd be very glad to hear your views).
+We are going to see how this result compares to the percentage of the votes cast for each party, shortly. But first I'm making a decision.
+
+## I choose Pandas
+
+At this point, I think I know what I am more comfortable with. I admit to liking the clarity of the SQL statements but that hasn't persuaded me to ditch Pandas in favor of SQL. 
+
+So to tie up the rest of the analysis I'll use Pandas - it is mostly about drawing charts, anyway, so I think it is more appropriate (you may disagree, in which case I'd be very glad to hear your views).
 
 
 
