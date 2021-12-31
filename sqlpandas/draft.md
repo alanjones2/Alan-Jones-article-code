@@ -198,6 +198,7 @@ And the chart that we get from either of these is this:
 
 ![Seat allocation](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/sqlpandas/images/seatallocparty.png)
 
+
 At this point, I think I know what I am more comfortable with, so the rest of the analysis will be done with Pandas - it is mostly about drawing charts, anyway.
 
 
