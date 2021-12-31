@@ -1,5 +1,5 @@
 # SQL, Pandas or Both
-## Pandas is great for analysing and plotting data but should you store your data in a database and and select it with SQL. Let's take a look at some common operations using Pandas and SQL and see how they compare
+## Pandas is great for analysing and plotting data but should you store your data in a database and select it with SQL. Let's take a look at some common operations using Pandas and SQL and see how they compare
 
 ![The elections table](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/sqlpandas/images/20211215_123011.jpg)
 
@@ -17,12 +17,12 @@ To do the analysis we'll use data from the UK 2019 General Election (the last on
 
 There are two files, a CSV file (to be used by Pandas) and a SQLite database - both contain exactly the same data. The data are a matter of public record and were derived from election results held by the House of Commons Library. This data may be used freely under the Open Parliament Licence 3.0 and my abridged version of it is freely downloadable from my Github repo.
 
-My interest here is to see just how representative the UK Parliament is. Given that the current Conservative goverment recieved much less than 50% of the popular vote, how come they have a majority of around 80 in the House of Commons?
+My interest here is to see just how representative the UK Parliament is. Given that the current Conservative government received much less than 50% of the popular vote, how come they have a majority of around 80 in the House of Commons?
 
-Actually, anyone who is familiar with Britains _first past the post_ voting system already knows the answer but let's make it clear and do the analysis anyway.
+Actually, anyone who is familiar with Britain's _first past the post_ voting system probably already knows the answer but let's make it clear and do the analysis anyway.
 
 ### The raw data
-As I said there are two identical data sets, one an SQLite database and the other a CSV file. I've anonymised the data to a certain extent in that I have removed the names of the MPs who were elected and the names of the contituencies that they represent - this is not about personalities or areas of the country but just about how the numbers add up.
+As I said there are two identical data sets, one an SQLite database and the other a CSV file. I've anonymised the data to a certain extent in that I have removed the names of the MPs who were elected and the names of the constituencies that they represent - this is not about personalities or areas of the country but just about how the numbers add up.
 
 The tables have the following columns:
 
@@ -82,13 +82,13 @@ keyword to declare the field that we are interested in (```first_party```) and t
 
 The list is now in ```rows```. Not quite as concise as Pandas.
 
-But we want the unique values from this list of winners and in Pandas this is straightforward:
+But the list we have containes many duplicates as the same party may have won many seats. So, what we want are the unique values from this list of winners and in Pandas this is straightforward:
 
     partiesdf = election_df['first_party'].unique()
 
 We just use the ```unique()``` method to filter the result and this is what we assign to the variable ```partiesdf```.
 
-In SQL we use the ```DISTINCT``` keyword in the query to produce the same effect.
+In SQL we use the ```DISTINCT``` keyword in the query to produce the same result.
 
     query = """
         SELECT DISTINCT first_party 
@@ -100,7 +100,7 @@ In SQL we use the ```DISTINCT``` keyword in the query to produce the same effect
 
 And, in this code, we have assigned the result to the variable ```partiesdb```.
 
-The results that we get with the two techniques are not quite the same. With the Pandas version the result is a list, whereas with the SQL query, the result is a list of tuples. The reason for this is that while we will only get a list of single values from Pandas, we could have specified more than one value in the SQL query ```SELECT``` statement. This is not a big deal as long as we are aware of the difference.
+The results that we get with the two techniques are, in fact, not quite the same. With the Pandas version the result is a list, whereas with the SQL query, the result is a list of tuples. The reason for this is that while we will only get a list of single values from Pandas, we could have specified more than one value in the SQL query ```SELECT``` statement. This is not a big deal as long as we are aware of the difference, i.e. we will use each individual element of the Pandas list, whereas in the SQL version, we are intersted in the first value of the tuple in each list element.
 
 Here's the list from the Pandas version:
 
@@ -114,7 +114,7 @@ All the names in the lists are those of political parties that have at least one
 
 We will remove the Speaker from our calculations later.
 
-The next thing we want to do is to find the number of wins that each party has. Each win represents a seat in the House of Commons. Each win is recorded in the ```'first_party'``` column. So, with Pandas we could write:
+The next thing we want to do is to find the number of wins that each party has. Each win represents a seat in the House of Commons and they are recorded in the ```'first_party'``` column. So, with Pandas we could write:
 
     election_df['first_party'] == 'Lab'
 
@@ -137,7 +137,7 @@ So if we ran this code:
 
     election_df[election_df['first_party']=='Lab']
 
-we would get a list of all of the wins for the Labour Party and the length of this list would represent the number of seats that they gained. Do this fo reach of the parties in the list we created earlier and we have the total number of seats won by each party.
+we would get a list of all of the wins for the Labour Party and the length of this list would represent the number of seats that they gained. Do this for reach of the parties in the list we created earlier and we have the total number of seats won by each party.
 
 We could do this by appending the count to an empty list like this:
 
@@ -159,7 +159,7 @@ The result is a list of the number of seats for each party. Here is the list of 
 
 We can see from this that the Labour Party gained 202 seats, the Conservatives have 365 seats, the Scottish National Party (SNP) have 48 seats, and so on.
 
-This method using Pandas works well but how does it compare to SQL. Here is the equivalent SQL version, again using list comprehension. Most of the procesiing is in a function ```getWins(i)```  which fetches the number of wins for a party represented by ```i```.
+This method using Pandas works well but how does it compare to SQL. Here is the equivalent SQL version, again using list comprehension. Most of the processing is in a function ```getWins(i)```  which fetches the number of wins for a party represented by ```i```.
 
     def getWins(i):
         query = f"""
@@ -199,7 +199,9 @@ And the chart that we get from either of these is this:
 ![Seat allocation](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/sqlpandas/images/seatallocparty.png)
 
 
-At this point, I think I know what I am more comfortable with, so the rest of the analysis will be done with Pandas - it is mostly about drawing charts, anyway.
+At this point, I think I know what I am more comfortable with. I do quite like the clarity of the SQL statements but that hasn't persuaded me to ditch Pandas in favor of SQL. So the rest of the analysis will be done with Pandas - it is mostly about drawing charts, anyway, so I thinks it is more appropriate (you may disagree, in which case I'd be very glad to hear your views).
+
+
 
 
 
