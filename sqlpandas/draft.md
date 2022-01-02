@@ -217,8 +217,47 @@ We are going to see how this result compares to the percentage of the votes cast
 
 At this point, I think I know what I am more comfortable with. I admit to liking the clarity of the SQL statements but that hasn't persuaded me to ditch Pandas in favor of SQL. 
 
+The next thing I want to do do is to create a new table that contains the results of the analysis in order to plot some charts. I could do this using SQL without too much difficulty but I would then have to convert it into a Pandas dataframe in order to plot it.
+
 So to tie up the rest of the analysis I'll use Pandas - it is mostly about drawing charts, anyway, so I think it is more appropriate (you may disagree, in which case I'd be very glad to hear your views in the comments below).
 
+## Proportional representation
+
+What I'd like to do next is to show what the result of the 2019 elections would have been if the seats in Parliament were allocated in proportion to the number of votes cast.
+
+The first thing to do is to remove the Speaker from the data as he does not represent a real party. The Speaker is element 9 so the easiest thing to do is this:
+
+    partiesdf = list(partiesdf)
+    partiesdf.pop(9)
+    seats = list(partywinsdf)
+    seats.pop(9)
+
+That just removes the 9th element from the ```partiesdf``` list and the ```seats``` list.
+
+Now we work out the total number of votes cast and the number cast for each party.
+
+The total number of votes cast is the sum of the ```valid_votes``` column.
+
+    total_votes=election_df['valid_votes'].sum()
+
+And to get a list of the totl number of votes cast for each party, we sum the values in the column that corresponds to that party.
+
+    total_votes_party = [election_df[i].sum() for i in partiesdf]
+
+Now we can create a new dataframe using this data:
+
+    share_df = pd.DataFrame()
+    share_df['partiesdf'] = partiesdf
+    share_df['votes'] = total_votes_party
+    share_df['percentage_votes']=share_df['votes']/total_votes*100
+    share_df['seats'] = seats
+    share_df['percentage_seats']=share_df['seats']/650*100
+    share_df['deficit']=share_df['percentage_seats']-share_df['percentage_votes']
+    share_df['proportional_seats']=share_df['percentage_votes']/100*650
+
+The resulting dataframe looks like this:
+
+![Seat allocation](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/sqlpandas/images/parties_share.png)
 
 
 
