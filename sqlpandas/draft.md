@@ -271,6 +271,8 @@ You can see that the Conservative Party, the DUP and the SNP have a higher perce
 
     share_df.plot.barh(x='partiesdf',y=['percentage_seats','percentage_votes'],figsize=(15,5))
 
+![Seat allocation](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/sqlpandas/images/deficit.png)    
+
 From this chart you can see why the Liberal Democrat Party (```ld``` in the chart) would prefer a proportional representation system of elections in the UK. They have far fewer parliamentary seats than their share of the vote would suggest. The Green Party are also disadvantaged in the same way.
 
 Finally, what would the UK Parliament look like if the number of votes cast for each party were proportionally represented. If we plot the actual number of seats gained against the number of seats that would be allocated under a truly proportional system like this:
