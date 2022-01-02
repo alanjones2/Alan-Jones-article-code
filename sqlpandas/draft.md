@@ -259,8 +259,39 @@ The resulting dataframe looks like this:
 
 ![Seat allocation](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/sqlpandas/images/parties_share.png)
 
+So let's see just how representative this is. Below is a bar chart that compares the percentage of seats gained to the percentage of votes cast for a particular party. We create it like this:
 
+    share_df.plot.barh(x='partiesdf',y=['percentage_seats','percentage_votes'],figsize=(15,5))
 
+And here it is:
 
+![Seat allocation](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/sqlpandas/images/seatsvotes.png)
 
+You can see that the Conservative Party, the DUP and the SNP have a higher percentage of seats than votes, whereas the others have a lower percentage of seats than votes. We can see who are the winners and losers in the system by plotting the ```deficit``` column like this:
+
+    share_df.plot.barh(x='partiesdf',y=['percentage_seats','percentage_votes'],figsize=(15,5))
+
+From this chart you can see why the Liberal Democrat Party (```ld``` in the chart) would prefer a proportional representation system of elections in the UK. They have far fewer parliamentary seats than their share of the vote would suggest. The Green Party are also disadvantaged in the same way.
+
+Finally, what would the UK Parliament look like if the number of votes cast for each party were proportionally represented. If we plot the actual number of seats gained against the number of seats that would be allocated under a truly proportional system like this:
+
+    share_df.plot.bar(x='partiesdf',y=['seats','proportional_seats'],figsize=(15,5))
+
+We see that the makeup of the House of Commons would be quite different.
+
+![Seat allocation](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/sqlpandas/images/proportionalseats.png)
+
+Proportionally allocated seats are shown in orange and you can see that the Conservative Party's representation would be substantially reduced and they would lose their majority. The Labour Party would ave a few more seats but the real winners would be the Liberal Democrats whose seat count would shoot up from 11 to 75, and the Greens who would go from 1 to 17.
+
+Whether a move to a proportional system would be an imporovement is not for me to say. However, given the state of British politics at the moment, one could easily see that under the circumstance shown above, a coalition of Labour, Liberal Democrats and Greens would have more seats (about 300) than the Conservatives and could very feasibly form a government with the support of other local parties. Such a result would mean that Britain would have an entirely different type of government.
+
+## So, what now?
+
+My main aim here was to get straight, in my own mind, whether or not to rely more on SQL and less on Pandas for data analysis, rather than to advocate for a new electoral system in the UK. And to that end I have made up my mind that while I won't actively avoid SQL as I have in the past, I'll stick with Pandas for now (I still won't back down on Visual Basic, though).
+
+Thanks for reading, I hope my meander through the vagaries of the British electoral system have been useful in the context of Pandas and SQL (and in the context of electoral reform, if you happen to be British).
+
+If you would like, you can subscribe to my occasional free newsletter, 
+[Technofile](https://technofile.substack.com/) which is on 
+Substack - I'll post about new articles there.
 
