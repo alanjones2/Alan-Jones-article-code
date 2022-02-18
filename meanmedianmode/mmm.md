@@ -2,9 +2,29 @@
 
 ## Mean, Median and Mode: What Are they and When Should You Use Them
 
-### You probably remember mean, median and mode from high school stats classes but they are often used inapropriately. We look at how you _should_ use them with Python Pandas examples.
+### You probably remember Mean, Median and Mode from high school stats classes but they are often used wrongly. We look at how you _should_ use them with Python Pandas examples.
+
+What is the average height of an 18-year-old American male? Or the average price of a house in Madrid? Or the average grade achieved by high school students in England?
+
+These are all perfectly worded questions but mean something slightly different in each case. The average in the first case is calculated using the _mean_, the house prices would be better represented using the _median_ and the school grades by the _mode_.
+
+The average is a measurement of a central tendency and typically we would expect that it would be calculated by adding a set of values  together and then dividing by the number of values. This is the _mean_ and this works perfectly well for a normally distributed set of data like height.
+
+You can legitimately track the height of adult Americans by adding all of their height together and divided by the number of Americans. (That's quite a task so you'd probably want to take a representative sample instead.)
+
+And if you tracked this over time you'd get a graph like the one below from Our World in Data.
 
 
+![Change in height](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/meanmedianmode/images/changeinheight.png)
+
+This works fine because height follows a normal distribution as illustrated here:
+
+![Height distribution](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/meanmedianmode/images/heightnormaldist.jpg)
+
+Licensed by [Illustrative Mathematics](https://illustrativemathematics.org/) under a
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International 
+
+In a normal distribution values are distributed evenly around a central point and tail off similarly to the left and right. You can see the mean in the graph above is 70 inches.
 
 
 
