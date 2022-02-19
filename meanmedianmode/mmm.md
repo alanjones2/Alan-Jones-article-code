@@ -21,6 +21,9 @@ And if you tracked this over time you'd get a graph like the one below from Our 
 
 ![Change in height](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/meanmedianmode/images/changeinheight.png)
 
+
+
+
 This works fine because height follows a normal distribution as illustrated here:
 
 ![Height distribution](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/meanmedianmode/images/heightnormaldist.jpg)
