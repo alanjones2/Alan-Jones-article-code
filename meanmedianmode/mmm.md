@@ -1,4 +1,4 @@
-### Statisitics 101
+### Statistics 101
 
 ## Mean, Median and Mode: What Are they and When Should You Use Them
 
@@ -8,7 +8,11 @@ What is the average height of an 18-year-old American male? Or the average price
 
 These are all perfectly worded questions but mean something slightly different in each case. The average in the first case is calculated using the _mean_, the house prices would be better represented using the _median_ and the school grades by the _mode_.
 
-The average is a measurement of a central tendency and typically we would expect that it would be calculated by adding a set of values  together and then dividing by the number of values. This is the _mean_ and this works perfectly well for a normally distributed set of data like height.
+The average is a measurement of a central tendency and typically we would expect that it would be calculated by adding a set of values  together and then dividing by the number of values. 
+
+This is the _mean_ and this works perfectly well for a normally distributed set of data like height.
+The _median_ is the central value meaning that there are an equal number of measurements either side of this value.
+Whereas the _mode_ is the most frequent value in a set.
 
 You can legitimately track the height of adult Americans by adding all of their height together and divided by the number of Americans. (That's quite a task so you'd probably want to take a representative sample instead.)
 
@@ -28,13 +32,12 @@ In a normal distribution values are distributed evenly around a central point an
 
 ![Levante players](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/meanmedianmode/images/levante10.png)
 
+In a normal distribution the mean and the median are the same value but that is not true for other types of distribution.
+
+Take the house price example. In Madrid like in any other major city there are a wide range of properties and prices but there are a small number
 
 
-
-
-
-
-The data comes from the web site [Salary Sport](https://salarysport.com/football/la-liga/levante/)
+The data come from the web site [Salary Sport](https://salarysport.com/football/la-liga/levante/) and to the best of my knowledge (which is admittedly limited) are, at least indicative of the actual salaries.
 
     Mean weekly wage with Messi 49051.724137931036
     Mean weekly wage without Messi 15089.285714285714
