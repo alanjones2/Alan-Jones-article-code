@@ -100,8 +100,6 @@ Pandas is great for analysing and plotting data but should you store your data i
 <hr/>
 
 ## How to Share your Jupyter Notebook with Mercury or Voilà
-
-## SQL, Pandas or Both - Analysing the UK Electoral System
 [[Article](#)] [[Code](https://github.com/alanjones2/Alan-Jones-article-code/tree/master/mercury)]
 
 Putting your Jupyter notebook on the web is reasonably easy with either Mercury or Voilà but which is easier - here's a brief comparison of the two technologies
