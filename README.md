@@ -99,6 +99,13 @@ We are going to look at the way we can use theming and the various interactive i
 Pandas is great for analysing and plotting data but should you store your data in a database and select it with SQL. Let's take a look at some common operations using Pandas and SQL and see how they compare
 <hr/>
 
+## How to Share your Jupyter Notebook with Mercury or Voilà
+
+## SQL, Pandas or Both - Analysing the UK Electoral System
+[[Article](#)] [[Code](https://github.com/alanjones2/Alan-Jones-article-code/tree/master/mercury)]
+
+Putting your Jupyter notebook on the web is reasonably easy with either Mercury or Voilà but which is easier - here's a brief comparison of the two technologies
+<hr/>
 If you have found this content useful, please consider this... <br/><br/>
 <a href='https://ko-fi.com/M4M64THKG' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi2.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
