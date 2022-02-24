@@ -94,13 +94,13 @@ We are going to look at the way we can use theming and the various interactive i
 <hr/>
 
 ## SQL, Pandas or Both - Analysing the UK Electoral System
-[[Article](#)] [[Code](https://github.com/alanjones2/Alan-Jones-article-code/tree/master/sqlpandas)]
+[[Article](https://towardsdatascience.com/sql-pandas-or-both-analysing-the-uk-electoral-system-24fa01d33d05)] [[Code](https://github.com/alanjones2/Alan-Jones-article-code/tree/master/sqlpandas)]
 
 Pandas is great for analysing and plotting data but should you store your data in a database and select it with SQL. Let's take a look at some common operations using Pandas and SQL and see how they compare
 <hr/>
 
 ## How to Share your Jupyter Notebook with Mercury or Voilà
-[[Article](#)] [[Code](https://github.com/alanjones2/Alan-Jones-article-code/tree/master/mercury)]
+[[Article](https://towardsdatascience.com/how-to-share-your-jupyter-notebook-with-mercury-or-voil%C3%A0-2177110d2f6e)] [[Code](https://github.com/alanjones2/Alan-Jones-article-code/tree/master/mercury)]
 
 Putting your Jupyter notebook on the web is reasonably easy with either Mercury or Voilà but which is easier - here's a brief comparison of the two technologies
 <hr/>
