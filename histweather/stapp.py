@@ -5,7 +5,7 @@ import io
 import plotly.express as px
 
 
-
+#################### Data
 stations = [
 {'url':'https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/aberporthdata.txt', 'name':'Aberporth'},
 {'url':'https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/armaghdata.txt', 'name':'Armagh'},
@@ -46,6 +46,9 @@ stations = [
 {'url':'https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/yeoviltondata.txt', 'name':'Yeovilton'}
 ]
 
+station_names = [stations[n]['name'] for n in range(len(stations))] 
+
+# create dataframe from text file and add a date column
 def makedf(i):
 
     url = stations[i]['url']
@@ -81,26 +84,50 @@ def makedf(i):
     # change year and month to integers
     weather=weather.astype({'Year':'int32','Month':'int32'})
 
-
-
     return weather
 
 
-####################################################################################33
+################################## Layout ##################################################33
 
-
-station_names = [stations[n]['name'] for n in range(len(stations))] 
 
 st.set_page_config(layout = 'wide')
 
+# select a station name
 s = st.selectbox('station', station_names)
 
+# get the index of the station name and make the dataframe
 i = station_names.index(s)
 weather = makedf(i)
 
+# this?
 st.dataframe(weather)
 
-fig = px.scatter(weather, x='Date', y='Tmax')
-st.write(station_names[i])
+start_year, end_year = st.select_slider(
+    'Select a range ',
+    options=weather['Year'],
+    value=(weather['Year'].min(), weather['Year'].max())
+)
 
+wdf = weather[(weather['Year'] >= start_year) & (weather['Year'] <= end_year)]
+# make a plot
+fig = px.scatter(wdf, x='Date', y='Tmax', title=station_names[i])
+
+st.plotly_chart(fig, use_container_width=True)
+
+tmax = wdf.pivot(index='Month', columns='Year', values='Tmax')
+#tmax
+
+fig = px.imshow(tmax)
+st.plotly_chart(fig, use_container_width=True)
+
+tmin = wdf.pivot(index='Month', columns='Year', values='Tmin')
+#tmin
+
+fig = px.imshow(tmin)
+st.plotly_chart(fig, use_container_width=True)
+
+rain = wdf.pivot(index='Month', columns='Year', values='Rain')
+#rain
+
+fig = px.imshow(rain)
 st.plotly_chart(fig, use_container_width=True)
