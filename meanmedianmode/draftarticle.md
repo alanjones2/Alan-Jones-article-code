@@ -4,6 +4,8 @@
 
 ## You probably remember Mean, Median and Mode from high school stats classes but they are often used badly. We look at how you *should* use them with Python Pandas examples.
 
+** First Draft only **
+
 ---*Splash image here*---
 
 What is the average height of an 18-year-old British male? Or the
