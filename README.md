@@ -106,7 +106,7 @@ Putting your Jupyter notebook on the web is reasonably easy with either Mercury 
 <hr/>
 
 ## Mean, Median and Mode: What Are They and When Should You Use Them
-[[Article](#) [[Code](https://github.com/alanjones2/Alan-Jones-article-code/tree/master/meanmedianmode)]
+[[Article](#)] [[Code](https://github.com/alanjones2/Alan-Jones-article-code/tree/master/meanmedianmode)]
 
 You probably remember Mean, Median and Mode from high school stats classes but they are often misused. We look at how you should use them - with Python and Pandas examples.
 
