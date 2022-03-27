@@ -104,6 +104,13 @@ Pandas is great for analysing and plotting data but should you store your data i
 
 Putting your Jupyter notebook on the web is reasonably easy with either Mercury or Voilà but which is easier - here's a brief comparison of the two technologies
 <hr/>
+
+## Mean, Median and Mode: What Are They and When Should You Use Them
+[[Article](#) [[Code](https://github.com/alanjones2/Alan-Jones-article-code/tree/master/meanmedianmode)]
+
+You probably remember Mean, Median and Mode from high school stats classes but they are often misused. We look at how you should use them - with Python and Pandas examples.
+
+<hr/>
 If you have found this content useful, please consider this... <br/><br/>
 <a href='https://ko-fi.com/M4M64THKG' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi2.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
