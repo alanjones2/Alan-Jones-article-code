@@ -151,19 +151,23 @@ addTrends(histdf,histdf.Year,histdf.AF,'AFTr')
 
 # graphs of all data
 for d in ('Sun','Rain','AF', 'Tmax','Tmin','Tmean'):
-
-    fig1 = px.scatter(histdf, x='Year', y=d, title=station_names[i])#, trendline='ols',trendline_color_override='red')
-    #results =px.get_trendline_results(fig1)
-    #results.iloc[0]['px_fit_results']
-    #summary = results.iloc[0]["px_fit_results"].summary()
-    #st.write(summary)
-    #st.write(results.iloc[0]["px_fit_results"].params) # first is offset, second slope
-    
-
-    fig2 = px.line(histdf, x='Year', y=d+'Tr')
+    meanName = d+'Tr'
+    fig1 = px.scatter(histdf, x='Year', y=d, title=station_names[i])
+    fig2 = px.line(histdf, x='Year', y=meanName)
     fig2.update_traces(line_color='red')
     fig3 = go.Figure(data=fig1.data + fig2.data)
     st.plotly_chart(fig3, use_container_width=True)
+    
+    minval= histdf[meanName][0]
+    
+    maxval = histdf[meanName][histdf[meanName].size-1]
+ 
+    range = maxval-minval
+    
+
+    st.write(f"{histdf.Year[0]} value: {minval}")
+    st.write(f"{histdf.Year[histdf[meanName].size-1]} value: {maxval}")
+    st.write(f"Increase: {range}")
 
 
 # to do 
