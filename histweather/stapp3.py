@@ -103,7 +103,7 @@ def makedf(i):
 st.set_page_config(layout = 'wide')
 
 # select a station name
-s = st.selectbox('station', station_names)
+s = st.selectbox('Select a weather station', station_names,14)
 
 # get the index of the station name and make the dataframe
 i = station_names.index(s)
@@ -149,30 +149,75 @@ addTrends(histdf,histdf.Year,histdf.AF,'AFTr')
 
 #st.dataframe(histdf)
 
+
 # graphs of all data
+descriptions = {
+    'Sun':'Hours of sunshine',
+    'Rain':'Centimeters of rain',
+    'AF':'Number of days when there was an air frost', 
+    'Tmax':'Maximum temperature ºC',
+    'Tmin':'Minimum temperature ºC',
+    'Tmean':'Mean temperature ºC'}
+col1,col2, col3 =st.columns(3)
+col = col1
 for d in ('Sun','Rain','AF', 'Tmax','Tmin','Tmean'):
+    #col1,col2=st.columns((2,4))
     meanName = d+'Tr'
-    fig1 = px.scatter(histdf, x='Year', y=d, title=station_names[i])
+    fig1 = px.scatter(histdf, x='Year', y=d)
     fig2 = px.line(histdf, x='Year', y=meanName)
     fig2.update_traces(line_color='red')
     fig3 = go.Figure(data=fig1.data + fig2.data)
-    st.plotly_chart(fig3, use_container_width=True)
+    fig3.update_layout(
+    #    title=station_names[i],
+        xaxis_title="Year",
+        yaxis_title=d
+    )
     
-    minval= histdf[meanName][0]
     
-    maxval = histdf[meanName][histdf[meanName].size-1]
- 
-    range = maxval-minval
-    
+    with col:
+        config = {'staticPlot': True,'displayModeBar': False, 'title':False}
 
-    st.write(f"{histdf.Year[0]} value: {minval}")
-    st.write(f"{histdf.Year[histdf[meanName].size-1]} value: {maxval}")
-    st.write(f"Increase: {range}")
+        # adjust layout to remove space for title 't':0
+        fig3.update_layout(margin= {
+                'l': 0,
+                'r': 0,
+                'b': 10,
+                't': 10,
+                'pad': 4
+            },
+            height=400
+        )
+        st.plotly_chart(fig3, use_container_width=True, config=config)
+       
+    with col:
+        minval= histdf[meanName][0]
+        maxval = histdf[meanName][histdf[meanName].size-1]
+        change = maxval-minval
+        percent = change/minval*100
+
+        s = f"""
+        <div style="background-color:lightblue;padding:10px; height:200px">
+            <h4 style="border-bottom:1px solid">{descriptions[d]}</h4>
+            <b>{histdf.Year[0]} value:</b> {minval:.2f}<br/>
+            <b>{histdf.Year[histdf[meanName].size-1]} value:</b> {maxval:.2f}<br/>
+            <b>Increase:</b> {change:.2f} : {percent:.2f}%
+        </div>
+        """
+    
+        st.markdown(s, unsafe_allow_html=True)
+
+        if col == col1:
+            col = col2
+        elif col == col2:
+            col = col3
+        else:
+            col = col1
+
 
 
 # to do 
-# change to bar and calculate trendline with ols add this to bar chart
-# no! get data from trendline in plotly - or yes
 # add year range bar to see trends over diff periods
 # from ols model display range of temps, sun, rain, af
 #   e.g. AF in 1955 x : AF in 2020 y : range y-x
+
+# this layout is not good the text and graphs don't look connected
