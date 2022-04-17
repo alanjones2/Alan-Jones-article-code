@@ -2,9 +2,6 @@ import pandas as pd
 import streamlit as st
 import requests
 import io
-import plotly.express as px
-import plotly.graph_objects as go
-from scipy import stats
 
 
 #################### Data
@@ -95,31 +92,6 @@ def makedf(i):
     return weather
 
 
-################################## Layout ##################################################33
-
-
-st.set_page_config(layout = 'wide')
-
-# select a station name
-col1, col2 = st.columns(2)
-s = col1.selectbox('Select a weather station', station_names,14)
-
-colNumber = col2.selectbox('Select the number of columns for the dashboard', (1,2,3,4,5,6), 2)
-
-# get the index of the station name and make the dataframe
-i = station_names.index(s)
-
-
-weather = makedf(i)
-
-# this?
-#st.dataframe(weather)
-
-
-years = weather.Year.unique()
-years = years[:-1] # drop 2022 as it is not complete
-
-
 def makeYr(df,y):
     Tmax = df[df.Year == y].Tmax.max()
     Tmin = df[df.Year == y].Tmin.min()
@@ -129,96 +101,31 @@ def makeYr(df,y):
     af = df[df.Year == y].AF.sum()
     return {'Year':y,'Tmax': Tmax, 'Tmin':Tmin, 'Tmean':Tmean,'Sun':sun, 'Rain':rain, 'AF':af}
 
-def addTrends(df,x,y, name):
-    #xval = years
-    #yval = histdf.Tmax
 
-    m = stats.linregress(x, y)
+################################## Layout ##################################################33
 
-    t = [m.slope * i + m.intercept for i in x]
-    histdf.insert(len(histdf.columns),name,t)
+
+st.set_page_config(layout = 'wide')
+
+# select a station name
+s = st.selectbox('Select a weather station', station_names,14)
+
+# get the index of the station name and make the dataframe
+i = station_names.index(s)
+
+
+weather = makedf(i)
+
+st.dataframe(weather)
+
+weather.to_csv(f'{s}monthly.csv')
+
+years = weather.Year.unique()
+years = years[:-1] # drop 2022 as it is not complete
 
 hist = [makeYr(weather,y) for y in years]
 histdf = pd.DataFrame(hist)
 
-addTrends(histdf,histdf.Year,histdf.Tmean,'TmeanTr')
-addTrends(histdf,histdf.Year,histdf.Tmax,'TmaxTr')
-addTrends(histdf,histdf.Year,histdf.Tmin,'TminTr')
-addTrends(histdf,histdf.Year,histdf.Sun,'SunTr')
-addTrends(histdf,histdf.Year,histdf.Rain,'RainTr')
-addTrends(histdf,histdf.Year,histdf.AF,'AFTr')
+st.dataframe(histdf)
 
-#st.dataframe(histdf)
-
-
-# graphs of all data
-descriptions = {
-    'Sun':'Hours of sunshine',
-    'Rain':'Centimeters of rain',
-    'AF':'Number of days when there was an air frost', 
-    'Tmax':'Maximum temperature ºC',
-    'Tmin':'Minimum temperature ºC',
-    'Tmean':'Mean temperature ºC'}
-
-#col1,col2, col3 =st.columns(3)
-#col = col1
-col = st.columns(colNumber)
-colIndex = 0
-
-for d in ('Sun','Rain','AF', 'Tmax','Tmin','Tmean'):
-    meanName = d+'Tr'
-    fig1 = px.scatter(histdf, x='Year', y=d)
-    fig2 = px.line(histdf, x='Year', y=meanName)
-    fig2.update_traces(line_color='red')
-    fig3 = go.Figure(data=fig1.data + fig2.data)
-    fig3.update_layout(
-    #    title=station_names[i],
-        xaxis_title="Year",
-        yaxis_title=d
-    )
-    
-    
-    with col[colIndex]:
-
-        t = f'<h5 style="height:50px">{descriptions[d]}</h5>' 
-        st.markdown(t, unsafe_allow_html=True)
-        
-        config = {'staticPlot': True,'displayModeBar': False, 'title':False}
-
-        # adjust layout to remove space for title 't':0
-        fig3.update_layout(margin= {
-                'l': 0,
-                'r': 0,
-                'b': 10,
-                't': 10,
-                'pad': 4
-            },
-            height=400
-        )
-        st.plotly_chart(fig3, use_container_width=True, config=config)
-       
-        minval= histdf[meanName][0]
-        maxval = histdf[meanName][histdf[meanName].size-1]
-        change = maxval-minval
-        percent = change/minval*100
-
-        s = f"""
-        <div style="background-color:#F0F2F6;padding:10px; margin: 20px;height:150px">
-            <b>{histdf.Year[0]} value:</b> {minval:.2f}<br/>
-            <b>{histdf.Year[histdf[meanName].size-1]} value:</b> {maxval:.2f}<br/>
-            <b>Increase:</b> {change:.2f} which is {percent:.2f}%
-        </div>
-        <hr/>
-        """
-        st.markdown(s, unsafe_allow_html=True)
-
-        colIndex = colIndex+1
-        if colIndex >= len(col): colIndex = 0
-
-
-# to do 
-# add year range bar to see trends over diff periods
-# from ols model display range of temps, sun, rain, af
-#   e.g. AF in 1955 x : AF in 2020 y : range y-x
-
-# this layout is not good the text and graphs don't look connected
+histdf.to_csv(weather.to_csv(f'{s}yearly.csv'))
