@@ -116,9 +116,13 @@ i = station_names.index(s)
 
 weather = makedf(i)
 
+s = s.replace(" ", "_") 
+
 st.dataframe(weather)
 
 weather.to_csv(f'{s}monthly.csv')
+
+st.write(f'{s}monthly.csv written')
 
 years = weather.Year.unique()
 years = years[:-1] # drop 2022 as it is not complete
@@ -129,3 +133,5 @@ histdf = pd.DataFrame(hist)
 st.dataframe(histdf)
 
 histdf.to_csv(weather.to_csv(f'{s}yearly.csv'))
+
+st.write(f'{s}yearly.csv written')
