@@ -132,6 +132,6 @@ histdf = pd.DataFrame(hist)
 
 st.dataframe(histdf)
 
-histdf.to_csv(weather.to_csv(f'{s}yearly.csv'))
+histdf.to_csv(histdf.to_csv(f'{s}yearly.csv'))
 
 st.write(f'{s}yearly.csv written')
