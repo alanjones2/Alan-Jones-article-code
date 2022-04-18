@@ -95,31 +95,6 @@ def makedf(i):
     return weather
 
 
-################################## Layout ##################################################33
-
-
-st.set_page_config(layout = 'wide')
-
-# select a station name
-col1, col2 = st.columns(2)
-s = col1.selectbox('Select a weather station', station_names,14)
-
-colNumber = col2.selectbox('Select the number of columns for the dashboard', (1,2,3,4,5,6), 2)
-
-# get the index of the station name and make the dataframe
-i = station_names.index(s)
-
-
-weather = makedf(i)
-
-# this?
-#st.dataframe(weather)
-
-
-years = weather.Year.unique()
-years = years[:-1] # drop 2022 as it is not complete
-
-
 def makeYr(df,y):
     Tmax = df[df.Year == y].Tmax.max()
     Tmin = df[df.Year == y].Tmin.min()
@@ -138,6 +113,36 @@ def addTrends(df,x,y, name):
     t = [m.slope * i + m.intercept for i in x]
     histdf.insert(len(histdf.columns),name,t)
 
+
+################################## Layout ##################################################33
+
+
+st.set_page_config(layout = 'wide')
+
+# select a station name
+col1, col2, col3 = st.columns(3)
+s = col1.selectbox('Select a weather station', station_names,14)
+
+colNumber = col2.selectbox('Select the number of columns for the dashboard', (1,2,3,4,5,6), 2)
+
+with col3.container():
+    col3.write("Do you want to display the data column?")
+    displayData = col3.checkbox("Check the box to display")
+
+# get the index of the station name and make the dataframe
+i = station_names.index(s)
+
+
+weather = makedf(i)
+
+# this?
+#st.dataframe(weather)
+
+
+years = weather.Year.unique()
+years = years[:-1] # drop 2022 as it is not complete
+
+
 hist = [makeYr(weather,y) for y in years]
 histdf = pd.DataFrame(hist)
 
@@ -149,7 +154,6 @@ addTrends(histdf,histdf.Year,histdf.Rain,'RainTr')
 addTrends(histdf,histdf.Year,histdf.AF,'AFTr')
 
 #st.dataframe(histdf)
-
 
 # graphs of all data
 descriptions = {
@@ -196,6 +200,7 @@ for d in ('Sun','Rain','AF', 'Tmax','Tmin','Tmean'):
             height=400
         )
         st.plotly_chart(fig3, use_container_width=True, config=config)
+        
        
         minval= histdf[meanName][0]
         maxval = histdf[meanName][histdf[meanName].size-1]
@@ -211,6 +216,8 @@ for d in ('Sun','Rain','AF', 'Tmax','Tmin','Tmean'):
         <hr/>
         """
         st.markdown(s, unsafe_allow_html=True)
+
+        if displayData: st.table(histdf[d])
 
         colIndex = colIndex+1
         if colIndex >= len(col): colIndex = 0
