@@ -94,7 +94,6 @@ def makedf(i):
 
     return weather
 
-
 def makeYr(df,y):
     Tmax = df[df.Year == y].Tmax.max()
     Tmin = df[df.Year == y].Tmin.min()
@@ -132,11 +131,8 @@ with col3.container():
 # get the index of the station name and make the dataframe
 i = station_names.index(s)
 
-
 weather = makedf(i)
-
-# this?
-#st.dataframe(weather)
+st.dataframe(weather)
 
 
 years = weather.Year.unique()
@@ -153,7 +149,7 @@ addTrends(histdf,histdf.Year,histdf.Sun,'SunTr')
 addTrends(histdf,histdf.Year,histdf.Rain,'RainTr')
 addTrends(histdf,histdf.Year,histdf.AF,'AFTr')
 
-#st.dataframe(histdf)
+st.dataframe(histdf)
 
 # graphs of all data
 descriptions = {
@@ -228,4 +224,13 @@ for d in ('Sun','Rain','AF', 'Tmax','Tmin','Tmean'):
 # from ols model display range of temps, sun, rain, af
 #   e.g. AF in 1955 x : AF in 2020 y : range y-x
 
-# this layout is not good the text and graphs don't look connected
+# this layout is not good the text and graphs don't look connected - getting better
+
+# a comparison of different stations in different parts of the country
+# Stornaway - NW Scotland
+# Wick - NE Scotland
+# Durham - NE England
+# Camborne - SW - Cornwall
+# Hurn - South
+# Heathrow - London
+

@@ -99,7 +99,7 @@ def makeYr(df,y):
     sun = df[df.Year == y].Sun.sum()
     rain = df[df.Year == y].Rain.sum()
     af = df[df.Year == y].AF.sum()
-    return {'Year':y,'Tmax': Tmax, 'Tmin':Tmin, 'Tmean':Tmean,'Sun':sun, 'Rain':rain, 'AF':af}
+    return {'Year':y,'Tmax': Tmax, 'Tmin':Tmin, 'Tmean':Tmean,'Sun':sun, 'Rain':rain, 'AF':af, 'Station':s}
 
 
 ################################## Layout ##################################################33
