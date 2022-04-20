@@ -1,3 +1,4 @@
+from turtle import bgcolor
 import pandas as pd
 import streamlit as st
 
@@ -29,7 +30,7 @@ tablesTitle = {
 
 
 # plotly set up
-pio.templates.default = "plotly"
+pio.templates.default = "plotly_dark"
 
 config = {'staticPlot': False,
           'displayModeBar': False, 
@@ -53,7 +54,7 @@ for table in tables:
         cols = st.columns((1,2))
         with cols[0]:
             s = f"""
-            <div style="background-color:#F0F2F6;padding:10px;height:360px">
+            <div style="background-color:black;color:grey;padding:10px;height:400px">
                 <b>{tablesTitle[table]}</b>
                 <hr/>
                 <p>
@@ -63,6 +64,8 @@ for table in tables:
             st.markdown(s, unsafe_allow_html=True)
         with cols[1]:
             fig1 = px.scatter(fweather, x='Year',y=table,color='Station', trendline='ols')
-            fig1.update_layout(margin= {'l': 0, 'r': 0, 'b': 0, 't': 0, 'pad': 10}, height=400)
+            fig1.update_layout(margin= {'l': 0, 'r': 0, 'b': 0, 't': 0, 'pad': 10}, 
+                height=400,plot_bgcolor='black',paper_bgcolor='black',
+                font_color='grey')
             st.plotly_chart(fig1, use_container_width=True, config=config) 
 
