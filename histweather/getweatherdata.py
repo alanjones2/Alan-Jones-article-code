@@ -104,7 +104,7 @@ def makeYr(df,y):
 
 ################################## Layout ##################################################33
 
-
+"""
 st.set_page_config(layout = 'wide')
 
 # select a station name
@@ -112,26 +112,30 @@ s = st.selectbox('Select a weather station', station_names,14)
 
 # get the index of the station name and make the dataframe
 i = station_names.index(s)
+"""
 
+for i in range(len(stations)):
+    
+    weather = makedf(i)
 
-weather = makedf(i)
+    s = station_names[i].replace(" ", "_") 
 
-s = s.replace(" ", "_") 
+    #st.dataframe(weather)
 
-st.dataframe(weather)
+    weather.to_csv(f'{s}monthly.csv')
 
-weather.to_csv(f'{s}monthly.csv')
+    #st.write(f'{s}monthly.csv written')
+    print(f'{s}monthly.csv written')
 
-st.write(f'{s}monthly.csv written')
+    years = weather.Year.unique()
+    years = years[:-1] # drop 2022 as it is not complete
 
-years = weather.Year.unique()
-years = years[:-1] # drop 2022 as it is not complete
+    hist = [makeYr(weather,y) for y in years]
+    histdf = pd.DataFrame(hist)
 
-hist = [makeYr(weather,y) for y in years]
-histdf = pd.DataFrame(hist)
+    #st.dataframe(histdf)
 
-st.dataframe(histdf)
+    histdf.to_csv(histdf.to_csv(f'{s}yearly.csv'))
 
-histdf.to_csv(histdf.to_csv(f'{s}yearly.csv'))
-
-st.write(f'{s}yearly.csv written')
+    #st.write(f'{s}yearly.csv written')
+    print(f'{s}yearly.csv written')
