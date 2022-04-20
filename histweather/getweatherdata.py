@@ -2,19 +2,20 @@ import pandas as pd
 import streamlit as st
 import requests
 import io
+from scipy import stats
 
 
 #################### Data
 stations = [
 {'url':'https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/aberporthdata.txt', 'name':'Aberporth'},
 {'url':'https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/armaghdata.txt', 'name':'Armagh'},
-{'url':'https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/ballypatrickdata.txt', 'name':'Ballypatrick Forest'},
+#{'url':'https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/ballypatrickdata.txt', 'name':'Ballypatrick Forest'},
 {'url':'https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/bradforddata.txt', 'name':'Bradford'},
 {'url':'https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/braemardata.txt', 'name':'Braemar'},
 {'url':'https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/cambornedata.txt', 'name':'Camborne'},
 {'url':'https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/cambridgedata.txt', 'name':'Cambridge NIAB'},
 {'url':'https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/cardiffdata.txt', 'name':'Cardiff Bute Park'},
-{'url':'https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/chivenordata.txt', 'name':'Chivenor'},
+#{'url':'https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/chivenordata.txt', 'name':'Chivenor'},
 {'url':'https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/cwmystwythdata.txt', 'name':'Cwmystwyth'},
 {'url':'https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/dunstaffnagedata.txt', 'name':'Dunstaffnage'},
 {'url':'https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/durhamdata.txt', 'name':'Durham'},
@@ -101,6 +102,14 @@ def makeYr(df,y):
     af = df[df.Year == y].AF.sum()
     return {'Year':y,'Tmax': Tmax, 'Tmin':Tmin, 'Tmean':Tmean,'Sun':sun, 'Rain':rain, 'AF':af, 'Station':s}
 
+def addTrends(df,x,y, name):
+    #xval = years
+    #yval = histdf.Tmax
+
+    m = stats.linregress(x, y)
+
+    t = [m.slope * i + m.intercept for i in x]
+    df.insert(len(df.columns),name,t)
 
 ################################## Layout ##################################################33
 
@@ -133,7 +142,16 @@ for i in range(len(stations)):
     hist = [makeYr(weather,y) for y in years]
     histdf = pd.DataFrame(hist)
 
-    #st.dataframe(histdf)
+    print(histdf)
+
+    addTrends(histdf,histdf.Year,histdf.Tmean,'TmeanTr')
+    addTrends(histdf,histdf.Year,histdf.Tmax,'TmaxTr')
+    addTrends(histdf,histdf.Year,histdf.Tmin,'TminTr')
+    addTrends(histdf,histdf.Year,histdf.Sun,'SunTr')
+    addTrends(histdf,histdf.Year,histdf.Rain,'RainTr')
+    addTrends(histdf,histdf.Year,histdf.AF,'AFTr')
+
+    print(histdf)
 
     histdf.to_csv(histdf.to_csv(f'{s}yearly.csv'))
 
