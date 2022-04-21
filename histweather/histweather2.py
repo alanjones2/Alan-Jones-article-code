@@ -1,4 +1,6 @@
-from turtle import bgcolor
+from turtle import bgcolor, color
+from matplotlib import markers
+from matplotlib.pyplot import autoscale
 import pandas as pd
 import streamlit as st
 
@@ -34,7 +36,14 @@ pio.templates.default = "plotly_dark"
 
 config = {'staticPlot': False,
           'displayModeBar': False, 
-          'title':False}
+          'title':False,
+          'marker': {
+                'colorscale':'Viridis', # one of plotly colorscales
+                'showscale':True
+                }
+}          
+          
+
 
 ################################## Layout ##################################################33
 
@@ -63,8 +72,9 @@ for table in tables:
             """
             st.markdown(s, unsafe_allow_html=True)
         with cols[1]:
-            fig1 = px.scatter(fweather, x='Year',y=table,color='Station', trendline='ols')
-            fig1.update_layout(margin= {'l': 0, 'r': 0, 'b': 0, 't': 0, 'pad': 10}, 
+            fig1 = px.scatter(fweather, x='Year',y=table,color='Station', 
+                        color_continuous_scale = px.colors.sequential.Rainbow, trendline='ols')
+            fig1.update_layout(margin= {'l': 0, 'r': 0, 'b': 0, 't': 0, 'pad': 10},
                 height=400,plot_bgcolor='black',paper_bgcolor='black',
                 font_color='grey')
             st.plotly_chart(fig1, use_container_width=True, config=config) 
