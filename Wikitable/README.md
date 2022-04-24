@@ -1,6 +1,6 @@
 # How to Use Wikipedia as a Data Source
 
-The code in the folder is in support of the article, above, where we look at how to load table information from Wikipedia into Pandas with examples from the UK Premier League.
+The code in the folder is in support of the article, above, where we look at how to load table information from Wikipedia into Pandas with examples from the English Premier League.
 
 Files:
 
