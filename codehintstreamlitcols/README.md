@@ -1,6 +1,8 @@
 # Customizing st.columns
 
-This repos supports the Medium article [Customizing Streamlit Columns](https://medium.com/codefile/customizing-streamlit-columns-4bfd58fcb7c9)
+_This repo supports the Medium article [Customizing Streamlit Columns](https://medium.com/codefile/customizing-streamlit-columns-4bfd58fcb7c9)_
+
+_See the demo app [here](https://share.streamlit.io/alanjones2/alan-jones-article-code/codehintstreamlitcols/stcols.py)_
 
 Sometimes you want a little padding in between the column in a Streamlit app but there is no mechanism to do this expicitly.
 
