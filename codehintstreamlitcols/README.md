@@ -14,6 +14,19 @@ You want the padding to be smaller? Just give more weight to the outer ones, e.g
 
     col1, padding, col2 = st.columns((10,1,10))
 
-Or how about a cenred narrow column?
+Or how about a centred narrow column?
 
        padding1, col, padding2 = st.columns((5,5,5))
+
+Or maybe calculate the number of columns you want dynamically.
+
+    cols = st.columns(numCols)
+    for c in range(numCols):
+        with cols[c]:
+            st.write(quotes[c])
+
+Code to demonstrate these is in the file 
+
+- stcols.py
+
+And the actual app can be seen in the Streamlit Cloud [here](https://share.streamlit.io/alanjones2/alan-jones-article-code/codehintstreamlitcols/stcols.py)
