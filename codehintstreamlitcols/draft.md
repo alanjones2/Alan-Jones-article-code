@@ -111,7 +111,7 @@ As you can see above, we record the number of columns in a list. Then, in a loop
 
 This is all quite straightforward stuff but hopefully useful.
 
-Please feel free to copy this code and modify it for your own purposes. You find the source code to an interactive demo in my [Github repo](https://github.com/alanjones2/Alan-Jones-article-code/tree/master/codehintstreamlitcols.
+Please feel free to copy this code and modify it for your own purposes. You find the source code to an interactive demo in my [Github repo](https://github.com/alanjones2/Alan-Jones-article-code/tree/master/codehintstreamlitcols).
 
 And you can find a Streamlit app that demonstrates all the techniques in the [Streamlit Cloud](https://share.streamlit.io/alanjones2/alan-jones-article-code/codehintstreamlitcols/stcols.py).
 
