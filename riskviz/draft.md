@@ -9,3 +9,26 @@ But sometimes the data is misinterpreted by journalists who don't really underst
 
 
 
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/riskviz/images/barv.png)
+
+
+
+
+
+
+
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/riskviz/images/barvstacked.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/riskviz/images/iconarray.png)
