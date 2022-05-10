@@ -93,6 +93,110 @@ I start by making 3
     a1.extend(a2)
     a1.extend(a3)
 
+Then I make it into a 10 by 10 grid.
+
+    # Create a grid from the array
+    b = np.array(a1).reshape((10,10))
+
+The Sesaborn heatmap is really intended for continous variables rather than the discrete ones we have here. In consequence I have set the color map to only 3 colors to map on to the 3 categories, have adjusted the colorbar (legend) appropriately and set the correct labels.
+
+    # Plot the grid as a heat map in Seaborn
+    fig, ax = plt.subplots(figsize=(8,5))
+    sns.heatmap(b, 
+                linewidths=0.5, 
+                yticklabels=False,
+                xticklabels=False, 
+                cmap=['lightblue','royalblue','midnightblue']
+    )
+
+    # Customize legend
+    colorbar = ax.collections[0].colorbar 
+    colorbar.set_ticks([0.5,1,1.5])
+    colorbar.set_ticklabels(['Cancer-free','Cancer by chance','Bacon Eater'])
+
+The result is this.
+
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/riskviz/images/hmap.png)
+
+Which definitely shows the proportion well enough but it has been suggested that a random disperasal of the tiles might give a better impression of the random nature of the events. Here's the code to implement that.
+
+    # Shuffle the data and redraw
+
+    random.shuffle(a1)
+    b2 = np.array(a1).reshape((10,10))
+    fig, ax = plt.subplots(figsize=(8,5))
+    sns.heatmap(b2, 
+                linewidths=0.5, 
+                yticklabels=False,
+                xticklabels=False,
+                cmap=['lightblue','royalblue','midnightblue']
+                )
+
+    # Customize legend
+    colorbar = ax.collections[0].colorbar 
+    colorbar.set_ticks([0.5,1,1.5])
+    colorbar.set_ticklabels(['Cancer-free','Cancer by chance','Bacon Eater'])
+
+Is this a better representation of the situation?
+
+
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/riskviz/images/hmaprandom.png)
+
+
+And a more personal looking chart might be an icon array which uses something that we are used to seeing as a representation of people: and icon from the Bootstrap Icon collection.
+
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/riskviz/images/person.png)
+
+
+
+    # Use icons to represent people and draw them in an HTML table
+
+    from IPython import display
+
+    # Create three icons of different colours
+    personOrange = '<i class="bi-person-fill" style="font-size: 1rem; color: orange;"></i>'
+    personRed = '<i class="bi-person-fill" style="font-size: 1rem; color: red;"></i>'
+    personGrey = '<i class="bi-person-fill" style="font-size: 1rem; color: grey;"></i>'
+
+    # The first part of the HTML
+
+    head = """
+    <link rel="stylesheet" 
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <div">
+    """
+
+    # The last part of the HTML
+    tail = "</div>"
+
+    # The middle
+    rows=""
+    for r in range(0,b2.shape[1]):
+        rows = rows + "<tr style='background-color:#f0f0f0'>"
+        td = ""
+        for c in range(0,b2.shape[0]):
+            icon = personGrey
+            if b2[c][r] == 1:
+                icon = personOrange
+            elif b2[c][r] == 2:
+                icon = personRed
+            td = td + f"<td>{icon}</td>"
+        rows = rows + td + "</tr>" 
+
+    legend = f"""
+        <div style="display:inline-block;padding:10px">
+        {personRed} Bacon Eater with cancer<br/> 
+        {personOrange} Cancer by chance <br/>
+        {personGrey} Cancer free
+        </div>
+    """
+
+    table = "<table style='display:inline-block'>"+rows+"</table>"
+
+    table = head + table + legend + tail
+
+    display.HTML(table)
 
 
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/riskviz/images/iconarray.png)
