@@ -4,18 +4,18 @@
 
 In November 2015, the International Agency for Research in Cancer (part of the World Health Organisation) reported that eating 50 grams of processed meat - bacon or sausages, for example - was associated with an 18% increase in the risk of bowel cancer. 
 
-The press duly reported this scary sounding increase but did not make it clear that this was a _relative_ risk rather than an _absolute_ one.
+The press duly reported this scary sounding increase but did not make it clear that this was a _relative_ risk rather than an _absolute_ one. In other words it was the increase in risk rather than the actual risk. But the press didn't necessarily report it like that.
 
 The sensational headline '__X Gives You Cancer__' may be hard to resist for some newspapers when presented with new medical research data. But sometimes the media get it wrong because the data is misinterpreted by journalists who don't necessarily understand what they have been presented with.
 
-The risk of getting bowel cancer, in the population as a whole, is about 6%. An increase of 18% means that the risk rise to about 7%. 
+The risk of getting bowel cancer, in the population as a whole, is about 6%. An increase of 18% means that the risk rises to about 7%. 
 
     6 * 1.18 = 7.08
 
 
 So, in absolute terms the risk rises by 1% - a much less scary number which is less likely to put people off an occasional English Breakfast or bacon sandwich.
 
-So as not to confuse the public with statistics and percentages that might be misinterpreted, a visualization might help.
+Since a picture is worth a thousand words (and probably many more numbers) maybe journalists ought to try and visualize these sort of data instead of just reporting numbers that might be confusing or misunderstood.
 
 I'm going to write some Python code to look at how we might do this. If you want to follow along you'll need to import these libraries.
 
@@ -25,7 +25,7 @@ I'm going to write some Python code to look at how we might do this. If you want
     import matplotlib.pyplot as plt
     import pandas as pd
 
-Here is some code that constructs a dataframe that represents 100 people and the number of them that will get cancer.
+Here is some code that constructs a dataframe that represents 100 people and the number of them that will get cancer. Six will get cancer by chance, 18% of 6 will get it from eating processed meat (I'm using _bacon_ in the code to represent all processed meat). The rest won't get cancer.
 
     data = pd.DataFrame()
     pop = 100                   # total population
@@ -37,11 +37,10 @@ Here is some code that constructs a dataframe that represents 100 people and the
     data['Sufferer by Chance'] = [chance]
     data['Bacon Eater'] = [bacon]
 
-The code mentions bacon to represent processed meat.
 
-First I'm going to draw some bar charts to see if that better represnts the risk of eating bacon. I'll use the plotting features of Pandas to do this.
+First we'll draw some bar charts to see if that better represnts the risk of eating bacon. We'll use the plotting features of Pandas to do this.
 
-The following bar chart puts the additional risk into better perspective than the raw data. The  _Bacon Eater_ column is tiny compared to the overall population.
+The following bar chart puts the additional risk into better perspective than the raw data. The _Bacon Eater_ column is tiny compared to the overall population.
 
     data.plot.bar(figsize=(8,5))
 
@@ -67,6 +66,8 @@ What if we were to turn them round so that become horizontal bars.
 
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/riskviz/images/barhstacked.png)
 
+
+Charts like this are probably better than raw percentages but are not particularly attractive. Perhaps we can do better.
 
 Or perhaps we should try a different sort of chart altogether.
 
