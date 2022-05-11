@@ -2,7 +2,7 @@
 
 ## The press can get it wrong when dealing with health risk data. Can visualizations help.
 
-In November 2015, the International Agency for Research in Cancer (part of the World Health Organisation) [reported](https://www.iarc.who.int/wp-content/uploads/2018/07/pr240_E.pdf) that eating 50 grams of processed meat - bacon or sausages, for example - was associated with an 18% increase in the risk of bowel cancer. 
+In November 2015, the International Agency for Research in Cancer (part of the World Health Organisation) [reported](https://www.iarc.who.int/wp-content/uploads/2018/07/pr240_E.pdf)[1] that eating 50 grams of processed meat - bacon or sausages, for example - was associated with an 18% increase in the risk of bowel cancer. 
 
 The press reported this scary sounding increase but did not make it clear that this was a _relative_ risk rather than an _absolute_ one. In other words it was an increase in risk rather than the actual risk.
 
@@ -12,24 +12,25 @@ The risk of getting bowel cancer, in the population as a whole, is about 6%. An 
 
     6 * 1.18 = 7.08
 
-
 So, in absolute terms the risk rises by 1% - a much less scary numberand one which is less likely to put people off an occasional English Breakfast or bacon sandwich.
 
 A simple visualization that demonstrated the real impact of the statistics would be easier to understand than simply reporting the figures. A bar chart, for example, could show how small the 1% increase is.
 
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/riskviz/images/annotatedbar.png)
 
-A research study investigating people's understanding of the risk of a major health event (e.g. stroke or death)[1] found that simple bar charts were indeed effective at communicating risk. Although in a similar study[2] the concusion was that pie charts were preferable. And yet, in his book _The Art of Statistics_[1], David Speigelhalter suggests that an icon array would be better.
+A research study investigating people's understanding of the risk of a major health event (e.g. stroke or death)[2] found that simple bar charts were indeed effective at communicating risk. Although in a similar study[3] the concusion was that pie charts were preferable. And yet, in his book _The Art of Statistics_[4], David Speigelhalter suggests that an icon array would be better.
 
 So which to choose?
 
-I'm going to write some Python code to look at some options for visualizing risk including bar charts, heatmaps, icons arrays and pie charts. If you want to follow along you'll need to import these libraries.
+I'm going to write some Python code, in a Jupyter notebook, to look at some options for visualizing risk including bar charts, heatmaps, icons arrays and pie charts. If you want to follow along copy each block of code into a new cell. You can find a link to the entire notebook Github repo. Start by importing these libraries.
 
     import random
     import numpy as np
     import seaborn as sns
     import matplotlib.pyplot as plt
     import pandas as pd
+
+## Construct the data
 
 The code below constructs a dataframe that represents 100 people and the number of them that will get cancer. Six will get cancer by chance, 18% of 6 will get it from eating processed meat (I'm using _bacon_ in the code to represent all processed meat). The rest won't get cancer.
 
@@ -45,6 +46,8 @@ The code below constructs a dataframe that represents 100 people and the number 
 
 
 First we'll draw some bar charts to see if that better represents the risk of eating bacon. We'll use the plotting features of Pandas to do this.
+
+## Bar charts
 
 The following bar chart puts the additional risk into better perspective than the raw data. The _Bacon Eater_ column is tiny compared to the overall population.
 
@@ -77,6 +80,8 @@ Charts like this are probably better than raw percentages but are not particular
 
 The stacked chart is clearer in this case but this is mainly due to the size and proportions of the figure.
 
+## Pie chart
+
 Let's try a pie chart.
 
     data.T.plot.pie(subplots=True,figsize=(8,5))
@@ -89,9 +94,11 @@ I've used the default color scheme for each of these charts - it might be better
 
 But let's look at something quite different - heat maps.
 
+## Heat maps
+
 For this I'm going to use the Seaborn data visualization package. First, though, the data needs to be represented differently. I'm going to construct a 10 by 10 grid with each cell representing someone who is cancer free, who contracts the disease by chance, or who succumbs to too much bacon.
 
-I start by making 3 
+I start by making 3 arrays representing the 3 different categories and then stitch them together into a single i dimensional array.
 
     # Arrays of the different cases
     a1 = [0]*data['Non-sufferer'].values[0]
@@ -107,7 +114,7 @@ Then I make it into a 10 by 10 grid.
     # Create a grid from the array
     b = np.array(a1).reshape((10,10))
 
-The Sesaborn heatmap is really intended for continous variables rather than the discrete ones we have here. In consequence I have set the color map to only 3 colors to map on to the 3 categories, have adjusted the colorbar (legend) appropriately and set the correct labels.
+The Seaborn heatmap is really intended for continous variables rather than the discrete ones we have here. In consequence I have set the color map to only 3 colors to map on to the 3 categories, have adjusted the colorbar (legend) appropriately and set the correct labels.
 
     # Plot the grid as a heat map in Seaborn
     fig, ax = plt.subplots(figsize=(8,5))
@@ -127,7 +134,7 @@ The result is this.
 
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/riskviz/images/hmap.png)
 
-Which definitely shows the proportion well enough but it has been suggested that a random disperasal of the tiles might give a better impression of the random nature of the events. Here's the code to implement that.
+Which definitely shows the proportion well enough but Speigelhalter[4] has been suggested that a random dispersal of the markers might give a better impression of the random nature of the events. The code below is pretty much the same as above, except that I shuffle (randomise) the 1 dimensional array before converting it into a grid.
 
     # Shuffle the data and redraw
 
@@ -151,11 +158,15 @@ Is this a better representation of the situation?
 
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/riskviz/images/hmaprandom.png)
 
+In my opinion it *is* a better repesentation. But let's take Speigelhalter's suggestion and look at an icon array.
 
-And a more personal looking chart might be an icon array which uses something that we are used to seeing as a representation of people: and icon from the Bootstrap Icon collection.
+## Icon array
+
+A more personal looking chart might be an icon array which uses something that we are used to seeing as a representation of people. Here is icon from the open source [Bootstrap Icon](https://icons.getbootstrap.com/) collection:
 
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/riskviz/images/person.png)
 
+I am not aware of any easy way of creating an icon array with any of the technogogies that I've used so far, so I've coded a solution below by using Python to create an HTML table, similar to the last heatmap, but with icons instead of tiles. The HTML is then displayed with the IPython function `display`. There's a fair chunk of code here but it's pretty straightforward.
 
 
     # Use icons to represent people and draw them in an HTML table
@@ -208,26 +219,30 @@ And a more personal looking chart might be an icon array which uses something th
     display.HTML(table)
 
 
+And this gives us the Speigelhalter-favored icon array and while I tend to agree with his judgement, only a properly conducted survey would prove him right.
+
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/riskviz/images/iconarray.png)
+
+---
+As ever, thanks for reading. I hope you found it interesting and will look at the code which is in my Github repo (see Notes, below).
+
+If you are interested in my other articles you can browse my profile on Medium or see them on my website. You can also subscribe to my occasional newsletter, Technofile, to be notified of new articles.
+---
 
 
 
 ## Notes
 
-[IARC Monographs evaluate consumption of red meat and processed meat](https://www.iarc.who.int/wp-content/uploads/2018/07/pr240_E.pdf)
+[1][IARC Monographs evaluate consumption of red meat and processed meat](https://www.iarc.who.int/wp-content/uploads/2018/07/pr240_E.pdf)
 
-
-[1] Comparing the impact of an icon array versus a bar graph on preference and understanding of risk information: Results from an online, randomized study, 
+[2] Comparing the impact of an icon array versus a bar graph on preference and understanding of risk information: Results from an online, randomized study, 
 Peter Scalia ,Danielle C. Schubbe,Emily S. Lu,Marie-Anne Durand,Jorge Frascara,Guillermina Noel,A. James O’Malley,Glyn Elwyn
 Published: July 23, 2021, PLOS One
 https://doi.org/10.1371/journal.pone.0253644
 
-[2] Presenting time-based risks of stroke and death for Patients facing carotid stenosis treatment options: Patients prefer pie charts over icon arrays
+[3] Presenting time-based risks of stroke and death for Patients facing carotid stenosis treatment options: Patients prefer pie charts over icon arrays
 PeterScalia. A. James.O’Malley, Marie-AnneDurand, Philip P.Goodney, Glyn Elwyn, Patient Education and Counseling
 Volume 102, Issue 10, October 2019
 https://doi.org/10.1016/j.pec.2019.05.004
 
-[3] This quote comes from the excellent book, [The Art of Statistics: How to Learn from Data](https://medium.com/r/?url=https%3A%2F%2Fwww.amazon.com%2FArt-Statistics-How-Learn-Data%2Fdp%2F1541675703%2Fref%3Dsr_1_1%3F_encoding%3DUTF8%26amp%3Bcamp%3D1789%26amp%3Bcreative%3D9325%26amp%3Bcrid%3D1PPXO3JG9UPDR%26amp%3Bkeywords%3Dthe%2Bart%2Bof%2Bstatistics%26amp%3BlinkCode%3Dur2%26amp%3BlinkId%3Db71669deca0a471424d5bc6fccbba1b3%26amp%3Bqid%3D1648295722%26amp%3Bsprefix%3Dthe%2Bart%2Bof%2Bstatistics%2525252Caps%2525252C177%26amp%3Bsr%3D8-1%26_encoding%3DUTF8%26tag%3Dalanjones01-20%26linkCode%3Dur2%26linkId%3Dfdf08c9a6a07285fa2432673497c25ec%26camp%3D1789%26creative%3D9325), David Spiegelhalter, 2021
-
-
-_Contains affiliate links_
+[4] This quote comes from the excellent book, [The Art of Statistics: How to Learn from Data](https://medium.com/r/?url=https%3A%2F%2Fwww.amazon.com%2FArt-Statistics-How-Learn-Data%2Fdp%2F1541675703%2Fref%3Dsr_1_1%3F_encoding%3DUTF8%26amp%3Bcamp%3D1789%26amp%3Bcreative%3D9325%26amp%3Bcrid%3D1PPXO3JG9UPDR%26amp%3Bkeywords%3Dthe%2Bart%2Bof%2Bstatistics%26amp%3BlinkCode%3Dur2%26amp%3BlinkId%3Db71669deca0a471424d5bc6fccbba1b3%26amp%3Bqid%3D1648295722%26amp%3Bsprefix%3Dthe%2Bart%2Bof%2Bstatistics%2525252Caps%2525252C177%26amp%3Bsr%3D8-1%26_encoding%3DUTF8%26tag%3Dalanjones01-20%26linkCode%3Dur2%26linkId%3Dfdf08c9a6a07285fa2432673497c25ec%26camp%3D1789%26creative%3D9325), David Spiegelhalter, 2021 (_affiliate link_)
