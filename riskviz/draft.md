@@ -6,7 +6,7 @@ In November 2015, the International Agency for Research in Cancer (part of the W
 
 The press reported this scary sounding increase but did not make it clear that this was a _relative_ risk rather than an _absolute_ one. In other words it was an increase in risk rather than the actual risk.
 
-The sensational headline '__X Gives You Cancer__' may be hard to resist for some newspapers but sometimes the media get it wrong because data is misinterpreted by journalists who don't necessarily understand what they have been presented with.
+Inaccurate reporting may be because a sensational headline like '__X Gives You Cancer__' is too hard to resist for some newspapers but sometimes the media get it wrong because data is misinterpreted by journalists who don't necessarily understand what they have been presented with.
 
 The risk of getting bowel cancer, in the population as a whole, is about 6%. An increase of 18% means that the risk rises to about 7%. 
 
