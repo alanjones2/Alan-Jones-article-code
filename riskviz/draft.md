@@ -19,7 +19,7 @@ A simple visualization that demonstrated the real impact of the statistics would
 
 **insert annotated figure here**
 
-Although in his book _The Art of Statistics_[1], David Speigelhalter suggests that an icon array would be better, while **insert ref**[2] found that simpe pie charts were more effective at communicating risk in a study of **insert description**
+A research study investigating people's understanding of the risk of a major health event (e.g. stroke or death)[2] found that simple bar charts were indeed effective at communicating risk.  Although in a similar study[2] the concusion was that pie charts were preferable. And yet, in his book _The Art of Statistics_[1], David Speigelhalter suggests that an icon array would be better.
 
 
 I'm going to write some Python code to look at some options for visualizing risk including bar charts, heatmaps, icons arrays and pie charts. If you want to follow along you'll need to import these libraries.
@@ -206,3 +206,21 @@ And a more personal looking chart might be an icon array which uses something th
 
 
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/riskviz/images/iconarray.png)
+
+
+
+## Notes
+
+
+
+[1] Comparing the impact of an icon array versus a bar graph on preference and understanding of risk information: Results from an online, randomized study, 
+Peter Scalia ,Danielle C. Schubbe,Emily S. Lu,Marie-Anne Durand,Jorge Frascara,Guillermina Noel,A. James O’Malley,Glyn Elwyn
+Published: July 23, 2021, PLOS One
+https://doi.org/10.1371/journal.pone.0253644
+
+[2] Presenting time-based risks of stroke and death for Patients facing carotid stenosis treatment options: Patients prefer pie charts over icon arrays
+PeterScalia. A. James.O’Malley, Marie-AnneDurand, Philip P.Goodney, Glyn Elwyn, Patient Education and Counseling
+Volume 102, Issue 10, October 2019
+https://doi.org/10.1016/j.pec.2019.05.004
+
+[3]
