@@ -17,10 +17,11 @@ So, in absolute terms the risk rises by 1% - a much less scary numberand one whi
 
 A simple visualization that demonstrated the real impact of the statistics would be easier to understand than simply reporting the figures. A bar chart, for example, could show how small the 1% increase is.
 
-**insert annotated figure here**
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/riskviz/images/annotatedbar.png)
 
-A research study investigating people's understanding of the risk of a major health event (e.g. stroke or death)[2] found that simple bar charts were indeed effective at communicating risk.  Although in a similar study[2] the concusion was that pie charts were preferable. And yet, in his book _The Art of Statistics_[1], David Speigelhalter suggests that an icon array would be better.
+A research study investigating people's understanding of the risk of a major health event (e.g. stroke or death)[1] found that simple bar charts were indeed effective at communicating risk. Although in a similar study[2] the concusion was that pie charts were preferable. And yet, in his book _The Art of Statistics_[1], David Speigelhalter suggests that an icon array would be better.
 
+So which to choose?
 
 I'm going to write some Python code to look at some options for visualizing risk including bar charts, heatmaps, icons arrays and pie charts. If you want to follow along you'll need to import these libraries.
 
@@ -30,7 +31,7 @@ I'm going to write some Python code to look at some options for visualizing risk
     import matplotlib.pyplot as plt
     import pandas as pd
 
-Here is some code that constructs a dataframe that represents 100 people and the number of them that will get cancer. Six will get cancer by chance, 18% of 6 will get it from eating processed meat (I'm using _bacon_ in the code to represent all processed meat). The rest won't get cancer.
+The code below constructs a dataframe that represents 100 people and the number of them that will get cancer. Six will get cancer by chance, 18% of 6 will get it from eating processed meat (I'm using _bacon_ in the code to represent all processed meat). The rest won't get cancer.
 
     data = pd.DataFrame()
     pop = 100                   # total population
@@ -43,7 +44,7 @@ Here is some code that constructs a dataframe that represents 100 people and the
     data['Bacon Eater'] = [bacon]
 
 
-First we'll draw some bar charts to see if that better represnts the risk of eating bacon. We'll use the plotting features of Pandas to do this.
+First we'll draw some bar charts to see if that better represents the risk of eating bacon. We'll use the plotting features of Pandas to do this.
 
 The following bar chart puts the additional risk into better perspective than the raw data. The _Bacon Eater_ column is tiny compared to the overall population.
 
@@ -51,7 +52,7 @@ The following bar chart puts the additional risk into better perspective than th
 
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/riskviz/images/barv.png)
 
-Would it be better as a stacked chart?
+This is reasonably clear but would it be better as a stacked chart?
 
     data.plot.bar(stacked=True,figsize=(8,5))
 
@@ -59,9 +60,9 @@ Would it be better as a stacked chart?
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/riskviz/images/barvstacked.png)
 
 
-The numbers are the same, of course, but the top layer of the bar is not very visible.
+The numbers are the same, of course, but the top layer of the bar is not very visible, so probably the first bar chart is preferable.
 
-What if we were to turn them round so that become horizontal bars.
+What if we were to turn them round so that become horizontal bars?
 
     data.plot.barh(figsize=(8,5))
 
@@ -74,7 +75,9 @@ What if we were to turn them round so that become horizontal bars.
 
 Charts like this are probably better than raw percentages but are not particularly attractive. Perhaps we can do better.
 
-Or perhaps we should try a different sort of chart altogether.
+The stacked chart is clearer in this case but this is mainly due to the size and proportions of the figure.
+
+Let's try a pie chart.
 
     data.T.plot.pie(subplots=True,figsize=(8,5))
 
@@ -223,4 +226,7 @@ PeterScalia. A. James.O’Malley, Marie-AnneDurand, Philip P.Goodney, Glyn Elwyn
 Volume 102, Issue 10, October 2019
 https://doi.org/10.1016/j.pec.2019.05.004
 
-[3]
+[3] This quote comes from the excellent book, [The Art of Statistics: How to Learn from Data](https://medium.com/r/?url=https%3A%2F%2Fwww.amazon.com%2FArt-Statistics-How-Learn-Data%2Fdp%2F1541675703%2Fref%3Dsr_1_1%3F_encoding%3DUTF8%26amp%3Bcamp%3D1789%26amp%3Bcreative%3D9325%26amp%3Bcrid%3D1PPXO3JG9UPDR%26amp%3Bkeywords%3Dthe%2Bart%2Bof%2Bstatistics%26amp%3BlinkCode%3Dur2%26amp%3BlinkId%3Db71669deca0a471424d5bc6fccbba1b3%26amp%3Bqid%3D1648295722%26amp%3Bsprefix%3Dthe%2Bart%2Bof%2Bstatistics%2525252Caps%2525252C177%26amp%3Bsr%3D8-1%26_encoding%3DUTF8%26tag%3Dalanjones01-20%26linkCode%3Dur2%26linkId%3Dfdf08c9a6a07285fa2432673497c25ec%26camp%3D1789%26creative%3D9325), David Spiegelhalter, 2021
+
+
+_Contains affiliate links_
