@@ -174,9 +174,15 @@ I am not aware of any easy way of creating an icon array with any of the technog
     from IPython import display
 
     # Create three icons of different colours
-    personOrange = '<i class="bi-person-fill" style="font-size: 1rem; color: orange;"></i>'
-    personRed = '<i class="bi-person-fill" style="font-size: 1rem; color: red;"></i>'
-    personGrey = '<i class="bi-person-fill" style="font-size: 1rem; color: grey;"></i>'
+    personOrange = """<i class="bi-person-fill" 
+                        style="font-size: 1rem; 
+                        color: orange;"></i>"""
+    personRed = """<i class="bi-person-fill" 
+                    style="font-size: 1rem; 
+                    color: red;"></i>"""
+    personGrey = """<i class="bi-person-fill" 
+                    style="font-size: 1rem; 
+                    color: grey;"></i>"""
 
     # The first part of the HTML
 
@@ -217,6 +223,7 @@ I am not aware of any easy way of creating an icon array with any of the technog
     table = head + table + legend + tail
 
     display.HTML(table)
+
 
 
 And this gives us the Speigelhalter-favored icon array and while I tend to agree with his judgement, only a properly conducted survey would prove him right.
