@@ -4,20 +4,25 @@
 
 In November 2015, the International Agency for Research in Cancer (part of the World Health Organisation) reported that eating 50 grams of processed meat - bacon or sausages, for example - was associated with an 18% increase in the risk of bowel cancer. 
 
-The press duly reported this scary sounding increase but did not make it clear that this was a _relative_ risk rather than an _absolute_ one. In other words it was the increase in risk rather than the actual risk. But the press didn't necessarily report it like that.
+The press reported this scary sounding increase but did not make it clear that this was a _relative_ risk rather than an _absolute_ one. In other words it was an increase in risk rather than the actual risk.
 
-The sensational headline '__X Gives You Cancer__' may be hard to resist for some newspapers when presented with new medical research data. But sometimes the media get it wrong because the data is misinterpreted by journalists who don't necessarily understand what they have been presented with.
+The sensational headline '__X Gives You Cancer__' may be hard to resist for some newspapers but sometimes the media get it wrong because data is misinterpreted by journalists who don't necessarily understand what they have been presented with.
 
 The risk of getting bowel cancer, in the population as a whole, is about 6%. An increase of 18% means that the risk rises to about 7%. 
 
     6 * 1.18 = 7.08
 
 
-So, in absolute terms the risk rises by 1% - a much less scary number which is less likely to put people off an occasional English Breakfast or bacon sandwich.
+So, in absolute terms the risk rises by 1% - a much less scary numberand one which is less likely to put people off an occasional English Breakfast or bacon sandwich.
 
-Since a picture is worth a thousand words (and probably many more numbers) maybe journalists ought to try and visualize these sort of data instead of just reporting numbers that might be confusing or misunderstood.
+A simple visualization that demonstrated the real impact of the statistics would be easier to understand than simply reporting the figures. A bar chart, for example, could show how small the 1% increase is.
 
-I'm going to write some Python code to look at how we might do this. If you want to follow along you'll need to import these libraries.
+**insert annotated figure here**
+
+Although in his book _The Art of Statistics_[1], David Speigelhalter suggests that an icon array would be better, while **insert ref**[2] found that simpe pie charts were more effective at communicating risk in a study of **insert description**
+
+
+I'm going to write some Python code to look at some options for visualizing risk including bar charts, heatmaps, icons arrays and pie charts. If you want to follow along you'll need to import these libraries.
 
     import random
     import numpy as np
