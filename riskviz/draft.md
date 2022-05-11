@@ -2,7 +2,7 @@
 
 ## The press can get it wrong when dealing with health risk data. Can visualizations help.
 
-In November 2015, the International Agency for Research in Cancer (part of the World Health Organisation) reported that eating 50 grams of processed meat - bacon or sausages, for example - was associated with an 18% increase in the risk of bowel cancer. 
+In November 2015, the International Agency for Research in Cancer (part of the World Health Organisation) [reported](https://www.iarc.who.int/wp-content/uploads/2018/07/pr240_E.pdf) that eating 50 grams of processed meat - bacon or sausages, for example - was associated with an 18% increase in the risk of bowel cancer. 
 
 The press reported this scary sounding increase but did not make it clear that this was a _relative_ risk rather than an _absolute_ one. In other words it was an increase in risk rather than the actual risk.
 
@@ -214,6 +214,7 @@ And a more personal looking chart might be an icon array which uses something th
 
 ## Notes
 
+[IARC Monographs evaluate consumption of red meat and processed meat](https://www.iarc.who.int/wp-content/uploads/2018/07/pr240_E.pdf)
 
 
 [1] Comparing the impact of an icon array versus a bar graph on preference and understanding of risk information: Results from an online, randomized study, 
