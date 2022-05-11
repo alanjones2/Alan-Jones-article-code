@@ -1,0 +1,37 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <py-env>
+        - numpy
+        - matplotlib
+      </py-env>
+</head>
+
+<body>
+    <py-script> print('Hello, World!')</py-script>
+    <py-script>
+import datetime as dt
+pyscript.write('today', dt.date.today().strftime('%A %B %d, %Y'))
+
+    </py-script>
+    
+<div id="plot"></div>
+<py-script output="plot">
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.random.randn(1000)
+y = np.random.randn(1000)
+
+fig, ax = plt.subplots()
+ax.scatter(x, y)
+fig
+</py-script>
+
+
+<div id = 'today'></div>
+</body>
+
+</html>
