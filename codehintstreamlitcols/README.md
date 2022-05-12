@@ -35,5 +35,7 @@ Code to demonstrate these is in the file
 
 And the actual app can be seen in the Streamlit Cloud [here](https://share.streamlit.io/alanjones2/alan-jones-article-code/codehintstreamlitcols/stcols.py)
 
+See other content on my [Github web page](https://alanjones2.github.io/)
+
 If you find this content useful, please consider this... <br/><br/>
 <a href='https://ko-fi.com/M4M64THKG' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi2.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
