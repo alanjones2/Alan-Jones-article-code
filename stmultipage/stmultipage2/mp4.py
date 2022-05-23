@@ -30,27 +30,22 @@ message = """
         __Select an application from the list below__
         """
 
+import json
 import streamlit as st
-st.set_page_config(layout = "wide") # optional
-
-
-import pkgutil
 import importlib
 import stlib    # default library name for apps
+from stlib import libContents
+
+st.set_page_config(layout = "wide") # optional
 
 # Global arrays for holding the app names, modules and descriptions of the apps
-names = []
-filenames = ['countryData', 'continentData']
+moduleNames = libContents.packages()
 descriptions = [] 
 modules = []
 
-package = stlib # default name for the library containg the apps
-
 # Find the apps and import them
-for modname in filenames:
-    #print ("Found submodule %s (is a package: %s)" % (modname, ispkg))
+for modname in moduleNames:
     m = importlib.import_module('.'+modname,'stlib')
-    names.append(modname)
     modules.append(m)
     # If the module has a description attribute use that in the select box
     # otherwise use the module name
@@ -63,13 +58,17 @@ for modname in filenames:
 # descriptions instead of the module names
 # in the selctbox, below
 def format_func(name):
-    return descriptions[names.index(name)]
+    return descriptions[moduleNames.index(name)]
 
 
 # Display the sidebar with a menu of apps
 with st.sidebar:
     st.markdown(message)
-    page = st.selectbox('Select:',names, format_func=format_func) 
+    page = st.selectbox('Select:',moduleNames, format_func=format_func) 
 
 # Run the chosen app
-modules[names.index(page)].run()
+modules[moduleNames.index(page)].run()
+
+#st.write(f"Modules: {modules}")
+#st.write(f"Module Names: {moduleNames}")
+#st.write(f"Description: {descriptions}")
