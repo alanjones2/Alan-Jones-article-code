@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <!--<link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />-->
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <py-env>
+        - matplotlib
+        - pandas
+    </py-env>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1>Weather Graphs</h1>
+        <p class="lead">
+            Some graphs about the weather in London in 2018
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-5 p-2 shadow ml-4 mr-4 mb-4 bg-white rounded">
+            <b>Maximum temperature each month</b>
+            <div id="tmaxplot"></div>
+        </div>
+        <div class="col-sm-5 p-2 shadow ml-4 mr-4 mb-4 bg-white rounded">
+            <b>Minimum temperature each month</b>
+            <div id="tminplot"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-5 p-2 shadow ml-4 mr-4 mb-4 bg-white rounded">
+            <b>Centimetres of rain each month</b>
+            <div id="rainplot"></div>
+        </div>
+        <div class="col-sm-5 p-2 shadow ml-4 mr-4 mb-4 bg-white rounded">
+            <b>Hours of sun each month</b>
+            <div id="sunplot"></div>
+        </div>
+    </div>
+
+    <py-script>
+        # Import libraries
+        import pandas as pd
+        import matplotlib.pyplot as plt
+
+        ## Get the data
+        from pyodide.http import open_url
+        url = 'https://raw.githubusercontent.com/alanjones2/ajbooks/main/data/londonweather2018.csv'
+        url_content = open_url(url)
+
+        weather = pd.read_csv(url_content)
+    </py-script>
+
+    <py-script output="tmaxplot">
+        fig, ax = plt.subplots()
+        weather.plot(y='Tmax', figsize=(5,2),ax=ax)
+        fig
+    </py-script>
+
+    <py-script output="tminplot">
+        fig, ax = plt.subplots()
+        weather.plot(y='Tmin', figsize=(4,2), ax=ax)
+        fig
+    </py-script>
+    <py-script output="rainplot">
+        fig, ax = plt.subplots()
+        weather.plot.bar(y='Rain', figsize=(4,2), ax=ax)
+        fig
+    </py-script>
+    <py-script output="sunplot">
+        fig, ax = plt.subplots()
+        weather.plot.bar(y='Sun', figsize=(4,2), ax=ax)
+        fig
+    </py-script>
+
+</body>
+
+</html>
