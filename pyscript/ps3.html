@@ -1,0 +1,109 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+
+    <py-env>
+        - matplotlib
+        - pandas
+        - plotly
+    </py-env>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1>Gapminder Data</h1>
+        <p class="lead">
+            Some graphs about GDP and population - a Pyscript demonstrator
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2 p-2 ml-4 mb-4">
+            <button type="button" class="btn btn-secondary">Select continent from list:</button>
+        </div>
+        <div class="col-sm-4 p-2 mr-4 mb-4">
+            <select class="form-control" id="select">
+                <option value="Asia">Asia</option>
+                <option value="Europe">Europe</option>
+                <option value="Africa">Africa</option>
+                <option value="Americas">Americas</option>
+                <option value="Oceania">Oceania</option>
+
+            </select>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-5 p-2 shadow ml-4 mr-4 mb-4 bg-white rounded">
+            <div id="chart1"></div>
+        </div>
+        <div class="col-sm-5 p-2 shadow ml-4 mr-4 mb-4 bg-white rounded">
+            <div id="chart2"></div>
+        </div>
+    </div>
+
+
+    <script type='text/javascript'>
+        function plot(graph, chart) {
+            var figure = JSON.parse(graph)
+            Plotly.newPlot(chart, figure, {});
+        }
+    </script>
+
+    <py-script>
+        # Import libraries
+        import pandas as pd
+        import matplotlib.pyplot as plt
+        import js
+        import json
+        import plotly
+        import plotly.express as px
+
+        df = pd.DataFrame(px.data.gapminder())
+
+        contlist = df['continent'].unique()
+
+        def plot(c):
+            fig = px.line(df[df['continent'] == c],
+            x="year", y="gdpPercap",
+            title="GDP per Capita - "+c, color='country',
+            width=600, height=300)
+            graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+            js.plot(graphJSON,"chart1")
+
+            fig = px.line(df[df['continent'] == c],
+            x="year", y="pop",
+            title="Population - "+c, color='country',
+            width=600, height=300)
+            graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+            js.plot(graphJSON,"chart2")
+
+        from js import document
+        from pyodide import create_proxy
+
+        def button_click(event):
+            choice = document.getElementById("select").value
+            plot(choice)
+
+        def setup():
+            # Create a JsProxy for the callback function
+            click_proxy = create_proxy(button_click)
+
+            e = document.getElementById("select")
+            e.addEventListener("change", click_proxy)
+
+
+        setup()
+        #print(contlist)
+        plot(contlist[0])
+    </py-script>
+</body>
+
+</html>
