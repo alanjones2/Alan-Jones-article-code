@@ -17,7 +17,7 @@
     <div class="jumbotron">
         <h1>Weather Graphs</h1>
         <p class="lead">
-            Some graphs about the weather in London in 2018
+            Some graphs about the weather in London in 2020
         </p>
     </div>
 
@@ -51,30 +51,33 @@
         ## Get the data
         from pyodide.http import open_url
         url = 'https://raw.githubusercontent.com/alanjones2/ajbooks/main/data/londonweather2018.csv'
+        url = 'https://raw.githubusercontent.com/alanjones2/uk-historical-weather/main/data/Heathrow.csv'
         url_content = open_url(url)
 
         weather = pd.read_csv(url_content)
+        weather = weather[weather['Year']==2020]
+        print()
     </py-script>
 
     <py-script output="tmaxplot">
         fig, ax = plt.subplots()
-        weather.plot(y='Tmax', figsize=(5,2),ax=ax)
+        weather.plot(y='Tmax', x='Month', figsize=(5,4),ax=ax)
         fig
     </py-script>
 
     <py-script output="tminplot">
         fig, ax = plt.subplots()
-        weather.plot(y='Tmin', figsize=(4,2), ax=ax)
+        weather.plot(y='Tmin', x='Month', figsize=(5,4), ax=ax)
         fig
     </py-script>
     <py-script output="rainplot">
         fig, ax = plt.subplots()
-        weather.plot.bar(y='Rain', figsize=(4,2), ax=ax)
+        weather.plot.bar(y='Rain', x='Month', figsize=(5,4), ax=ax)
         fig
     </py-script>
     <py-script output="sunplot">
         fig, ax = plt.subplots()
-        weather.plot.bar(y='Sun', figsize=(4,2), ax=ax)
+        weather.plot.bar(y='Sun', x='Month', figsize=(5,4), ax=ax)
         fig
     </py-script>
 
