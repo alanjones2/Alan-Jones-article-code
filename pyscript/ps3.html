@@ -85,19 +85,20 @@
             graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
             js.plot(graphJSON,"chart2")
 
+            
         from js import document
         from pyodide import create_proxy
 
-        def button_click(event):
+        def selectChange(event):
             choice = document.getElementById("select").value
             plot(choice)
 
         def setup():
             # Create a JsProxy for the callback function
-            click_proxy = create_proxy(button_click)
+            change_proxy = create_proxy(selectChange)
 
             e = document.getElementById("select")
-            e.addEventListener("change", click_proxy)
+            e.addEventListener("change", change_proxy)
 
 
         setup()
