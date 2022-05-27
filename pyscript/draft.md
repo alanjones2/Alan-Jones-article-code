@@ -180,6 +180,9 @@ Currently PyScript is a little slow. Since all of the work is being done in the 
 
 Performance will only get better, though, as hardware become more powerful and the PyScript matures and (hopefully) becomes more efficient. And one day, who knows, perhaps we'll see PyScript built into browsers in the same way that Javascript is today.
 
+---
+
+You can find a link to the code and the demo web page on my [web site](https://alanjones2.github.io/).
 
 ## Notes
 
