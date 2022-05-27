@@ -53,7 +53,7 @@ Following that in the `<body>` we have the HTML layout content followed by the `
 
 We will now flesh out those sections.
 
-First, I'm going to use the Bootstrap framework to make the whole app look nice. This means that we need to include the link to the Bootstrap css file. And we'll be using the Matplotlib, Pandas and js libraries, and those need to be declared in the `<py-env>...</pt-env>` section. The `<head>...</head>` now looks like this:
+First, I'm going to use the Bootstrap framework to make the whole app look nice. This means that we need to include the link to the Bootstrap css file. And we'll be using the Matplotlib and Pandas libraries, and those need to be declared in the `<py-env>...</pt-env>` section. The `<head>...</head>` now looks like this:
 
     <head>
         <link rel="stylesheet" 
@@ -66,7 +66,6 @@ First, I'm going to use the Bootstrap framework to make the whole app look nice.
         <py-env>
             - matplotlib
             - pandas
-            - js
         </py-env>
     </head>
 
@@ -153,20 +152,34 @@ The `js` library aloows PyScript to access Javascript functions, in this particu
         choice = document.getElementById("select").value
         plot(choice)
 
+This function is called when a change event occurs. It reads the value of the selection and then calls the previously defined `plot` function with that value.
 
----
+Next we define a proxy that wiil allow the change event to call the PyScript function `selectChange`.
+
+    # set the proxy
+    def setup():
+        # Create a JsProxy for the callback function
+        change_proxy = create_proxy(selectChange)
+
+        e = document.getElementById("select")
+        e.addEventListener("change", change_proxy)
+
+Finally, when the page first loads we need to call the `setup` function and run the `plot` function with a default value ('Tmax') in order that a chart is displayed on start up.
+
+And that is the entire code that implements a simple dashboard app like the one in the screenshot at the beginning of the article. The code for this and a link to a demo app will be in a link at the end.
 
 ## How does PyScript compare with existing server-based applications? 
 
 In terms of difficulty, as long as you are familiar with Python, constructing a web app is relatively straightforward, probably easier than building a Django or Flask app - more the level of Dash, I would suggest.
 
-Streamlit is a different story, though. Streamlit is more limited on the visual design side but has the advantage that you do not have to learn HTML. Streamlit apps are very easy to create easier than PyScript.
+Streamlit is a different story, though. Streamlit is more limited on the visual design side but has the advantage that you do not have to learn HTML. Streamlit apps are very easy to create - easier than PyScript, I would say.
 
-Howver, the advantage that PyScript has over all of its rivals is that it does not rely on a server. That makes deployment very easy - I simply uploaded the app you see here to a Github Pages site ad it just works.
+However, the advantage that PyScript has over all of its rivals is that it does not rely on a server. That makes deployment very easy - I simply uploaded the app you see here to a Github Pages site (for example) and it just works.
 
-Currently PyScript is a little slow. Since all of the work is being done in the browser, performance is determined by the machine that is running the browser - if you have weak hardware then it may take a long time to load your app, although once it is up and running performance is fine.
+Currently PyScript is a little slow. Since all of the work is being done in the browser, performance is determined by the machine that is running the browser - if you have weak hardware then it may take a long time to load your app, although once it is up and running performance seems to be fine.
 
 Performance will only get better, though, as hardware become more powerful and the PyScript matures and (hopefully) becomes more efficient. And one day, who knows, perhaps we'll see PyScript built into browsers in the same way that Javascript is today.
+
 
 ## Notes
 
