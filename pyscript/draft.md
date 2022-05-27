@@ -2,13 +2,19 @@
 
 ## PyScript allows us to create a serverless web application with HTML and Python as the scripting language.
 
-![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/PyScript/images/Screenshot2.png)
+![](https://raw.githubusercontent.com/alanjones2/Alan-Jones-article-code/master/pyscript/images/Screenshot2.png)
 
-Is PyScript the future of web applications? Maybe, though probably yet - it's still only an alpha release and there is probably still a lot of work to do. 
+Is PyScript the future of web applications? Maybe, but probably yet - it's still only an alpha release and there is still a lot of work to do, I'm sure. 
 
-But we are going to see how useful it is right now by creating an interactive web application where the logic is entirely written in Python.
+But right now how useful it? 
 
-The big advantage of PyScript is that you can write web applications in Python without the need for a server. Python web apps have usually been server based and use frameworks such as Django or Flask where the front end is created in HTML and Javascript while the back end is Python running on a remote server. 
+We are going to create an interactive web application where the logic is entirely written in Python.
+
+You've probably heard of PyScript, it was announced at the PyCon conference in 2022 by Anaconda’s CEO Peter Wang. And it their own [words](https://anaconda.cloud/pyscript-python-in-the-browser) it's "a shiny new technology... that allows users to write Python and in fact many languages in the browser".
+
+The big advantage of PyScript is that you can write web applications in Python without the need for a server. This is achieved by using the Pyodide Python interpreter that is written in WebAssembly, the lower level language for the web that is supported by modern browsers. 
+
+Up until now, Python web apps have been server based and use frameworks such as Django or Flask where the front end is created in HTML and Javascript while the back end is Python running on a remote server. 
 
 More recently Dash and Streamlit have attempted to make building such apps easier by providing Python-only frameworks thus avoiding the need to learn HTML and Javascript. But these are still server based applications.
 
@@ -16,7 +22,7 @@ PyScript is a different approach. In PyScript the user interface is still constr
 
 ## The Web app
 
-I'm going to run through a application written in PyScript and HTML that reads data from a remote source and displays a simple dashboard where the user can select data to be shown in a Pandas chart.
+I'm going to run through a simple application written in PyScript and HTML that reads data from a remote source and displays a simple dashboard where the user can select data to be shown in a Pandas chart.
 
 The basic form of the app looks like this:
 
@@ -28,7 +34,7 @@ The basic form of the app looks like this:
                 src="https://pyscript.net/alpha/pyscript.js">
             </script>
             <py-env>
-                - libraries-that-wil-be-used
+                - libraries-that-will-be-used
             </py-env>
         </head>
         <body>
@@ -41,11 +47,13 @@ The basic form of the app looks like this:
         </body>
     </html>
 
-As you can see it looks similar to a standard HTML file, indeed it is one. But for PyScript app we need to include the links to the PyScript stylesheet and Javascript library in the `<head>` section. Following that in the `<body>` we see the HTML layout content followed by the `<py-script>...</py-script>` tags that will contain the Python code.
+As you can see it looks similar to a standard HTML file, indeed it is one. But for PyScript app we need to include the links to the PyScript stylesheet and Javascript library in the `<head>` section, as well as including the `<py-env>` block that wee shall see later. 
+
+Following that in the `<body>` we have the HTML layout content followed by the `<py-script>...</py-script>` tags that will contain the Python code.
 
 We will now flesh out those sections.
 
-First, I'm going to use the Bootstrap framework to make the whole app look nice. This means that we need to include the link to the Bootstrap css file. And we'll be using the Matplotlib and Pandas libraries, so we need to declare that in the `<py-env>...</pt-env>` section. S the `<head>...</head>` now looks like this:
+First, I'm going to use the Bootstrap framework to make the whole app look nice. This means that we need to include the link to the Bootstrap css file. And we'll be using the Matplotlib, Pandas and js libraries, and those need to be declared in the `<py-env>...</pt-env>` section. The `<head>...</head>` now looks like this:
 
     <head>
         <link rel="stylesheet" 
@@ -58,10 +66,11 @@ First, I'm going to use the Bootstrap framework to make the whole app look nice.
         <py-env>
             - matplotlib
             - pandas
+            - js
         </py-env>
     </head>
 
-The next thing to look at is the HTML code for the web page. The first section is basically a header for the page. We utilize the _Jumbotron_ container from Bootstrap. This gives us a pleasing box with a grey background and some introductory text in the classic  Bootstrap style.
+The next thing to look at is the HTML code for the web page. The first section is basically a header for the page. We utilize the _Jumbotron_ container from Bootstrap. This gives us a pleasing box with a grey background and some introductory text in the classic Bootstrap style.
 
     <div class="jumbotron">
         <h1>Weather Data</h1>
@@ -89,9 +98,61 @@ Here's the first row:
         </div>
     </div>
 
-It comprise of two columns, one for the button and the second for the menu (I use a button here just for aesthetic purposes, it doesn't actually function as a button). The options in the drop down will be used to display one of four different charts. The data that will be used is a table of weather conditions in London[1] for the year 2020. There are 12 rows in the table representing each month and the columns in the table represent the maximum temperature that month, the minimum temperature, the number of hours of sun and the amount of rain in millimetres.
+It comprises two columns, one for the button and the second for the menu (I use a button here just for aesthetic purposes, it doesn't actually function as a button). The options in the drop down will be used to display one of four different charts. The data that will be used is a table of weather conditions in London[1] for the year 2020. There are 12 rows in the table representing each month and the columns in the table represent the _maximum temperature_ for that month, the _minimum temperature_, the number of _hours of sun_ and the amount of _rain in millimetres_.
 
 So the menu items represent these options and will take a value of 'Tmax', 'Tmin', 'Sun' or 'Rain'.
+
+So far we have coded the web page and now we need to define the logic that will react to the user input and draw the chart. This is defined in the `<py-script>` section. The code that we will deal with next goes inside this section.
+
+First import some libraries.
+
+    # Import libraries
+    import pandas as pd
+    import matplotlib.pyplot as plt
+
+Pandas and Matplotlib, of course, but we also need the following:
+
+    from pyodide.http import open_url
+
+This is a library provided by PyScript that allows us to read from a source on the web and we use it like this:
+
+    url = 'https://raw.githubusercontent.com/alanjones2/uk-historical-weather/main/data/Heathrow.csv'
+    url_content = open_url(url)
+
+    df = pd.read_csv(url_content)
+
+The PyScript implementation the Pandas function `read_csv` isn't able to open the url directly, so we must use the technique above, instead.
+
+The file being downloaded contains several decades of data but in order to keep things simple we will filter it to only hold the data for 2020.
+
+    # filter the data for the year 2020
+    df = df[df['Year']==2020]
+
+Now the function to plot the chart in the HTML `div` that we saw earlier.
+
+    # Function to plot the chart
+    def plot(chart):
+        fig, ax = plt.subplots()
+        df.plot(y=chart, x='Month', figsize=(8,4),ax=ax)
+        pyscript.write("chart1",fig)
+
+This is pretty standard stuff for plotting with Pandas. The main difference from a 'normal' Python program is the way it is rendered. The `pyscript.write` function take the id of an HTML element and writes the content of the second parameter into it.
+
+This relies on the PyScript implementation included a way of rendering the particular object - in this case a matplotlib chart - and this won't necessarily work with any type of object. For example, if we were to want to display a Plotly chart we would have to use a different technique as rendering a Plotly figure is not directly implemented in PyScript (as yet).
+
+The next thing to do is to define a way of invoking the `plot` function when the user selects a new chart from the drop down menu.
+
+First some more libraries - these are provided as part of PyScript.
+
+    from js import document
+    from pyodide import create_proxy
+
+The `js` library aloows PyScript to access Javascript functions, in this particular case we are importing the ability to access the DOM. And  ´create_proxy` from Pyodide does the opposite allowing Javascript to directly call PyScript functions.
+
+    def selectChange(event):
+        choice = document.getElementById("select").value
+        plot(choice)
+
 
 ---
 
