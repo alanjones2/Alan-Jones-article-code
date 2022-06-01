@@ -1,0 +1,92 @@
+<html>
+
+<head>
+
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <py-env>
+        - matplotlib
+        - pandas
+        - seaborn
+    </py-env>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1>Weather Data</h1>
+        <p class="lead">
+            Some graphs about the weather in London in 2020
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2 p-2 ml-4 mb-1">
+            <button type="button" class="btn btn-secondary">Select chart from list:</button>
+        </div>
+
+        <div class="col-sm-4 p-2 mr-4 mb-1">
+            <select class="form-control" id="select">
+                <option value="Tmax">Maximum Temperature</option>
+                <option value="Tmin">Minimum Temperature</option>
+                <option value="Sun">Sun</option>
+                <option value="Rain">Rain</option>        
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 p-2 shadow ml-4 mr-4 mb-4 bg-white rounded">
+            <div id="chart1"></div>
+        </div>
+    </div>
+
+    <py-script>
+        # Import libraries
+        import pandas as pd
+        import matplotlib.pyplot as plt
+        import seaborn as sns
+
+        # Get the data
+        from pyodide.http import open_url
+        
+        url = 'https://raw.githubusercontent.com/alanjones2/uk-historical-weather/main/data/Heathrow.csv'
+        url_content = open_url(url)
+
+        df = pd.read_csv(url_content)
+
+        # filter the data for the year 2020
+        df = df[df['Year']==2020]
+
+        # Function to plot the chart
+        def plot(chart):
+            fig, ax = plt.subplots()
+            sns.lineplot(y=chart, x="Month", data=df, ax=ax)
+            pyscript.write("chart1",fig)
+        
+        # Set up a proxy to be called when a 'change'
+        # event occurs in the select control 
+        from js import document
+        from pyodide import create_proxy
+
+        # Read the value of the select control
+        # and call 'plot'
+        def selectChange(event):
+            choice = document.getElementById("select").value
+            plot(choice)
+
+        # set the proxy
+        def setup():
+            # Create a JsProxy for the callback function
+            change_proxy = create_proxy(selectChange)
+
+            e = document.getElementById("select")
+            e.addEventListener("change", change_proxy)
+
+        setup()
+
+        # Intitially call plot with 'Tmax'
+        plot('Tmax')
+    </py-script>
+</body>
+</html>
