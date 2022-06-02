@@ -2,6 +2,8 @@
 
 ## Streamlit may not have been designed for full blown web sites but it is fairly straightforward to create multiple pages in a single app
 
+[]()
+
 There are two aspects to creating mutipage apps: how to select the one you want from the user interface and how to select which  code to run.
 
 The UI could be option menu, drop down, buttons, or other UI element. Here we will use a Streamlit ``selectbox`` in a sidebar to select which part of the app to run.
