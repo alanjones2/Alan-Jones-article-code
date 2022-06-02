@@ -156,7 +156,7 @@ As I hope you can see this quite neat. It uses the same selection technique as i
 
 The library approach is quite attractive as it means we can devolve the functionality of 'pages' to a library of functions. However, we can go a step further by storing the module information in an external file (in the library) and construct a generic 'main' program that will read this file and construct the selection menu and call whichever modules are available.
 
-The first thing to do is to create a file with the list of the available modules in the library folder. I've called it libContents.py and it looks like this:
+The first thing to do is to create a file with the list of the available modules in the library folder. I've called it ``libContents.py`` and it looks like this:
 
 ```` Python
     # Return a list of the modules in this package
@@ -243,3 +243,8 @@ Runs the selected module by retrieving the module reference, again by using the 
     modules[moduleNames.index(page)].run()
 ````
 
+And there we have it! Three ways to implement multi-page apps in Streamlit. The first is simple, the second better for more pages and the third is a generic solution that can be reused in any app.
+
+Thanks for reading and I hope this has been useful. Please do leave a comment if you find any errors, have any suggestions, or simply want to say 'hello'.
+
+You can find my other work on my [Github page](alanjones2.github.io) and/or subscribe to my occasional [newsletter on Substack](technofile.substack.com).
