@@ -30,13 +30,15 @@ message = """
         __Select an application from the list below__
         """
 
-import json
+#import json
 import streamlit as st
 import importlib
 import stlib    # default library name for apps
 from stlib import libContents
 
 st.set_page_config(layout = "wide") # optional
+
+st.header("National Statistics")
 
 # Global arrays for holding the app names, modules and descriptions of the apps
 moduleNames = libContents.packages()
