@@ -2,17 +2,18 @@
 
 ## Streamlit may not have been designed for full blown web sites but it is fairly straightforward to create multiple pages in a single app
 
-[]()
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/stmultipage/stmultipage2/image/Screenshot%202022-06-02%20130001.png)
 
 There are two aspects to creating mutipage apps: how to select the one you want from the user interface and how to select which  code to run.
 
 The UI could be option menu, drop down, buttons, or other UI element. Here we will use a Streamlit ``selectbox`` in a sidebar to select which part of the app to run.
 
-To determine which code to run we will look at 3 different techniques:
+To determine which code to run we will look at 3 different techniques that you can implement yourself plus the new native implementation of multi-page by Streamlit:
 
  - Use a select statement such as `if... else...` or 3.10 pattern matching to choose which page to display. This is the easiest method and works well for a small number of pages.
  - Structure apps as a library package. A more sophisticated way of delivering multiple pages that is also easy to use - just follow the pattern.
  - A generic launcher app for a library of apps. This launcher will automatically pick up the apps stored in a library but is still easy to create and use.
+- The Streamlit native method
 
  #### The pages
 
@@ -244,8 +245,64 @@ Runs the selected module by retrieving the module reference, again by using the 
     # Run the chosen app
     modules[moduleNames.index(page)].run()
 ````
+#### Streamlit native method
 
-And there we have it! Three ways to implement multi-page apps in Streamlit. The first is simple, the second better for more pages and the third is a generic solution that can be reused in any app.
+Within hours of writing this article, Streamlit announced a native multi-page feature which is simple to use.
+
+You need to structure your app as a hierarchy of files. In your home directory there must be a main file which is the entry point of the app. The there must be a sub-folder called "pages". You place your additional page files in this sub-folder and the main program will automatically pick them up and display them in a sidebar. Selecting one of the entries will load that page. Simple!
+
+Below is the complete code for this implementation.
+
+```` Python
+### Contents of pages/countryData.py ###
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+
+df = pd.DataFrame(px.data.gapminder())
+st.markdown("# Countries")
+clist = df['country'].unique()
+country = st.selectbox("Select a country:", clist)
+col1, col2 = st.columns(2)
+fig = px.line(df[df['country'] == country],
+                x="year", y="gdpPercap", title="GDP per Capita")
+col1.plotly_chart(fig, use_container_width=True)
+fig = px.line(df[df['country'] == country],
+                x="year", y="pop", title="Population Growth")
+col2.plotly_chart(fig, use_container_width=True)
+
+### Contents of pages/continentData.py ###
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+
+df = pd.DataFrame(px.data.gapminder())
+st.markdown("# Continents")
+contlist = df['continent'].unique()
+continent = st.selectbox("Select a continent:", contlist)
+col1, col2 = st.columns(2)
+fig = px.line(df[df['continent'] == continent],
+                x="year", y="gdpPercap",
+                title="GDP per Capita", color='country')
+col1.plotly_chart(fig)
+fig = px.line(df[df['continent'] == continent],
+                x="year", y="pop",
+                title="Population", color='country')
+col2.plotly_chart(fig)
+
+### Contents of the main file ###
+import streamlit as st
+st.set_page_config(layout="wide")
+st.markdown('# Main page')
+st.markdown("""
+    This is a demo of the native multipage implementation in Streamlit.
+    Click on one of the 'pages' in the side bar to load a new page
+""")
+````
+
+And there we have it! Three… no four, ways to implement multi-page apps in Streamlit. The first is simple, the second better for more pages, the third is a generic solution that can be reused in any app and the fourth is a very simple solution newly provided by Streamlit.
+
+While the Streamlit version is simple (a word of warning it does not, at the time of writing appear to work in Python 3.10), my favourite solution is number three because once the main function has been written this solution is as easy to use as the native one but is more flexible in that a description can be added and the ordering is determined by the author (Streamlit orders them alphabetically). Also it could be further customised.
 
 Thanks for reading and I hope this has been useful. Please do leave a comment if you find any errors, have any suggestions, or simply want to say 'hello'.
 
