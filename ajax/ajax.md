@@ -65,22 +65,38 @@ This is a simplified page that will look like this:
 _A simplified app - image by author_
 
 I'll include a gist of the complete page at the end of this article and a link to a live version of the app.
-Now we need to look briefly at the Python Flask app that supplies the data to the web page. If you are not familiar with Flask, I written a very brief introduction here:
-How to Create and Run a Flask App
-This is a brief introduction to creating and running a Flask app, the use of HTML templates and how to create…alan-jones.medium.com
-There are two routes in the app, the index page which is loaded on start-up and another called fetchweather which is the function that is called from the JavaScript on the webpage. They both use the function getweather which downloads the BBC Weather RSS feed for the required city and constructs the data for the webpage.
-The index page passes this data as a parameter to render_template and this takes the file simpleindex.html and inserts the data into it.
-The fetchweather function does the same thing but passes back the data as JSON to be consumed by the fetch function in the webpage.
+
+Now we need to look briefly at the Python Flask app that supplies the data to the web page. If you are not familiar with Flask, I have written a very brief introduction here:
+
+[How to Create and Run a Flask App](https://alan-jones.medium.com/how-to-create-and-run-a-flask-app-533b7b101c86)
+
+
+There are two routes in the app, the index page which is loaded on start-up and another called ``fetchweather`` which is the function that is called from the JavaScript on the webpage. 
+
+They both use the function ``getweather`` which downloads the BBC Weather RSS feed for the required city and constructs the data for the webpage.
+The index page passes this data as a parameter to ``render_template`` and this takes the file ``simpleindex.html`` and inserts the data into it.
+
+The ``fetchweather`` function does the same thing but passes back the data as JSON to be consumed by the fetch function in the webpage.
 
 You can see a live version of the web page here:
-Fetch the Weather
-Maximum Temperature: 30°C (86°F), Minimum Temperature: 21°C (71°F), Wind Direction: South Westerly, Wind Speed: 12mph…ajapps.herokuapp.com
-And the gist of the code for the complete webpage and Flask app is right at the end of this article.
-Thanks for reading and I hope this has been useful. If you'd like to know when I publish other articles, please consider subscribing to my free and occasional newsletter, Technofile.
+
+[Fetch the Weather](http://ajapps.herokuapp.com/weather/)
+
+The gist of the code for the complete webpage and Flask app is at 
+the end of this article.
+
+
+Thanks for reading and I hope this has been useful. You cab see my other work on my [Github webpage](alanjones2.github.io) and if you'd like to know when I publish other articles, please consider subscribing to my free, occasional newsletter, [Technofile](technofile.substack.com).
 
 ---
 
-Here is the complete code.
+### Here is the complete code in two gists.
+
 Web page:
 
+https://gist.github.com/7ac70c6cafd9b538f977e7bbfa462dce.git
+
+
 Flask app:
+
+https://gist.github.com/6ad650854e152ed918d157987bd7be3f.git
