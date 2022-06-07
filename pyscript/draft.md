@@ -4,7 +4,7 @@
 
 ![](https://raw.githubusercontent.com/alanjones2/Alan-Jones-article-code/master/pyscript/images/Screenshot2.png)
 
-Is PyScript the future of web applications? Maybe, but probably yet - it's still only an alpha release and there is still a lot of work to do, I'm sure. 
+Is PyScript the future of web applications? Maybe, but probably not yet - it's still only an alpha release and there is still a lot of work to do, I'm sure. 
 
 But right now how useful it? 
 
@@ -154,7 +154,7 @@ The `js` library aloows PyScript to access Javascript functions, in this particu
 
 This function is called when a change event occurs. It reads the value of the selection and then calls the previously defined `plot` function with that value.
 
-Next we define a proxy that wiil allow the change event to call the PyScript function `selectChange`.
+Next we define a proxy that will allow the change event to call the PyScript function `selectChange`.
 
     # set the proxy
     def setup():
