@@ -14,3 +14,6 @@ As an example we are going to look at the results for the 2021 Formula 1 season 
 
 Here is what the table looks like:
 
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/Wikitable/images/driverstablescreenshot.png)
+
+It's fairly clear, the races have nice little flags by them so we can see where they were and the drivers too have their nationality indicated.
