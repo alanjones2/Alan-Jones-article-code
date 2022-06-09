@@ -1,4 +1,4 @@
-# How to Use Wikipedia as a Data Source
+# [How to Use Wikipedia as a Data Source](https://towardsdatascience.com/how-to-use-wikipedia-as-a-data-source-3dfea29e6539)
 
 The code in the folder is in support of the article, above, where we look at how to load table information from Wikipedia into Pandas with examples from the English Premier League.
 
