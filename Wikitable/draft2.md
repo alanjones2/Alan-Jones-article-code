@@ -2,7 +2,7 @@
 
 ## Wikipedia tables are designed for people to look at not for processing but with some help from Python and Pandas we can sort them out. We use the results of the 2021 Formula 1 season as an example.
 
-![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/Wikitable/images/Rosberg_Hamilton_-_2016_Monaco_GP_2.png)
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/Wikitable/images/Rosberg_Hamilton_-_2016_Monaco_GP_2.jpg)
 
 _The Mercedes F1 team in the 2016 Monaco GP. Image by [Andrew Walks](https://flickr.com/photos/97811441@N07/26772038553), CC-BY-2.0._
 
@@ -38,5 +38,7 @@ df = pd.read_html(url,match="Driver")
 
 Ìt is then up to us to find the table that we need in the returned list.
 
-There are only a few tables on this particular Wikipedia web page and the one that I am looking for here is last in the returned list.
+There are only a few tables on this particular Wikipedia web page and the one that I am looking for here is last in the returned list, i.e. ``df[2]``.
+
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/Wikitable/images/driverstablepandas.png)
 
