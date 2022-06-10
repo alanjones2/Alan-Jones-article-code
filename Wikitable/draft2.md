@@ -14,7 +14,7 @@ The problem is that the data is appended with codes that indicate whether the dr
 
 But Pandas comes to the rescue by first of all allowing us to scrape the data from Wikipedia tables and second to clean up that data so that we can process it effectively.
 
-As an example we are going to look at the results for the 2021 Formula 1 season and see how the data can be extracted from the Wikipedia page and then manipulated so that it can be processed and visualised properly.
+As an example we are going to look at the results for the 2021 Formula 1 season and see how the data can be extracted from the Wikipedia page and then manipulated so that it can be processed and visualised nicely.
 
 Here is what the table looks like:
 
@@ -41,4 +41,15 @@ df = pd.read_html(url,match="Driver")
 There are only a few tables on this particular Wikipedia web page and the one that I am looking for here is last in the returned list, i.e. ``df[2]``.
 
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/Wikitable/images/driverstablepandas.png)
+
+Now we have something that we can deal with in Pandas but it needs a little processing first.
+
+The first thing to notice is that the last two rows are redundant and that is easily sorted.
+
+````
+df2 = df[2][:-2]
+````
+That code creates a new dataframe ``df2`` from the downloaded one but misses of the last two rows.
+
+Our next
 
