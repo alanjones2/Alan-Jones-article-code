@@ -109,3 +109,42 @@ Here is the result:
 
 All of the data in the table is now valid and can be properly processed. (We do have a bit of a problem with Robert Kubica. He was a reserve driver and only competed in two GPs but the the ``NaN`` results are perfectly ok as far as Pandas is concerned, so there is no need to doing anything further.)
 
+So, let's prove that we can do something useful with the data and draw up a new table of the munber of poles and the number of fastest laps that each driver achieved.
+
+First, we need a list of the drivers - that's easy it's in the column ``Drivers``. Next we'll iterate through that list and count the number of poles and the number of fastest laps and create lists to match up with the drivers. Finally, we create a new dataframe from those lists.  
+
+I'm sure someone will tell me that there isa more Pythonic way of doing this but this is simple and will do for now.
+
+````Python
+drivers = df3['Driver']
+poles = []
+fast = []
+
+for d in range(len(drivers)):
+    pcount=0
+    fcount=0
+    for r in races:
+        if (df3[df3['Driver']==drivers[d]]['Pole-'+r].values[0])==True: 
+            pcount = pcount+1
+        if (df3[df3['Driver']==drivers[d]]['Fastest-'+r].values[0])==True: 
+            fcount = fcount+1
+    poles.append(pcount)
+    fast.append(fcount)
+
+dp = pd.DataFrame()
+dp['Drivers']=drivers
+dp['Poles']=poles
+dp['Fastest']=fast
+````
+
+Our new dataframe looks like this:
+
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/Wikitable/images/polesandfastest.png)
+
+And we can draw a simple bar chart from it like this:
+
+````Python
+dp.plot.bar(x='Drivers',y=['Poles','Fastest'])
+````
+
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/Wikitable/images/polesandfastestbar.png)
