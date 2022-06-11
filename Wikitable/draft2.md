@@ -6,11 +6,11 @@
 
 _The Mercedes F1 team in the 2016 Monaco GP. Image by [Andrew Walks](https://flickr.com/photos/97811441@N07/26772038553), CC-BY-2.0._
 
-Wikipedia is a fantastic resource but doesn't particularily lend itself to use by data analysts. The data in the articles is designed to be looked at not processed and so doesn't necessarily provide a tidy resource. But Python and Pandas give us the tools to both scrape and clean the Wikipedia data.
+Wikipedia is a fantastic resource but doesn't particularily lend itself to use by data analysts. The data in the articles is designed to be looked at by people not processed by a computer and so it doesn't necessarily provide an immediately usable resource. But Python and Pandas give us the tools to both scrape and clean the Wikipedia data.
 
 In a Wikipedia table there is often more than one piece of data in a single column. For example, in the Formula 1 data that we are going to look at, there is one column that contains the position in which a driver finishes a race. Great.
 
-The problem is that the data is appended with codes that indicate whether the driver started on pole position, whether they drove the fastest lap, if they retired and other possible outcomes.
+The problem is that the data is appended with codes that indicate whether the driver started on pole position, whether they drove the fastest lap, if they retired and other possible outcomes. This is not something that is directly usable.
 
 But Pandas comes to the rescue by first of all allowing us to scrape the data from Wikipedia tables and second to clean up that data so that we can process it effectively.
 
@@ -23,7 +23,7 @@ _The results of the 2021 Formula 1 season, source Wikipedia, CC BY-SA 3.0
 
 It's fairly clear, the races have nice little flags by them so we can see where they were and the drivers too have their nationality indicated.
 
-The final position of each driver is indicated for each race and each cell is color coded depending on the pariticualr outcome for that driver and along with the colour coding a symbol may be added to the finishing position. So, for example, in the Italian grand prix, Lewis Hamilton came second (indicated by the silver color and the number 2 in the cell) but the cell also contains a 'P' and an 'F' to indicte that he started in pole position and also managed the fastest lap.
+The final position of each driver is indicated for each race and each cell is color coded depending on the pariticular outcome for that driver and along with the colour coding a symbol may be added to the finishing position. So, for example, in the Italian grand prix, Lewis Hamilton came second (indicated by the silver color and the number 2 in the cell) but the cell also contains a 'P' and an 'F' to indicte that he started in pole position and also drove the fastest lap.
 
 It all make sense to the reader but will be confusing when analysing it programatically.
 
@@ -46,10 +46,21 @@ Now we have something that we can deal with in Pandas but it needs a little proc
 
 The first thing to notice is that the last two rows are redundant and that is easily sorted.
 
-````
+````Python
 df2 = df[2][:-2]
 ````
 That code creates a new dataframe ``df2`` from the downloaded one but misses of the last two rows.
 
-Our next
+Our next task is to change the ``Points`` column to be numeric (it was treated as a string because of the column name in the second to last row).
 
+````Python
+df2.Points = pd.to_numeric(df2.Points)
+````
+
+Now we are able to do something with this data. The following line of code draws a bar graph of teh number of points gained by each driver.
+
+````Python
+df2.plot.bar(x='Driver', y='Points')
+````
+
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/Wikitable/images/pointschart.png)
