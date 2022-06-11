@@ -103,4 +103,9 @@ for r in races:
     df3[r] = df3[r].replace('WD','', regex=True)    
 ````
 
+Here is the result:
+
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/Wikitable/images/df3.png)
+
+All of the data in the table is now valid and can be properly processed. (We do have a bit of a problem with Robert Kubica. He was a reserve driver and only competed in two GPs but the the ``NaN`` results are perfectly ok as far as Pandas is concerned, so there is no need to doing anything further.)
+
