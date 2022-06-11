@@ -57,10 +57,50 @@ Our next task is to change the ``Points`` column to be numeric (it was treated a
 df2.Points = pd.to_numeric(df2.Points)
 ````
 
-Now we are able to do something with this data. The following line of code draws a bar graph of teh number of points gained by each driver.
+Now we are able to do something with this data. The following line of code draws a bar graph of the number of points gained by each driver.
 
 ````Python
 df2.plot.bar(x='Driver', y='Points')
 ````
 
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/Wikitable/images/pointschart.png)
+
+But that is only one column sorted. The race results are still a mess, so let's try and fix that.
+
+As I said before the match result cells contains more than one piece of data - the driver position and various other bits of information.
+
+We could just filter out the extra characters and leave the driver position as the only data in a cell. But I don't like to lose data so let's see how we can preserve the information about who was on pole for each race and who frove the fastest lap. You cold do the same with the other data (``Ret`` meaning retired, for example) but if we do, we are in danger of becoming tedious, so we'll ignore the other data.
+
+So i'm going to create another dataframe in which I'll add two more columns ,one to record the pole position and the other the fastest lap. We'll just delete the other stuff.
+
+First we get a list of the races - these are all the column names apart from the first two and the last one.
+
+````Python
+races = df2.columns[2:-1]
+````
+
+Then for each of the race names we create the newly changed columns.
+
+````Python
+df3 = pd.DataFrame()
+df3['Driver'] = df2['Driver']
+for r in races:
+    # copy race columns but remove the P for pole
+    df3[r] = df2[r].replace('P','', regex=True) 
+    # record pole in a new column    
+    df3[f'Pole-{r}'] = df2[r].str.contains('P')  
+
+    # also remove the F for fastest  
+    df3[r] = df3[r].replace('F','', regex=True)     
+    # and record the fastest in a new column
+    df3[f'Fastest-{r}'] = df2[r].str.contains('F')  
+    
+    # remove Ret for retired
+    df3[r] = df3[r].replace('Ret','', regex=True) 
+    # remove DNS  
+    df3[r] = df3[r].replace('DNS','', regex=True)   
+    # remove WD
+    df3[r] = df3[r].replace('WD','', regex=True)    
+````
+
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/Wikitable/images/df3.png)
