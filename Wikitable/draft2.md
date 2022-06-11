@@ -16,16 +16,18 @@ But Pandas comes to the rescue by first of all allowing us to scrape the data fr
 
 As an example we are going to look at the results for the 2021 Formula 1 season and see how the data can be extracted from the Wikipedia page and then manipulated so that it can be processed and visualised nicely.
 
+I've written this code in a Jupyter Notebook, so if you want to follow along just paste each of the code blocks, below, into a new notebook cell and run it.
+
 Here is what the table looks like:
 
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/Wikitable/images/driverstablescreenshot.png)
-_The results of the 2021 Formula 1 season, source Wikipedia, CC BY-SA 3.0
+_The results of the 2021 Formula 1 season, source Wikipedia, CC-BY-SA 3.0_
 
 It's fairly clear, the races have nice little flags by them so we can see where they were and the drivers too have their nationality indicated.
 
 The final position of each driver is indicated for each race and each cell is color coded depending on the pariticular outcome for that driver and along with the colour coding a symbol may be added to the finishing position. So, for example, in the Italian grand prix, Lewis Hamilton came second (indicated by the silver color and the number 2 in the cell) but the cell also contains a 'P' and an 'F' to indicte that he started in pole position and also drove the fastest lap.
 
-It all make sense to the reader but will be confusing when analysing it programatically.
+It all makes sense to the reader but will be confusing when analysing it programatically.
 
 To download the table we use the Pandas ``read_html`` function. I've covered this in a previous article [How to Use Wikipedia as a Data Source](https://towardsdatascience.com/how-to-use-wikipedia-as-a-data-source-3dfea29e6539) and so won't dwell on it too much here.
 
@@ -148,3 +150,5 @@ dp.plot.bar(x='Drivers',y=['Poles','Fastest'])
 ````
 
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/Wikitable/images/polesandfastestbar.png)
+
+So there we have it. Wikipedia is a great source of data and with a little bit of effort we can convert it into something suitable for analysis with Python and Pandas.
