@@ -17,7 +17,7 @@
             <button type="button" class="btn btn-secondary">Select chart from list:</button>
         </div>
         <div class="col-sm-4 p-2 mr-4 mb-1">
-            <select class="form-control" id="select"  onchange="callback(this.value)">
+            <select class="form-control" id="select">
                 <option value="Tmax">Maximum Temperature</option>
                 <option value="Tmin">Minimum Temperature</option>
                 <option value="Sun">Sun</option>
@@ -48,10 +48,20 @@
                 alert(response.status);
             }
         }
+
+        function selectChange(event){
+            choice = document.getElementById("select").value
+            callback(choice)
+        }
+        
+        function setup(){
+            e = document.getElementById("select")
+            e.addEventListener("change", selectChange)
+        }
     </script>
 
     <script>
-        // Draw initial chart
+        setup()
         callback("Tmax");
     </script>
 </body>
