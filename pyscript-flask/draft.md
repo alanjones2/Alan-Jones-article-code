@@ -10,15 +10,15 @@ With Flask the Python code runs on the server and updates the web page as needed
 
 So, is it better or easier to use PyScript than a server based application? We are going too compare two similar applications one written in PyScript and the other using Flask, the Python based application framework. 
 
-Is there any advantage to running code in the browser rather than on a server? The obvious answer is the one of deployment. A browser based app only needs to be copied to a web server and it will just work. A server based app, however, may need a little more effort to deploy it to a platform like Heroku, Azure or AWS.
+There is at least one advantage to running code in the browser and that is deployment. A browser based app only needs to be copied to a web server and it will just work. A server based app, however, may need a little more effort to deploy it to a platform like Heroku, Azure or AWS. But once you are used to deploying your server based apps, this doesn't really take much effort.
 
 The PyScript app yhat I use here has already featured in previous articles, so you can take a look at these to get a more in-depth view of how PyScript works (see Notes, below).
 
 We'll look at the PyScript app first and then see how we construct something similar using Flask.
 
-The app itself is fairly simple. It displays one of four charts that represent aspects of the weather in London, UK, in the year 2020. The charts are Maximum and Minimum monthly temperatures, rainfall and hours of sunshine and they use data from my UK Historical Weather repo on Github.
+The app itself is fairly simple. It displays one of four charts that represent aspects of the weather in London, UK, in the year 2020. The charts are maximum and minimum monthly temperatures, rainfall and hours of sunshine and they use data from my UK Historical Weather repo on Github.
 
-The user can select a chart from a drop down menu and the new chart will be displayed. In neither version of the app is the page refreshed: in the PyScript app a call to Python code reads the data and updates the chart, and in the Flask app, an asynchronous callback is made to the server which responds with the chart data which is used to update the chart.
+The user can select a chart from a drop down menu and the new chart will be displayed. In neither version of the app is the page refreshed: in the PyScript app a call to Python code reads the data and updates the chart directly, and in the Flask app, an asynchronous callback is made to the server which responds with the data which is used to update the chart.
 
 Let's look at the code.
 
@@ -42,6 +42,10 @@ A PyScript app is a HTML web page and structure as follows:
     </body>
 </html>
 ````
+
+https://gist.github.com/eaefc1e16c79f9965594cab930a6d7fb.git
+
+
 The ``<head>`` tag contains al the usual stuff that you will find on a web page and also a reference to the PyScript css and Javascript files. The ``<body>`` tags contain the HTML for the page and any required Javascript, and the ``<py-script>`` contains - who'd have thought it - PyScript code.
 
 The PyScript section can refer to an external file but because of CORS restrictions it won't work when running the file locally, it must be run on a server (although, of course, that server could be running on your local machine).
@@ -69,7 +73,7 @@ We start with the references to the PyScript files that we need to run PyScript,
 
 The ``<py-env>`` simply lists the Python libraries that will be used in the ``<py-script>`` section.
 
-Now let's see the the fisrt part of the body, the HTML and Javascript:
+Now let's see the the first part of the body, the HTML and Javascript:
 
 ```` HTML
 <body>
@@ -104,10 +108,85 @@ Now let's see the the fisrt part of the body, the HTML and Javascript:
         }
     </script>
 ````
+
+https://gist.github.com/af4a64267ee8c1a1bbde2bbb1204d944.git
+
 Without going into too much detail, we begin with a Bootstrap Jumbotron element that acts as a header. This is followed by a dropdown menu that allows the selection of the chart to be displayed.
+
+We then have a ``<div>`` that is the container for the chart and lastly a short Javascript function that takes the chart data and the id of the container, and plots the chart using the Plotly library.
+
+So that is basically the user interface sorted out. What remains is loading the remote data, filtering it to get the specific data that we want, and creating the chart data. All of this is achieved in Python.
+
+Here is the PyScript section tha contains the Python code.
+
+```` Python
+<py-script>
+        # Import libraries
+        import pandas as pd
+        import matplotlib.pyplot as plt
+        import js
+        import json
+        import plotly
+        import plotly.express as px
+        
+        ## Get the data
+        from pyodide.http import open_url
+        
+        url = 'https://raw.githubusercontent.com/alanjones2/uk-historical-weather/main/data/Heathrow.csv'
+        url_content = open_url(url)
+        
+        df = pd.read_csv(url_content)
+        df = df[df['Year']==2020]
+        
+        def plot(chart):
+            fig = px.line(df,
+            x="Month", y=chart,
+            width=800, height=400)
+            graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+            js.plot(graphJSON,"chart1")
+                    
+        from js import document
+        from pyodide import create_proxy
+        
+        def selectChange(event):
+            choice = document.getElementById("select").value
+            plot(choice)
+        
+        def setup():
+            # Create a JsProxy for the callback function
+            change_proxy = create_proxy(selectChange)
+            e = document.getElementById("select")
+            e.addEventListener("change", change_proxy)
+        
+        setup()
+        
+        plot('Tmax')
+    </py-script>
+````
+https://gist.github.com/d79f263cea384f208e3fcdcbe6a51900.git
+
+First, as with any Python program, we import all of the libraries that we need.
+
+To get the data we need to use the function ``open_url`` from the Pyodide package (Pyodide is inegrated into PyScript). We can then create a Pandas dataframe from this data.
+
+Next we filter the data. The dataframe currently contains data for several decades but we are only going to use that from the year 2020. This is what the code 
+
+```` Python
+df = df[df['Year']==2020]
+````
+does for us.
+
+The remainder of the code is mostly function definitions.
+
+The function ``plot()`` creates the Plotly chart and uses the Javascript function to plot it in its container. It takes a single parameter that is used to select the chart that is to be displayed, creates the chart data with the Plotly Python package, and finally calls the Javascript function we saw earlier to display the chart in its container. 
+
+Note how easy it is to call Javascript functions. We simply import the ``js`` library and all Javascript functions are available to use.
+
+
 
 ## The Flask app
 
+## Conclusion
 
 ## Notes
 
