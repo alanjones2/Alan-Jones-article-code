@@ -8,7 +8,7 @@ app = Flask(__name__)
    
 @app.route('/')
 def index():
-    return render_template('index.html',  graphJSON=getGraph())
+    return render_template('index.html')
 
 @app.route('/callback', methods=['POST', 'GET'])
 def cb():
