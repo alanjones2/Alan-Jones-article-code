@@ -2,6 +2,8 @@
 
 ## PyScript lets you to create web apps in Python without the need of server. Flask is a Python web app framework for making server based apps. We write the same simple app using both.
 
+![]()
+
 PyScript is Python in the browser and promises a new way of writing web applications. It's very much at the _alpha_ stage at the moment but is already a usable system.
 
 But do we need a new way? It's true that I can create a fully functioning web app in PyScript (with the help of some HTML and maybe a smattering of Javascript) but I can already do that with Flask! 
@@ -195,7 +197,7 @@ The last two lines simply run ``setup()`` to set up the proxy and event listener
 
 This app may not feel very intuitive for those used to either conventional web page development or Python programming. But the design of a PyScript app is quite elegant: the user interface is defined by HTML and CSS (with a little help from Javascript) while the logic of the application is defined almost entirely in the PyScript section.
 
-It seems to me that this is using the right tools for each job. HTML and CSS are all about how stuff is displayed while Python is for programming. and the two are kept separate.
+It seems to me that this is using the right tools for each job. HTML and CSS are all about how stuff is displayed while Python is for programming and the two should be, and are, kept separate.
 
 ## The Flask app
 
@@ -208,7 +210,7 @@ If you are unfamiliar with Flask applications, I've written a brief introduction
 
 Briefly, the Python part of the Flask app defines endpoints and Python functions that determine what happens when these end points are addressed. Ths app defines two endpoints, the one that corresponds to the root and another that invokes a callback function.
 
-The root endpoint simplt returns the HTML template, while the callback endpoint loads the required data and returns the Plotly chart data for display on teh web page.
+The root endpoint simply returns the HTML template, while the callback endpoint loads the required data and returns the Plotly chart data for display on teh web page.
 
 let's take a look at the HTML first.
 
@@ -286,7 +288,7 @@ https://gist.github.com/4ce6087e29a79cf9335d584743454e94.git
 
 This file is functionally the same as the HTML part of the PyScript app. Indeed most of the code is the same except that the PyScript sections are missing.
 
-Also, the event listener and the function called by it are now written in Javascript and, of coure, no proxy is required.
+Also, the event listener and the function called by it are now written in Javascript and, of course, no proxy is required.
 
 The major change is the way that the Python code is accessed. This is done by invoking a callback function on the server.
 
@@ -310,7 +312,7 @@ This function is an ansybnchronous function, meaning that after it is invoked, e
 
 The callback endpoint on the server is called ``callback`` and expects to see a parameter calld ``data`` which will hold the value of the selection from the drop down menu.
 
-The server will repond with the chart data in JSON format and this is used to plot the chart, as before, using the Ploty Javascript library.
+The server will respond with the chart data in JSON format and this is used to plot the chart, as before, using the Ploty Javascript library.
 
 This leaves the Python code on the server.
 
@@ -352,15 +354,40 @@ We start with the imports and then we can see the definition of the two endpoint
 ```` Python
 @app.route('/')
 def index():
-    # some code that returns a web page
+    # some code that returns a web page or other data
 ````
 
 The first endpoint is the root and uses the Flask function ``render_template()`` to return the HTML template that we saw above.
 
-The second endpoint is the call back function. This does not return a web page, just the data that the web page requires to update itself.
+The second endpoint is the callback function. This does not return a web page, just the data that the web page requires to update itself. It calls the function ``getGraph()`` which does the same job as the PyScript version, it loads and filters the data and then creates the chart data which is returned to the asynchronous Javascript function.
 
+As, I hope you can see, the Flask app does precisely the same job as the PyScript version.
+
+So why would you choose one method over the other?
 
 ## Conclusion
+
+Both apps work and they look exactly the same. So, how do you choose which approach to use?
+
+First, we should appreciate that this is a very simple application. A more complex app might download more data, might require a lot more processing, or might need a more sophisticated user interface.
+
+But these examples illustrate the basic operations that are required for this type of app.
+
+I've run both applications on a typical home laptop and they both work well. The PyScript app takes much longer to load but possibly has a marginally quicker response time. To be frank, there's not a lot of difference between them after you've waited for the PyScript version to load (which takes a few seconds). 
+
+Basically, here are several variables in play here: 
+
+- The speed of the internet connection will determine how quickly the request is made to the server and how fast the data gets back
+- The power of the server. Most Servers are much more capable than any desktop or laptop
+- The power of the user's computer. A weak piece of hardware will be slower than a more powerful one, of course, but this will have much more of an impact on the PyScript app where the processing is being done locally.
+
+## And the winner is...
+
+Both techniques are valid and useful. PyScript probably has a lot of development in front of it and will doubtless improve but, even now, it is  a good solution for lightweight apps.
+
+If there is a lot of processing to be done then the server based solution is probably still the best approach, at the moment, but as hardware gets more powerful (which it always does) and PyScript improves, this situation may change.
+
+PySript is another tool in the toolkit which looks promising. I doubt that it will replace server based applications completely but for apps where the back-end processing is within the capability of a typical host machine then PyScrip will probably find its niche.
 
 
 ## Notes
@@ -372,3 +399,4 @@ The second endpoint is the call back function. This does not return a web page, 
 
     [How to use Ploty with PyScript](https://medium.com/technofile/how-to-use-ploty-with-pyscript-578d3b287293)
 
+2. The weather data is from my repo [uk-historical-weather](https://github.com/alanjones2/uk-historical-weather) and is derived from the UK Met Office [Historic Station Data](https://www.metoffice.gov.uk/research/climate/maps-and-data/historic-station-data). It is distributed in accordance with [UK Open Government License](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/) and may be used under the same conditions.
