@@ -1,10 +1,12 @@
 # PyScript v. Flask
-The code in this folder supports the Medium article []()
+The code in this folder supports the Medium article: 
+
+## [PyScript v. Flask: How to Create a Python App in the Browser or on a Server](https://towardsdatascience.com/pyscript-v-flask-how-to-create-a-python-app-in-the-browser-or-on-a-server-2cfe4dd0df9d)
 
 ## PyScript allows us to create a serverless web application with HTML and Python as the scripting language.
 
 
-The files for the PyScript version of the app are in the pyscript folder and the Flask app file are in the flask folder.
+The files for the PyScript version of the app are in the __pyscript__ folder and the Flask app file are in the __flask__ folder.
 
 
 
