@@ -1,4 +1,4 @@
-#12 visuals 3
+#12 visuals 3 heatmap
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt

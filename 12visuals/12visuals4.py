@@ -1,4 +1,4 @@
-#12 visuals 4
+#12 visuals 4 scatter plot
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt

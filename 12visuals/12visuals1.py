@@ -1,4 +1,4 @@
-#12 visuals 1
+#12 visuals 1 text
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt

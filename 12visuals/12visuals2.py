@@ -1,4 +1,4 @@
-#12 visuals 2
+#12 visuals 2 table
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
