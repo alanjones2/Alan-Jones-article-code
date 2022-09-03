@@ -23,12 +23,12 @@ st.markdown("---")
 
 col3, col4 = st.columns([1,4])
 col3.metric("Temperature", 29, 5)
-col4.markdown("#### Yesterday's temperature was 29ºC")
-col4.markdown("That's 5º up from the previous day")
+col4.markdown("#### Today's temperature was 29ºC")
+col4.markdown("That's 5º up from yesterday")
 
 st.markdown("---")
 
 col1, col2 = st.columns([1,4])
 col1.markdown("# 29ºC")
-col2.markdown("#### Yesterday's temperature was 20ºC")
-col2.markdown("That's 5º up from the previous day")
+col2.markdown("#### Today's temperature was 29ºC")
+col2.markdown("That's 5º up from the yesterday")
