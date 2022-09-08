@@ -1,6 +1,8 @@
 import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
 
-st.set_page_config(page_title=None, page_icon=None, layout="wide")
+#st.set_page_config(page_title=None, page_icon=None, layout="wide")
 
 # make any grid with a function
 
@@ -11,31 +13,32 @@ def make_grid(cols,rows):
             grid[i] = st.columns(rows)
     return grid
         
+mygrid = make_grid(3,3)
 
-mygrid = make_grid(5,2)
+popgrowth = pd.read_csv('data/population-growth.csv')
+#popgrowth
+worldgrowth = popgrowth[popgrowth['Country name'] == 'World']
+#worldgrowth
+
+fig, ax = plt.subplots()
+worldgrowth.plot(x='Year', y='Population growth rate', ax=ax)
 
 mygrid[0][0].subheader("""
 The world population will pass 8 billion at the end of 2022
 """)
-mygrid[0][0].write("""
+
+mygrid[0][1].write("""
+
 Since 1975 the world has been adding another billion people every 12 years. 
-It passed its last milestone – 7 billion in 2011. And, by the end of 2022, it will pass another one: there will be 8 billion people in the world.
 
-While this rate of absolute growth is similar to previous decades, the growth rate continues to fall. Since 2019, the global population growth rate has fallen below 1%. 
+It passed its last milestone - 7 billion in 2011. And, by the end of 2022, 
+it will pass another one: there will be 8 billion people in the world.
 
-That’s less than half its peak rate of growth – of 2.3% – in the 1960s.
+While this rate of absolute growth is similar to previous decades, 
+the growth rate continues to fall. Since 2019, the global population 
+growth rate has fallen below 1%. 
 
-As global fertility rates continue to fall (see below), this rate will continue to fall.
-
+That's less than half its peak rate of growth - of 2.3% - in the 1960s.
 """)
 
-mygrid[0][1].image('images/population-and-demography.png')
-mygrid[1][0].write('10')
-mygrid[1][1].write('11')
-mygrid[2][0].write('20')
-mygrid[2][1].write('21')
-mygrid[3][0].write('30')
-mygrid[3][1].write('31')
-mygrid[4][0].write('40')
-mygrid[4][1].write('41')
-
+mygrid[0][2].pyplot(fig)
