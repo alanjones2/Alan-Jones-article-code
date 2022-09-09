@@ -52,3 +52,4 @@ mygrid[2][2].write('22')
 mygrid[3][3].write('33')
 mygrid[4][4].write('44')
 
+mygrid[2][2].line_chart((0,1), height=100)

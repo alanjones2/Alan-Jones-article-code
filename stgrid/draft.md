@@ -89,6 +89,7 @@ def make_grid(cols,rows):
             grid[i] = st.columns(rows)
     return grid
 ````
+_Listing 4_
 
 The function takes the number of rows and the number of coumns as parameters. Next it creates a one-dimensional array the size of the columns. (This is done using list comprehension and the list is initialised with zeroes - an arbitrary value that will be overwritten.)
 
@@ -105,10 +106,21 @@ mygrid[2][2].write('22')
 mygrid[3][3].write('33')
 mygrid[4][4].write('44')
 ````
+_Listing 5_
 
 Which would create this:
 
-![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/stgrid/images/Screenshot2x2grid.png)
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/stgrid/images/Screenshot5x5grid.png)
+
+We can, of course use any appropriate Streamlit function with these grid elements so executing this after the code in _Listing 5_
+
+```` Python
+mygrid[2][2].line_chart((0,1), height=100)
+````
+_Listing 6_
+
+would give you this:
+
 
 
 ### Notes
