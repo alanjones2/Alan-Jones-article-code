@@ -121,8 +121,15 @@ _Listing 6_
 
 would give you this:
 
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/stgrid/images/Screenshot5x5withchart.png)
+
+Maybe Streamlit will add a grid layout in the future. But until then, I hope you will find this useful.
+
+Thanks for reading. You can find the full listing of all the code used here and the app on from my [Github web page](https://alanjones2.github.io) and there is a gist of the app code at the very end of the article.
 
 
 ### Notes
 1. Data and edited text courtesy of, 
 [Our World in Data](https://ourworldindata.org/world-population-update-2022), reproduced in accordance with Creative Commons Attribution 4.0 International ([CC BY 4](https://creativecommons.org/licenses/by/4.0/))
+
+https://gist.github.com/alanjones2/b2574d866d0b19c4d14771a0a72dd746
