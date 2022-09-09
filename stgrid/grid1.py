@@ -1,6 +1,6 @@
 import streamlit as st
 
-# 2x2 grid the long way
+# a 2x2 grid the long way
 
 with st.container():
     col1, col2 = st.columns(2)
