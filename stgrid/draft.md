@@ -35,4 +35,19 @@ with st.container():
 
 ````
 
-![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/stgrid/images/Screenshot2x2grip.png)
+It creates a 2 x 2 grid with two charts in the right column and captions in the left column. It's easy to follow and works well. The result looks like this:
+
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/stgrid/images/Screenshot2x2grid.png)
+
+The problem is that if we were to create a, for example, 10 x 10 grid, the code would get very cumbersome.
+
+What I'd like to do is to create a grid that can be accessed as a two-dimesional array. So instead of the explicit code that we see above, we could write something like:
+
+```` Python
+mygrid[0][0].write('Caption for first chart')
+mygrid[0][1].line_chart((1,0), height=100)
+mygrid[1][0].write('Caption for second chart')
+mygrid[1][1].line_chart((0,1), height=100)
+````
+
+I think you will agree that this a concise way of achieving the same thing and for a much bigger grid would be much more managable.
