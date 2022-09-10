@@ -6,15 +6,20 @@
 
 _Piet Mondrian, Public domain, via Wikimedia Commons_
 
-The good folk at Streamlit have given us a lot of ways of displaying data and charts, and have also provided several methods for laying out an data science application.
+The good folk at Streamlit have given us a lot of ways of displaying data and charts, and have also provided several methods for laying out a data science application.
 
-But there is no native grid layout. Luckily, this is easily solved and we shall see how we can construct a grid using standard Streamlit layout functions and then create a simple function to draw a grid of arbitrary dimensions.
+But there is no native grid layout. 
 
-A grid lets us layout out text, data and charts in a neat and consistant way in rows and columns. I've created an example app using UN populaton data from Our World in Data which you can see here.
+Luckily, this is easily solved and we shall see how we can construct a grid using standard Streamlit layout functions and then create a simple function to create a grid of arbitrary dimensions.
+
+A grid lets us layout out text, data and charts in a neat and consistant way in rows and columns. As an example, I've created a Streamlit app using data from the 2022 UN's _World Population Prospects_ report. Among other things, this report looks at how the World's population will grow over the next few decades. The app is based on an article from Our World in Data (see note 1) and looks like this:
 
 TK add reference to app
+TK add headers
 
-Streamlit, of course, has columns built in as standard. But rows? Yes, those too. If we stack a bunch of Streamlit containers on top of one another we have rows. If we then divide up each of those containers into the same number of columns, we have a grid.
+We'll take a look at the way the app is structured a little later but first we'll take a look at how we can construct a grid layout in Streamlit.
+
+Streamlit, of course, has columns built in as standard. But rows? Actually, yes, those too. If we stack a bunch of Streamlit containers on top of one another we have rows. If we then divide up each of those containers into the same number of columns, we have a grid.
 
 Take a look at this code:
 
@@ -42,7 +47,7 @@ It creates a 2 x 2 grid by stacking two containers and dividing each of them int
 
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/stgrid/images/Screenshot2x2grid.png)
 
-The problem is that if we were to create a, for example, 10 x 10 grid, the code would get very cumbersome.
+This works well for this simple application but if we were to create a, for example, 10 x 10 grid, the code could get very cumbersome.
 
 Wouldn't it be easier to create a grid that can be accessed as a two-dimesional array. So, instead of the explicit code that we see above, we could write something like:
 
@@ -71,7 +76,7 @@ with st.container():
 ````
 _Listing 3_
 
-Here we create an empty two dimensional array and then, in each container, we assign two columns to that array. And this enables us to write code exactly as in _Listing 2_.
+Here we create an empty two dimensional array and then, in each, we use container and assign two columns to each array element. This gives us a two dimensional array and this enables us to write code exactly as in _Listing 2_.
 
 Again, though, while this works well, scaling it up to a larger grid will result in much more cumbersome code.
 
@@ -91,7 +96,7 @@ def make_grid(cols,rows):
 ````
 _Listing 4_
 
-The function takes the number of rows and the number of coumns as parameters. Next it creates a one-dimensional array the size of the columns. (This is done using list comprehension and the list is initialised with zeroes - an arbitrary value that will be overwritten.)
+The function in _Listing 4_ takes the number of rows and the number of columns as parameters. Next it creates a one-dimensional array the size of the columns. (This is done using list comprehension and the list is initialised with zeroes - an arbitrary value that will be overwritten.)
 
 Then for each of the elements of that array we create a Streamlit container and within that container we create the required number of rows (a list of rows) and assign it to each element of the one-dimensional array, thus creating a two-dimensional array of rows and columns that is returned from the function.
 
@@ -122,6 +127,10 @@ _Listing 6_
 would give you this:
 
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/stgrid/images/Screenshot5x5withchart.png)
+
+So here we have a general way of creating a grid layout of any size and shape. Let's see how I've used it in practice in the World Population app.
+
+TK add app description
 
 Maybe Streamlit will add a grid layout in the future. But until then, I hope you will find this useful.
 
