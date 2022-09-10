@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 # function to make any grid
 
 def make_grid(cols,rows):
-    grid = [0 for i in range(cols)]
+    grid = [0]*cols
     for i in range(cols):
         with st.container():
             grid[i] = st.columns(rows)

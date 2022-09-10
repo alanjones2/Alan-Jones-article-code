@@ -14,8 +14,11 @@ Luckily, this is easily solved and we shall see how we can construct a grid usin
 
 A grid lets us layout out text, data and charts in a neat and consistant way in rows and columns. As an example, I've created a Streamlit app using data from the 2022 UN's _World Population Prospects_ report. Among other things, this report looks at how the World's population will grow over the next few decades. The app is based on an article from Our World in Data (see note 1) and looks like this:
 
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/stgrid/images/ScreenshotApp.png)
+
 TK add reference to app
-TK add headers
+
+## Constructing a grid layout
 
 We'll take a look at the way the app is structured a little later but first we'll take a look at how we can construct a grid layout in Streamlit.
 
@@ -80,6 +83,8 @@ Here we create an empty two dimensional array and then, in each, we use containe
 
 Again, though, while this works well, scaling it up to a larger grid will result in much more cumbersome code.
 
+## A generic solution
+
 So, how about we write a function to create a two dimensional array of any dimensions, 2 x 2, 3 x 2, 10 x 10 - whatever.
 
 Here it is:
@@ -88,7 +93,7 @@ Here it is:
 # make any grid with a function
 
 def make_grid(cols,rows):
-    grid = [0 for i in range(cols)]
+    grid = [0]*cols
     for i in range(cols):
         with st.container():
             grid[i] = st.columns(rows)
@@ -96,7 +101,7 @@ def make_grid(cols,rows):
 ````
 _Listing 4_
 
-The function in _Listing 4_ takes the number of rows and the number of columns as parameters. Next it creates a one-dimensional array the size of the columns. (This is done using list comprehension and the list is initialised with zeroes - an arbitrary value that will be overwritten.)
+The function in _Listing 4_ takes the number of rows and the number of columns as parameters. Next it creates a one-dimensional array the size of the columns. (The list is initialised with zeroes - an arbitrary value that will be overwritten.)
 
 Then for each of the elements of that array we create a Streamlit container and within that container we create the required number of rows (a list of rows) and assign it to each element of the one-dimensional array, thus creating a two-dimensional array of rows and columns that is returned from the function.
 
@@ -130,15 +135,24 @@ would give you this:
 
 So here we have a general way of creating a grid layout of any size and shape. Let's see how I've used it in practice in the World Population app.
 
+## The example app
+
 TK add app description
+
+
+
+## Conclusion
 
 Maybe Streamlit will add a grid layout in the future. But until then, I hope you will find this useful.
 
-Thanks for reading. You can find the full listing of all the code used here and the app on from my [Github web page](https://alanjones2.github.io) and there is a gist of the app code at the very end of the article.
+You can find the full listing of all the code used here and the app on from my [Github web page](https://alanjones2.github.io) and there is a gist of the app code at the very end of the article.
+
+Thanks for reading.
 
 
-### Notes
+## Notes
 1. Data and edited text courtesy of, 
 [Our World in Data](https://ourworldindata.org/world-population-update-2022), reproduced in accordance with Creative Commons Attribution 4.0 International ([CC BY 4](https://creativecommons.org/licenses/by/4.0/))
 
+## Listing for the example app
 https://gist.github.com/alanjones2/b2574d866d0b19c4d14771a0a72dd746
