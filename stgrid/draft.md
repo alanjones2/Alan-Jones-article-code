@@ -1,6 +1,6 @@
 # How to Create a Grid Layout in Streamlit
 
-## We present a method to programmatically create a grid layout in Streamlit
+## We present a method to programmatically create a grid layout in Streamlit with a demonstration
 
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/stgrid/images/1_23w13JLGqofbNLlDajur5A.jpeg)
 
@@ -17,6 +17,7 @@ A grid lets us layout out text, data and charts in a neat and consistant way in 
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/stgrid/images/ScreenshotApp.png)
 
 TK add reference to app
+You can see the app [here](https://alanjones2-alan-jones-article-code-stgridappgridapp-s6w2lw.streamlitapp.com/)
 
 ## Constructing a grid layout
 
@@ -138,8 +139,17 @@ So here we have a general way of creating a grid layout of any size and shape. L
 ## The example app
 
 TK add app description
+The app displays three of the key findings from the UN World Population Prospects, 2022. It uses two data files from Our World in Data and the text is based on the same source (see note 1).
 
+There are three rows for each of the findings and each row contains three columns: one for the headline title, the second for a brief description and the last for a chart. The grid is constructed with the function described above and the charts are constructed from the data files using _ pyplot_ from _matplotlib_. the text is displayed in the appropriate columns using ``st.write()`` or ``st.markdown()``. If you have followed the code above you will find the code easy to follow (a gist of the code is included at the end).
 
+One thing to note about this app is that it weights the columns differently so that the headline column is a little narrower than the other two. We do this by passing a tuple to the ``make_grid()`` as its ``cols`` value. This is passed on to the ``st.columns()`` function this producing the effect that we want.
+
+The first finding is the that the World population growth rate is now below 1% which is less than half the figure for the 1960s. 
+
+The consequence of this is reflected in the second finding, which is while the World's population continues to grow, it will reach a peak of 10.4 billion in 2086.
+
+The third finding is that while China has long been the most populous nation on Earth - currently with 1.4 billion people - it's rate of growth has declined since the 1970s and 80s. In consequence, India is likely to overtake China in terms of population in 2023 because although its population growth is declining, too, it is doing so at a slower rate than China.
 
 ## Conclusion
 
