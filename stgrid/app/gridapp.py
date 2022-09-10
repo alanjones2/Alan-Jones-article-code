@@ -30,7 +30,7 @@ st.markdown("---")
 mygrid = make_grid(3,(2,4,4))
 
 # Row 0
-popgrowth = pd.read_csv('data/population-growth.csv')
+popgrowth = pd.read_csv('population-growth.csv')
 worldgrowth = popgrowth[popgrowth['Country name'] == 'World']
 
 fig, ax = plt.subplots()
@@ -51,7 +51,7 @@ But, the growth rate is below 1%, less than half its peak rate of growth - of 2.
 mygrid[0][2].pyplot(fig)
 
 # Row 1
-popdf = pd.read_csv('data/population.csv')
+popdf = pd.read_csv('population.csv')
 worldpop = popdf[popdf['Country name'] == 'World']
 
 fig, ax = plt.subplots()
