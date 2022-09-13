@@ -1,6 +1,6 @@
 This folder contains the code and data for the article:
 
-## How to Create a Grid Layout in Streamlit
+## [How to Create a Grid Layout in Streamlit](https://towardsdatascience.com/how-to-create-a-grid-layout-in-streamlit-7aff16b94508)
 
 ### Files
 - ``grid1.py`` contains the introductory code for creating a grid layout 

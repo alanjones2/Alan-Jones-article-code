@@ -41,52 +41,12 @@
         </div>
     </div>
 
-    <py-script>
-        # Import libraries
-        import pandas as pd
-        import matplotlib.pyplot as plt
-        import seaborn as sns
-
-        # Get the data
-        from pyodide.http import open_url
-        
-        url = 'https://raw.githubusercontent.com/alanjones2/uk-historical-weather/main/data/Heathrow.csv'
-        url_content = open_url(url)
-
-        df = pd.read_csv(url_content)
-
-        # filter the data for the year 2020
-        df = df[df['Year']==2020]
-
-        # Function to plot the chart
-        def plot(chart):
-            fig, ax = plt.subplots()
-            sns.lineplot(y=chart, x="Month", data=df, ax=ax)
-            pyscript.write("chart1",fig)
-        
-        # Set up a proxy to be called when a 'change'
-        # event occurs in the select control 
-        from js import document
-        from pyodide import create_proxy
-
-        # Read the value of the select control
-        # and call 'plot'
-        def selectChange(event):
-            choice = document.getElementById("select").value
-            plot(choice)
-
-        # set the proxy
-        def setup():
-            # Create a JsProxy for the callback function
-            change_proxy = create_proxy(selectChange)
-
-            e = document.getElementById("select")
-            e.addEventListener("change", change_proxy)
-
-        setup()
-
-        # Intitially call plot with 'Tmax'
-        plot('Tmax')
-    </py-script>
+      <h1 class="font-semibold text-2xl ml-5">Custom REPL</h1>
+      <py-box widths="2/3;1/3">
+        <py-repl id="my-repl" auto-generate="true" std-out="output" std-err="err-div"> </py-repl>
+        <div id="output" class="p-4"></div>
+      </py-box>
+      <footer id="err-div" class="bg-red-700 text-white text-center border-t-4 border-green-500 fixed inset-x-0 bottom-0 p-4 hidden">
+    </footer>
 </body>
 </html>
