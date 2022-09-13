@@ -33,7 +33,27 @@
   
     <div class="row">
         <div class="col-sm-6 p-2 ">
-            <py-repl id="my-repl" auto-generate="true" std-out="output" std-err="err-div"></py-repl>
+            <!-- add attribute auto-generate="true" to automatically create a new cell -->
+            <py-repl id="my-repl" std-out="output" std-err="err-div">
+# Import libraries
+import pandas as pd
+import matplotlib.pyplot as plt
+from pyodide.http import open_url
+
+url = 'https://raw.githubusercontent.com/alanjones2/uk-historical-weather/main/data/Heathrow.csv'
+url_content = open_url(url)
+
+df = pd.read_csv(url_content)
+
+# filter the data for the year 2020
+df = df[df['Year']==2020]
+
+
+fig, ax = plt.subplots()
+df.plot(y='Tmax', x='Month', figsize=(8,4),ax=ax)
+        
+
+            </py-repl>
         </div>
         <div class="col-sm-4 p-2 rounded">
             <div id="output"></div>
