@@ -22,7 +22,7 @@ plt.fill_between(weather['Month'], weather['Tmax'],weather['Tmin'], color='light
 
 ax.get_legend().set_visible(False)
 
-ax.set_ylabel('Temperature Range ºC')
+ax.set_ylabel('Temperature Range °C')
 
 
 st.pyplot(fig)

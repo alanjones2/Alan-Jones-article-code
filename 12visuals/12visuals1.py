@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 
 days = ['Yesterday','Today']
 temps = [24,29]
-caption = f"Today's temperature was {temps[1]}ºC"
-caption2 = "That's 5º up from yesterday"
+caption = f"Today's temperature was {temps[1]}°C"
+caption2 = "That's 5°  up from yesterday"
 
 fig, ax = plt.subplots()
 plt.bar(days,temps)
