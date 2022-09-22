@@ -12,11 +12,7 @@
 </head>
 
 <body>
-    <script>
-    function clear(){
 
-    }
-    </script>
     <div class="jumbotron">
         <h1>REPL</h1>
         <p class="lead">
@@ -24,10 +20,9 @@
         </p>
     </div>
 
-    <button  type="button" class="btn btn-secondary" onclick="document.getElementById('output').innerHTML='';
-        document.getElementById('err-div').innerHTML='';
-    
-        ">
+    <button  type="button" class="btn btn-secondary" 
+        onclick="document.getElementById('output').innerHTML='';
+        document.getElementById('err-div').innerHTML='';">
         Clear Output
     </button>
   
@@ -54,6 +49,11 @@ df.plot(y='Tmax', x='Month', figsize=(8,4),ax=ax)
         
 
             </py-repl>
+
+            <py-repl id="my-repl" std-out="output" std-err="err-div">
+print("123")
+fig
+            </py-repl>
         </div>
         <div class="col-sm-4 p-2 rounded">
             <div id="output"></div>
@@ -62,7 +62,6 @@ df.plot(y='Tmax', x='Month', figsize=(8,4),ax=ax)
 
     <footer id="err-div"><!-- class="bg-red-700 text-white text-center border-t-4 border-green-500 fixed inset-x-0 bottom-0 p-4 hidden"-->
     </footer>
-
 
 
 </body>
