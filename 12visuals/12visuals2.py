@@ -12,7 +12,7 @@ st.subheader("st.table")
 st.table(temps)
 
 st.subheader("st.table in a narrow column")
-col1,col2 = st.columns((1,10))
+col1,col2 = st.columns((5,10))
 col1.table(temps)
 
 st.subheader("st.dataframe")
