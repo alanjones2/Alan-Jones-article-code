@@ -4,7 +4,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 
-weather =  pd.read_csv('https://raw.githubusercontent.com/alanjones2/dataviz/master/london2018.csv')
+weather =  pd.read_csv('data/london2018.csv')
 
 weather['Tmean'] = (weather['Tmax'] + weather['Tmin'])/2
 st.table(weather)
@@ -23,6 +23,5 @@ plt.fill_between(weather['Month'], weather['Tmax'],weather['Tmin'], color='light
 ax.get_legend().set_visible(False)
 
 ax.set_ylabel('Temperature Range °C')
-
 
 st.pyplot(fig)
