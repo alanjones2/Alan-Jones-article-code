@@ -11,6 +11,7 @@
 
         - paths:
             - ./temp.py
+            - ./temp2.py
     </py-env>
 </head>
 
@@ -45,10 +46,20 @@
     </py-script>
 
     <py-script>
-        # Creat interactive elements and append to a parent DOM element
-        def createSelect(parent, options, callback=None):         
+        # Create interactive elements and append to a parent DOM element
+
+        # We can specify  callback for an element - defaults to change - and no id will be needed
+        # but if a different element - say a button - should call the callback then an id will be needed 
+        # because that other element will use getElementById() 
+
+        def createSelect(parent, options,  callback=None, id = None, callbackEvent = "change"):     
+
+           
             select = document.createElement("select")
             select.setAttribute("class", "form-control")
+            if id:
+                select.setAttribute("id", id)
+
             for o in options:
                 opt = document.createElement("option")
                 opt.append(o['caption'])
@@ -59,7 +70,7 @@
             e.append(select)
             if callback:
                 change_proxy = create_proxy(callback)
-                e.addEventListener("change", change_proxy)
+                e.addEventListener(callbackEvent, change_proxy)
 
             return select
     </py-script>
@@ -101,7 +112,7 @@
             {"caption":"Sun", "value":"Sun"},
             {"caption": "Rain", "value":"Sun"}]
 
-        e = createSelect(parent, options,selectChange)
+        e = createSelect(parent = parent, options = options, callback = selectChange)
 
         # Intitially call plot with 'Tmax'
         plot('Tmax')
@@ -114,6 +125,10 @@
     <py-script src="temp.py"></py-script>
     <py-script>
     from temp import p
-    p()</py-script>
+    p()
+    
+    from temp2 import p2
+    p2()
+    </py-script>
 </body>
 </html>
