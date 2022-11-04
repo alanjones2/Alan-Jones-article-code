@@ -1,5 +1,4 @@
 <html>
-
 <head>
 
     <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
@@ -8,11 +7,8 @@
     <py-env>
         - matplotlib
         - pandas
-
-        - paths:
-            - ./temp.py
-            - ./temp2.py
     </py-env>
+    <script src = "foo.js"></script>
 </head>
 
 <body>
@@ -41,40 +37,13 @@
         </div>
     </div>
     <py-script>
+        import js
         from js import document
         from pyodide import create_proxy
+        import json
     </py-script>
 
-    <py-script>
-        # Create interactive elements and append to a parent DOM element
-
-        # We can specify  callback for an element - defaults to change - and no id will be needed
-        # but if a different element - say a button - should call the callback then an id will be needed 
-        # because that other element will use getElementById() 
-
-        def createSelect(parent, options,  callback=None, id = None, callbackEvent = "change"):     
-
-           
-            select = document.createElement("select")
-            select.setAttribute("class", "form-control")
-            if id:
-                select.setAttribute("id", id)
-
-            for o in options:
-                opt = document.createElement("option")
-                opt.append(o['caption'])
-                opt.setAttribute("value",o['value'])
-                select.append(opt)
-
-            e = document.getElementById(parent)
-            e.append(select)
-            if callback:
-                change_proxy = create_proxy(callback)
-                e.addEventListener(callbackEvent, change_proxy)
-
-            return select
-    </py-script>
-    
+   
     <py-script>
         # Import libraries
         import pandas as pd
@@ -110,25 +79,13 @@
         options = [{"caption":"Maximum Temperature", "value":"Tmax"},
             {"caption": "Minimum Temperature", "value":"Tmin"},
             {"caption":"Sun", "value":"Sun"},
-            {"caption": "Rain", "value":"Sun"}]
+            {"caption": "Rain", "value":"Rain"}]
 
-        e = createSelect(parent = parent, options = options, callback = selectChange)
+        js.createSelect(parent, json.dumps(options), create_proxy(selectChange))
 
         # Intitially call plot with 'Tmax'
         plot('Tmax')
     </py-script>
 
-    <!-- 
-    How to use an external file - note has to be run on server 
-    See py-config, too, for paths
-    -->
-    <py-script src="temp.py"></py-script>
-    <py-script>
-    from temp import p
-    p()
-    
-    from temp2 import p2
-    p2()
-    </py-script>
 </body>
 </html>
