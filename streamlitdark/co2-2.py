@@ -23,6 +23,8 @@ st.set_page_config(layout = "wide")
 
 df_co2= get_co2_data()
 
+df_co2
+
 st.markdown("""
 # World CO2 emissions
 __The graphs below show the CO2 emissions per capita for the entire 
