@@ -47,7 +47,6 @@ data = pd.read_csv(url)
 
 _This code snippet uses the requests library to get the content of the file and the pd.read_csv() function to import the content of the file into a pandas dataframe._
 
-![]()
 
 __show the data__
 
@@ -64,6 +63,7 @@ data.head()
 
 _This will display the first 5 records of the dataframe by default, but you can also pass a number as an argument to display that many records, e.g. data.head(10) will display the first 10 records of the dataframe._
 
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/df.png)
 
 
 __create a new column in the dataframe called Tmean which is the average of the columns Tmax and Tmin__
@@ -92,6 +92,9 @@ The plt.show() function is used to display the chart._
 
 _Note that the 'Month' column should be in datetime format to properly show the line chart. If the 'Month' column is not in datetime format, you should convert it to datetime before creating the line chart._
 
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/tmean-pandasplot.png)
+
+
 _You can also use the following code snippet to draw a line chart of Tmean over Month:_
 
 ```` Python
@@ -103,6 +106,7 @@ plt.show()
 
 _This code snippet uses the plt.plot() function to draw the line chart, and it uses the plt.xlabel() and plt.ylabel() functions to add labels to the x-axis and y-axis of the chart, respectively. The plt.show() function is used to display the chart._
 
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/tmean-matplot.png)
 
 
 __draw a line chart that includes lines forTmin, Tmean and Tmax__
@@ -118,6 +122,9 @@ The plt.show() function is used to display the chart._
 
 _Note that the 'Month' column should be in datetime format to properly show the line chart. If the 'Month' column is not in datetime format, you should convert it to datetime before creating the line chart._
 
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/3lines-pandasplot.png)
+
+
 _You can also use the following code snippet to draw a line chart that includes lines for Tmin, Tmean, and Tmax over Month:_
 
 ```` Python
@@ -132,6 +139,7 @@ plt.show()
 
 _This code snippet uses the plt.plot() function multiple times to draw the lines for Tmin, Tmean, and Tmax over Month. The label parameter is used to add a label to each line, and the plt.legend() function is used to display the legend of the chart. The plt.xlabel() and plt.ylabel() functions are used to add labels to the x-axis and y-axis of the chart, respectively. The plt.show() function is used to display the chart._
 
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/3lines-matplot.png)
 
 
 __draw a similar chart with shading between Tmin and Tmax__
@@ -150,6 +158,7 @@ plt.show()
 
 _This code snippet uses the plt.fill_between() function to add shading between the Tmin and Tmax lines. The plt.fill_between() function is passed the x-coordinates (in this case, the 'Month' column), the y-coordinates of the top and bottom lines (in this case, the 'Tmin' and 'Tmax' columns), the color of the shading ('gray'), and the transparency of the shading (alpha=0.5). The rest of the code is similar to the previous example, where the plt.plot() function is used multiple times to draw the lines for Tmin, Tmean, and Tmax over Month, plt.xlabel(), plt.ylabel() and plt.legend() are used to add labels to the x-axis, y-axis and legend of the chart, respectively and plt.show() function is used to display the chart. This will draw a line chart of Tmin, Tmean, and Tmax over Month with shading between Tmin and Tmax._
 
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/3lines-shaded.png)
 
 
 __draw the same chart with Tmin and Tmax lines the same colour as the shading and Tmean black__
@@ -168,6 +177,7 @@ plt.show()
 
 _This code snippet is similar to the previous one but it uses the 'color' parameter in the plt.plot() function to change the color of the Tmin and Tmax lines to be the same as the color of the shading. The Tmean line is set to black color. The rest of the code is similar to the previous examples, where the plt.fill_between() function is used to add shading between the Tmin and Tmax lines, plt.xlabel(), plt.ylabel() and plt.legend() are used to add labels to the x-axis, y-axis and legend of the chart, respectively and plt.show() function is used to display the chart. This will draw a line chart of Tmin, Tmean, and Tmax over Month with Tmin and Tmax lines the same color as the shading and Tmean black._
 
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/3lines-shaded-grey.png)
 
 
 _draw a scatter diagram of Sun against Rain_
@@ -188,6 +198,7 @@ _This will draw a scatter diagram of Sun against Rain. Each point on the chart r
 
 _Note: Sun and Rain columns should be numerical and not contain any missing values. If there are any missing values in the Sun and Rain columns, you should handle them before creating the scatter plot._
 
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/scatterplot.png)
 
 
 
@@ -218,6 +229,9 @@ _This will draw a scatter diagram of Sun against Rain with a trend line. The tre
 
 _Note: Sun and Rain columns should be numerical and not contain any missing values. If there are any missing values in the Sun and Rain columns, you should handle them before creating the scatter plot and the trendline. Also, import numpy library before using the above code snippet import numpy as np_
 
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/scatterplot-trend.png)
+
+
 __draw the same chart with plotly__
 
 ```` Python
@@ -235,6 +249,9 @@ _This code snippet uses the px.scatter() function from the plotly.express librar
 _This will draw a scatter diagram of Sun against Rain with a trend line using the plotly library. The trend line is a line that best fits the data points and shows the general trend of the data._
 
 _Note: Sun and Rain columns should be numerical and not contain any missing values. If there are any missing values in the Sun and Rain columns, you should handle them before creating the scatter plot and the trendline. Make sure that you have the latest version of plotly library installed._
+
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/scatterplot-trend-plotly.png)
+
 
 __draw the last line chart in plotly__
 
@@ -261,6 +278,9 @@ _This code snippet uses the go.Scatter() function from the plotly.graph_objs lib
 
 _This will draw a line chart of Tmin, Tmean,_
 
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/3lines-plotly1.png)
+
+
 - regenerate response
 
 __draw the last line chart in plotly__
@@ -283,7 +303,11 @@ _This code snippet uses the go.Figure(), fig.add_trace(), fig.update_layout() an
 _The go.Figure() function is used to initialize the figure and the fig.add_trace() function is used to add the Tmin, Tmean and Tmax lines to the figure, passing the x and y coordinates, mode, name and color of the line.
 The `_
 
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/3lines-plotly2.png)
 
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/3lines-plotly3.png)
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/3lines-plotly4.png)
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/3lines-plotly5.png)
 
 
 
