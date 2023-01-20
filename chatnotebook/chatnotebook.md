@@ -305,8 +305,47 @@ The `_
 
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/3lines-plotly2.png)
 
-![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/3lines-plotly3.png)
+![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/3lines-plotly3.png)# Import the plotly library
+import plotly.graph_objs as go
+
+```` Python
+# Draw a line chart of Tmin, Tmean, and Tmax over Month with shading between Tmin and Tmax using plotly
+
+trace1 = go.Scatter(x=data['Month'], y=data['Tmin'],mode='lines', name='Tmin', line=dict(color='gray'))
+trace2 = go.Scatter(x=data['Month'], y=data['Tmean'],mode='lines', name='Tmean', line=dict(color='black'))
+trace3 = go.Scatter(x=data['Month'], y=data['Tmax'],mode='lines', name='Tmax', line=dict(color='gray'))
+trace4 = go.Scatter(x=data['Month'], y=data['Tmin'],mode='none', fill='tonexty', fillcolor='gray', showlegend=False)
+
+data_plotly = [trace1, trace2, trace3,trace4]
+layout = go.Layout(yaxis=dict(title='Temperature'))
+fig = go.Figure(data=data_plotly, layout=layout)
+fig.show()
+````
+
+
+
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/3lines-plotly4.png)
+
+```` Python
+# Import the plotly library
+import plotly.graph_objs as go
+
+# Draw a line chart of Tmin, Tmean, and Tmax over Month with shading between Tmin and Tmax using plotly
+
+greycolor = fillcolor = 'rgba(180,180,180,0.5)'
+
+trace1 = go.Scatter(x=data['Month'], y=data['Tmin'],mode='lines', name='Tmin', line=dict(color=greycolor))
+trace2 = go.Scatter(x=data['Month'], y=data['Tmean'],mode='lines', name='Tmean', line=dict(color='black'))
+trace3 = go.Scatter(x=data['Month'], y=data['Tmax'],mode='lines', name='Tmax', line=dict(color=greycolor))
+trace4 = go.Scatter(x=data['Month'], y=data['Tmin'],mode='none', fill='tonexty', fillcolor=greycolor, showlegend=False)
+
+data_plotly = [trace1, trace2, trace3,trace4]
+layout = go.Layout(yaxis=dict(title='Temperature'))
+fig = go.Figure(data=data_plotly, layout=layout)
+fig.show()
+````
+
+
 ![](https://github.com/alanjones2/Alan-Jones-article-code/raw/master/chatnotebook/images/3lines-plotly5.png)
 
 
