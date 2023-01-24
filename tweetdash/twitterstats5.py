@@ -34,8 +34,11 @@ def sentiment_analysis(text):
 def main(api):
     st.title("Twitter Sentiment Analysis")
 
-    # Get the twitter username
+    # Set up sidebar
     with st.sidebar:
+        # Get the twitter username
+        st.header("Enter the Twitter name")
+        st.write("that you want to retrieve tweets from")
         username = st.text_input("Enter the Twitter username:")
         number_of_tweets = st.select_slider("Number of tweets", options=(10,20,30,40,50,60,70,80,90,100), value=10)
         resp = st.button('Submit')
@@ -62,6 +65,13 @@ def main(api):
             total_rts = 0
             total_fav = 0
 
+            # Create a df to contain all the tweets and other info
+            
+            df_t = pd.DataFrame()
+            df_t['text'] =[i.text for i in tweets]
+            df_t['favourites'] =[i.favorite_count for i in tweets]
+            df_t['rts'] =[i.retweet_count for i in tweets]
+            df_t
             for tweet in tweets:
                 total_rts+=tweet.retweet_count
                 total_fav+=tweet.favorite_count
