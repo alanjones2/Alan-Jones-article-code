@@ -66,11 +66,13 @@ def main(api):
             total_fav = 0
 
             # Create a df to contain all the tweets and other info
-            
+
             df_t = pd.DataFrame()
             df_t['text'] =[i.text for i in tweets]
             df_t['favourites'] =[i.favorite_count for i in tweets]
             df_t['rts'] =[i.retweet_count for i in tweets]
+            df_t['resp'] = [i.in_reply_to_status_id for i in tweets]
+            
             df_t
             for tweet in tweets:
                 total_rts+=tweet.retweet_count
@@ -80,6 +82,11 @@ def main(api):
                     with cols[0]: st.write(tweet.text)
                     with cols[1]: st.write(tweet.retweet_count)
                     with cols[2]: st.write(tweet.favorite_count)
+
+                #
+                # WRONG - this is getting the sentiment of the tweet IF it is a reply
+                #
+
 
                 if tweet.in_reply_to_status_id is not None:
                     #tweet.in_reply_to_status_id

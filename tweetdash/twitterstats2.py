@@ -5,11 +5,11 @@ import pandas as pd
 import twitter
 
 # Set up credentials for Twitter developer API
+consumer_key = st.secrets["consumer_key"]
+consumer_secret = st.secrets["consumer_secret"]
+access_token = st.secrets["access_token"]
+access_token_secret = st.secrets["access_token_secret"]
 
-CONSUMER_KEY = 'sRLpbdbEX07ZJNw3KhFinasKE'
-CONSUMER_SECRET = 'XglmGnO9TGCuu8y5x78MdhS8cMASkC5LkpIhW08kQuJrrxHaR2'
-OAUTH_TOKEN = '1022515213151686657-aena7S5IpKSy5ZQsYFM5234OJ2AloT'
-OAUTH_TOKEN_SECRET = 'kPX6hu7ln6MBHp4QHnDsY3E6z0dvIMS6uVAsiDNnFlbXj'
 
 auth = twitter.oauth.OAuth(OAUTH_TOKEN, OAUTH_TOKEN_SECRET,
                            CONSUMER_KEY, CONSUMER_SECRET)
