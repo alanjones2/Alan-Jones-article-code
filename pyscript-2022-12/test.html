@@ -1,0 +1,23 @@
+<html>
+<head>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2022.12.1/pyscript.css" />
+    <script defer src="https://pyscript.net/releases/2022.12.1/pyscript.js">
+    </script>
+</head>
+
+<body>
+<div id="output"></div>
+    
+<py-config type="toml">
+    packages = ['pandas','matplotlib']
+    [[fetch]]
+    from = './my_package/'
+    files = ['test.py']
+    to_folder = 'local_package'
+</py-config>
+    <py-script>
+        from local_package import test 
+        display(test.say_hello(), target="output")
+    </py-script>
+</body>
+</html>

@@ -46,6 +46,8 @@ def main(api):
     if resp:
         try:
             tweets = api.user_timeline(screen_name=username, count=number_of_tweets)
+
+
         except:
             print("Unexpected error receiving tweet")
 
@@ -71,9 +73,8 @@ def main(api):
             df_t['text'] =[i.text for i in tweets]
             df_t['favourites'] =[i.favorite_count for i in tweets]
             df_t['rts'] =[i.retweet_count for i in tweets]
-            df_t['resp'] = [i.in_reply_to_status_id for i in tweets]
+            #df_t
             
-            df_t
             for tweet in tweets:
                 total_rts+=tweet.retweet_count
                 total_fav+=tweet.favorite_count
@@ -85,6 +86,9 @@ def main(api):
 
                 #
                 # WRONG - this is getting the sentiment of the tweet IF it is a reply
+                # try something like this:
+                #r = tweets = api.search_tweets(q="to:CNN", count=10)
+                #print(f"t{r}")
                 #
 
 
