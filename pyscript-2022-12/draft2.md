@@ -42,8 +42,45 @@ It would be better and safer to specify the particular version that you are usin
 
 ## Don't use ``<py-env>``
 
-the ``<py-env>`` section of a PyScript app is going to disappear. Instead we should now use ``<py-config>``
+the ``<py-env>`` section of a PyScript app is going to disappear. This was where we specified local files to load into the virtual files system and packages to load from PyPI. Now, we should now use ``<py-config>``, instead.
 
+Here is an example of the way we can load packages from PyPI and use them. The packages to load are specified in  ``<py-config>`` and are later imported in the python code.
+
+
+```` HTML
+<html>
+    <head>
+      <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+      <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    </head>
+
+  <body>
+    <h1>Let's plot make a plot</h1>
+    <div id="plot"></div>
+    <py-config type="json">
+        {
+          "packages": ["pandas", "matplotlib"]
+        }
+    </py-config>
+    <py-script>
+      import matplotlib.pyplot as plt
+      import pandas as pd
+      df = pd.DataFrame()
+      df['x'] = [1,2,3,4,5,6,7,8,9]
+      df['y'] = [1,2,3,4,5,6,7,8,9]
+      fig, ax = plt.subplots()
+      df.plot("x", "y", ax=ax)
+      display(fig, target="plot")
+    </py-script>
+  </body>
+</html>
+````
+
+You can run this code in a browser and you will get a simple straight line graph.
+
+To load a module from a local filesystem we use ``[[fetch]]`` and we can specify where to read the files from, which files are to be loaded, and where they will be located in the virtual file system using ``from``, ``files`` and ``to_folder``.
+
+Here is a simple example that loads a local module called ``test.py`` which simply returns the string ``"Hello"``.
 
 ```` HTML
 <html>
@@ -56,7 +93,7 @@ the ``<py-env>`` section of a PyScript app is going to disappear. Instead we sho
 <body>
 <div id="output"></div>
     
-<py-config type="toml">
+<py-config>
     [[fetch]]
     from = './my_package/'
     files = ['test.py']
