@@ -1,26 +1,26 @@
 <html>
-    <head>
-      <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-      <script defer src="https://pyscript.net/latest/pyscript.js"></script>
-    </head>
 
-  <body>
+<head>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+
+<body>
     <h1>Let's plot make a plot</h1>
     <div id="plot"></div>
-    <py-config type="json">
-        {
-          "packages": ["pandas", "matplotlib"]
-        }
+    <py-config>
+        packages = ["pandas", "matplotlib"]
     </py-config>
     <py-script>
-      import matplotlib.pyplot as plt
-      import pandas as pd
-      df = pd.DataFrame()
-      df['x'] = [1,2,3,4,5,6,7,8,9]
-      df['y'] = [1,2,3,4,5,6,7,8,9]
-      fig, ax = plt.subplots()
-      df.plot("x", "y", ax=ax)
-      display(fig, target="plot")
+        import matplotlib.pyplot as plt
+        import pandas as pd
+        df = pd.DataFrame()
+        df['x'] = [1,2,3,4,5,6,7,8,9]
+        df['y'] = [1,2,3,4,5,6,7,8,9]
+        fig, ax = plt.subplots()
+        df.plot("x", "y", ax=ax)
+        display(fig, target="plot")
     </py-script>
-  </body>
+</body>
+
 </html>

@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+</head>
+
+<body>
+    <div id="output"></div>
+    <py-script>
+        display("Hello", target="output")
+    </py-script>
+
+    <py-script>
+        import js
+        def say_hi(name):
+            js.alert("Hi, " + name)
+    </py-script>
+    <p id="my-p" py-mouseover="say_hi('Alan')" style="border-style:solid">Mouse Over Me</p>
+</body>
+
+</html>

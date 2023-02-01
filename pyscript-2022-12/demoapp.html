@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    
+    <py-config>
+        packages = ['pandas','plotly']
+    </py-config>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <h1>Weather Data</h1>
+        <p class="lead">
+            Some graphs about the weather in London in 2020
+        </p>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2 p-2 ml-4 mb-1">
+            <button type="button" class="btn btn-secondary">Select chart from list:</button>
+        </div>
+        <div class="col-sm-4 p-2 mr-4 mb-1">
+            <select class="form-control" id="select" py-change="selectChange()">
+                <option value="Tmax">Maximum Temperature</option>
+                <option value="Tmin">Minimum Temperature</option>
+                <option value="Sun">Sun</option>
+                <option value="Rain">Rain</option>            
+            </select>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6 p-2 m-4 bg-white">
+            <div id="chart1"></div>
+        </div>
+    </div>
+
+    <py-script>
+        # Import libraries
+        import pandas as pd
+        import js
+        import json
+        import plotly
+        import plotly.express as px
+
+        ## Get the data
+        from pyodide.http import open_url
+        
+        url = 'https://raw.githubusercontent.com/alanjones2/uk-historical-weather/main/data/Heathrow.csv'
+        url_content = open_url(url)
+
+        df = pd.read_csv(url_content)
+        df = df[df['Year']==2020]
+
+        def plot(chart):
+            fig = px.line(df,
+            x="Month", y=chart,
+            width=800, height=400)
+            graphJSON = json.dumps(fig, cls=plotly.utils.PlotlyJSONEncoder)
+            js.Plotly.newPlot("chart1", js.JSON.parse(graphJSON))
+                
+        def selectChange():
+            choice = js.document.getElementById("select").value
+            plot(choice)
+
+        plot('Tmax')
+    </py-script>
+</body>
+
+</html>
