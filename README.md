@@ -24,7 +24,7 @@ A third article uses the techniques used above to create a stock tracking app.
 This is an article on Medium that looks at sentiment analysis using the Python VADER library
 
 <hr/>
-
+<!--
 ## Visualizing Twitter Statistics with Python and Pandas
 
 [[Article](https://towardsdatascience.com/visualizing-twitter-statistics-with-python-and-pandas-956125b369e5)][[Code](https://github.com/alanjones2/Article-code/blob/master/twitterstats-anon.py)]
@@ -32,6 +32,7 @@ This is an article on Medium that looks at sentiment analysis using the Python V
 This is an article on Medium that looks at producing stats from the Twitter API
 
 <hr/>
+-->
 
 ## Jupyter and Markdown
 
