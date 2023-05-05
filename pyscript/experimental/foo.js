@@ -2,11 +2,13 @@ function createSelect(parent, options,  callback=null, callbackEvent = "change",
     
     opt = JSON.parse(options);
 
+    e = document.getElementById(parent);
+
     select = document.createElement("select");
     select.setAttribute("class", "form-control")
     
     for (o in opt){
-        alert(opt[o].caption);
+        //alert(opt[o].caption);
         option = document.createElement("option");
         option.append(opt[o].caption);
         option.setAttribute("value",opt[o].value);
@@ -21,6 +23,6 @@ function createSelect(parent, options,  callback=null, callbackEvent = "change",
         e.addEventListener(callbackEvent, callback);
     }
 
-    e = document.getElementById(parent);
+
     e.append(select);
 }

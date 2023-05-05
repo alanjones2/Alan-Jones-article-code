@@ -1,13 +1,20 @@
 <html>
 <head>
 
-    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
-    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <py-env>
-        - matplotlib
-        - pandas
-    </py-env>
+    <py-script>
+        # suppress warnings
+        import warnings
+        warnings.filterwarnings("ignore")
+    </py-script>
+    <py-config>
+        packages = ["pandas", "matplotlib"]
+        [[fetch]]
+        from = "https://raw.githubusercontent.com/alanjones2/uk-historical-weather/main/data/Heathrow.csv"
+        to_file = "./Heathrow.csv"
+    </py-config>
     <script src = "foo.js"></script>
 </head>
 
@@ -49,13 +56,9 @@
         import pandas as pd
         import matplotlib.pyplot as plt
 
-        # Get the data
-        from pyodide.http import open_url
-        
-        url = 'https://raw.githubusercontent.com/alanjones2/uk-historical-weather/main/data/Heathrow.csv'
-        url_content = open_url(url)
 
-        df = pd.read_csv(url_content)
+        df = pd.read_csv('Heathrow.csv')
+        #print(df.head())
 
         # filter the data for the year 2020
         df = df[df['Year']==2020]
