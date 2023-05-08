@@ -5,7 +5,9 @@
 
 This repo contains the code and data in support of the above article.
 
-The notebook is _m3.ipynb_ and the data is (surprise, surprise) in the directory, _data_.
+The notebook is _m3.ipynb_ and the data is (surprise, surprise) in the folder, _data_.
+
+The _mercurycloud_ folder is a duplicate of the above but with everything in one directory as is required by Mercury Cloud.
 
 ---
 
