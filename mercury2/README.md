@@ -1,4 +1,4 @@
-# Build a Web App with Jupyter and Mercury
+# [Build a Web App with Jupyter and Mercury](https://medium.com/towards-data-science/build-a-web-app-with-jupyter-and-mercury-9d59661441b7)
 
 ## Mercury provides a simple way to transform Jupyter Notebooks into interactive web apps and is also developing cloud-based publishing.
 
