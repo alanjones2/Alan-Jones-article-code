@@ -3,7 +3,8 @@
 ## Mercury provides a simple way to transform Jupyter Notebooks into interactive web apps and is also developing cloud-based publishing.
 
 
-This repo contains the code and data in support of the above article.
+This folder contains the code and data to support the article above.
+
 
 ## Local version
 
@@ -11,8 +12,12 @@ The notebook is _m3.ipynb_ and the data is (surprise, surprise) in the folder, _
 
 The _.png_ files are the ones used to illustrate the Medium article.
 
+### [Click here for a demo](https://alanjones.runmercury.com/app/m3c)
+
 ## Mercury Cloud version
 The _mercurycloud_ folder is similar to the above but the notebooks download the data from Github instead of local files. Mercury Cloud's free offering restricts you to only 10 files, so this gives me more scope to upload more notebooks if I want to.
+
+
 
 Mercury Cloud also requires a _requirements.txt_ file.
 
