@@ -111,9 +111,13 @@ Putting your Jupyter notebook on the web is reasonably easy with either Mercury 
 
 You probably remember Mean, Median and Mode from high school stats classes but they are often misused. We look at how you should use them - with Python and Pandas examples.
 
-<hr/>
-If you have found this content useful, please consider this... <br/><br/>
-<a href='https://ko-fi.com/M4M64THKG' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi2.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+---
+### If you find this content useful, please consider one or more of the following:
+
+-  ### Sign up for [Medium](https://medium.com/@alan-jones/membership) where you can read all my articles along with thousands of others for $5 a month (_affiliate link_).  
+-  ### [Buy a book](https://alanjones.gumroad.com/)
+-  ### Subscribe to my [free newsletter](https://technofile.substack.com/)
+-  ### Visit my [web page](alanjones2.github.io)
 
 __*Please note that all the software in this repo is written for educational purposes and should not be considered suitable for production code*__
 

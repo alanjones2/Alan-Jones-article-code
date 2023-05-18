@@ -1,16 +1,14 @@
-# CO2 Emissions Infographics in Python
-The code in this folder supports the Medium article [__CO2 Emissions Infographics in Python__](#)
+# [Title and link](#link)
 
-## How To Build a Data Infographic with Python and Matplotlib.
-
-
-All of the code is in the Jupyter Notebook ``co2.ipynb``
-The data is in the folder ``data``
-All image, both imported and created are in the folder ``images``
+## Subtitle
 
 
+This folder contains the code and data to support the article above.
 
-See other articles and code on my [Github site](https://alanjones2.github.io)
+
+## Description and files
+
+
 
 ---
 ### If you find this content useful, please consider one or more of the following:

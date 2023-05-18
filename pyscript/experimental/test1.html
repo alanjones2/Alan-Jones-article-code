@@ -1,0 +1,40 @@
+<html>
+<head>
+
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <py-script>
+        # suppress warnings
+        import warnings
+        warnings.filterwarnings("ignore")
+    </py-script>
+    <py-config>
+        packages = ["pandas", "matplotlib"]
+    </py-config>
+    <script src = "foo.js"></script>
+</head>
+
+<body>
+    <div id="content">
+    </div>
+
+    <py-script>
+        import js
+        from js import document
+        from pyodide import create_proxy
+        import json
+    </py-script>
+
+   
+    <py-script>
+        text = """
+        <h1>qwertyuiop</h1>
+        qwertyui
+        azsdfghj
+        """
+        js.createDiv("content", text)
+    </py-script>
+
+</body>
+</html>

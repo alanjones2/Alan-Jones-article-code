@@ -7,7 +7,10 @@ Beautiful interactive multipage dashboards are made easy with Streamlit
 
 You see a demo [here](http://ajstreamlit.herokuapp.com/)
 
-See other content on my [Github web page](https://alanjones2.github.io/).
+---
+### If you find this content useful, please consider one or more of the following:
 
-If you find this content useful, please consider this... <br/><br/>
-<a href='https://ko-fi.com/M4M64THKG' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi2.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+-  ### Sign up for [Medium](https://medium.com/@alan-jones/membership) where you can read all my articles along with thousands of others for $5 a month (_affiliate link_).  
+-  ### [Buy a book](https://alanjones.gumroad.com/)
+-  ### Subscribe to my [free newsletter](https://technofile.substack.com/)
+-  ### Visit my [web page](alanjones2.github.io)

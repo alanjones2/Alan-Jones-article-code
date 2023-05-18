@@ -1,16 +1,13 @@
-# CO2 Emissions Infographics in Python
-The code in this folder supports the Medium article [__CO2 Emissions Infographics in Python__](#)
+# [What’s new in PyScript in 2023](https://medium.com/codefile/whats-new-in-pyscript-dfdf25538281)
 
-## How To Build a Data Infographic with Python and Matplotlib.
+This folder contains the code and data to support the article above.
 
+There have been a number of devlopments in PyScript which I try out here. See the Medium article for the full description. The files below relate to that article.
 
-All of the code is in the Jupyter Notebook ``co2.ipynb``
-The data is in the folder ``data``
-All image, both imported and created are in the folder ``images``
+## Files
 
+There are various PyScript examples in the _html_ files and a demo app in _demoapp.html_.
 
-
-See other articles and code on my [Github site](https://alanjones2.github.io)
 
 ---
 ### If you find this content useful, please consider one or more of the following:

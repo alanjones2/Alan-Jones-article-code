@@ -1,16 +1,9 @@
-# CO2 Emissions Infographics in Python
-The code in this folder supports the Medium article [__CO2 Emissions Infographics in Python__](#)
+# [Modern AJAX Programming With JavaScript ``fetch`` and ``await``](https://medium.com/codefile/modern-ajax-programming-with-javascript-fetch-and-await-c2a04d22f785)
 
-## How To Build a Data Infographic with Python and Matplotlib.
+## Goodbye XMLHttpRequest, hello fetch, asynch and await
 
+The article is in the file _ajax.md_ as well as on Medium from the link above. There are no additional code files.
 
-All of the code is in the Jupyter Notebook ``co2.ipynb``
-The data is in the folder ``data``
-All image, both imported and created are in the folder ``images``
-
-
-
-See other articles and code on my [Github site](https://alanjones2.github.io)
 
 ---
 ### If you find this content useful, please consider one or more of the following:
