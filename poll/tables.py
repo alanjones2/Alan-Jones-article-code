@@ -6,7 +6,7 @@ def data_tables(tab):
             st.subheader("The overall result")
 
             # Data for the overall result
-            result = pd.read_csv("./referendumvote.csv")
+            result = pd.read_csv("poll/referendumvote.csv")
             st.dataframe(result)
 
             st.markdown("### Add percentages")
@@ -22,7 +22,7 @@ def data_tables(tab):
             st.dataframe(result)
 
             st.subheader("Age data")
-            age_data = pd.read_csv("age.csv")
+            age_data = pd.read_csv("poll/age.csv")
             st.dataframe(age_data)
 
             age_data_temp = age_data

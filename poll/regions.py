@@ -7,7 +7,7 @@ def regions(tab):
         with tab:
             st.markdown("""### Results by location""")
 
-            regions = pd.read_csv("region.csv")
+            regions = pd.read_csv("poll/region.csv")
             #regions
 
             #st.markdown("""### Add percentages and majorities""")
@@ -22,7 +22,7 @@ def regions(tab):
             with col_r1: 
                 st.write("The regions and where there is a majority to rejoin or stay out")
             with col_r2:
-                f = open("uk_regions.geojson")
+                f = open("poll/uk_regions.geojson")
                 uk_districts = json.load(f)
 
                 fig = px.choropleth_mapbox(regions, 
