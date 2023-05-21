@@ -13,7 +13,7 @@ with col_main1:
     st.info("Select one of the tabs below for the results:")
 
 with col_main2:
-        st.image('./guillaume-perigois-0NRkVddA2fw-unsplash.jpg')
+        st.image('https://raw.githubusercontent.com/alanjones2/Alan-Jones-article-code/master/poll/guillaume-perigois-0NRkVddA2fw-unsplash.jpg')
         st.caption('Photo by Guillaume Périgois on Unsplash')
 
 tab_result, tab_regions, tab_age, tab_data = st.tabs(['Overall result','Regional result','Result by age', 'Data tables'])
