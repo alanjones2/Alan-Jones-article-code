@@ -6,7 +6,7 @@ def data_tables(tab):
             st.subheader("The overall result")
 
             # Data for the overall result
-            result = pd.read_csv("poll/referendumvote.csv")
+            result = pd.read_csv("poll-embed/referendumvote.csv")
             st.dataframe(result)
 
             st.markdown("### Add percentages")

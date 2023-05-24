@@ -8,7 +8,7 @@ def overall(tab):
             st.subheader("The overall result")
 
             # Data for the overall result
-            result = pd.read_csv("poll/referendumvote.csv")
+            result = pd.read_csv("poll-embed/referendumvote.csv")
 
             #st.markdown("### Convert to percentages")
             #st.markdown("A total column and percentage columns have been added, (you may need to scroll the table to see all of the values)")

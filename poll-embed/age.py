@@ -6,7 +6,7 @@ import plotly.express as px
 def age(tab):
     with tab:
 
-        age_data = pd.read_csv("poll/age.csv")
+        age_data = pd.read_csv("poll-embed/age.csv")
         #st.dataframe(age_data)
 
         age_data_temp = age_data
