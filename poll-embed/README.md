@@ -2,17 +2,15 @@
 
 ## How to embed Streamlit apps in Medium - this article records the changes that had to be made to an app in order to embed it in a Medium article
 
-## The app is based on 'Visualizing 'Brexit Regret' and the files for the app are detailed below.
-
-A recent poll shows that more Britons favour rejoining the EU than those who still support Brexit. Let's build an app and draw some graphs.
+### The app is based on 'Visualizing 'Brexit Regret' and the files for the app are detailed below.
 
 This README should be read in conjunction with the Medium article linked to above
 
 ---
 
-This is a Streamlit app that you can find online [here](https://alanjones2-alan-jones-article-code-pollapp1-vgotws.streamlit.app/). It comprises of a main program and four library files:
+This is a Streamlit app that you can find online [here](https://alanjones2-alan-jones-article-code-poll-embedapp2-wzmqpq.streamlit.app//). It comprises of a main program and four library files:
 
-_app2.py_ - the main program
+_app2.py_ - the main program (this is a modified version of app1.py - mainly reduction of sizes of stuff in order to make it embeddable)
 
 _overall.py_ - the coding for drawing graphs of the overall result
 
