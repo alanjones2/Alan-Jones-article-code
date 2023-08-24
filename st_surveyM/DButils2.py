@@ -12,14 +12,8 @@ db = client[DB]
 # Get functions
 def get(key):
     coll = db[key]
-    item_details = coll.find()
-    
-    # make list and the remove '_id' field
-    data = []
-    for d in item_details:
-        del d['_id']
-        data.append(d)
-    return data
+    item_details = coll.find({},{'_id':False})
+    return list(item_details)
 
 def get_survey(key=SURVEY_KEY):
     return get(key)
