@@ -13,6 +13,7 @@ db = client[DB]
 def get(key):
     coll = db[key]
     item_details = coll.find({},{'_id':False})
+    st.write(list(item_details))
     return list(item_details)
 
 def get_survey(key=SURVEY_KEY):
