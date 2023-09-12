@@ -1,8 +1,13 @@
 <html>
 <head>
 
-    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
-    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+    <link rel="stylesheet" 
+        href="https://pyscript.net/releases/2022.12.1/pyscript.css" />
+    <script defer 
+        src="https://pyscript.net/releases/2022.12.1/pyscript.js">
+    </script>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <py-script>
         # suppress warnings
@@ -67,7 +72,9 @@
         def plot(chart):
             fig, ax = plt.subplots()
             df.plot(y=chart, x='Month', figsize=(8,4),ax=ax)
-            pyscript.write("chart1",fig)
+            display("", target="chart1", append=False)
+            display(fig, target="chart1")
+            
         
 
         # Read the value of the select control
