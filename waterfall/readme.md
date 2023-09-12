@@ -9,5 +9,3 @@ The code:
 - plotlyhelper.py - this contains the `waterfall` function and can be imported as a library
 
 - st_waterfall.py - this is a sample application in the form of a Streamlit app which also contians a Matplotlic implementation
-
-- The other files have a variety of programs that the author was playing around with.
