@@ -16,5 +16,5 @@ The code:
 
 -  ### Sign up for [Medium](https://medium.com/@alan-jones/membership) where you can read all my articles along with thousands of others for $5 a month.  
 -  ### [Visit my web page and read other articles and maybe buy a book](alanjones2.github.io)
--  ### Subscribe to my [free newsletter](https://technofile.substack.com/)
+-  ### Subscribe to my occasional [free newsletter](https://technofile.substack.com/)
 -  ### [Buy me a coffee](https://ko-fi.com/alan_jones) - note that [buying a book](alanjones2.github.io) is no more expensive than buying a coffee and you get something in return
