@@ -15,7 +15,6 @@ The code:
 ### If you find this content useful, please consider one or more of the following:
 
 -  ### Sign up for [Medium](https://medium.com/@alan-jones/membership) where you can read all my articles along with thousands of others for $5 a month.  
--  ### [Buy a book](alanjones2.github.io)
+-  ### [Visit my web page and read other articles and maybe buy a book](alanjones2.github.io)
 -  ### Subscribe to my [free newsletter](https://technofile.substack.com/)
--  ### Visit my [web page](alanjones2.github.io)
--  ### [Buy me a coffee](https://ko-fi.com/alan_jones) 
+-  ### [Buy me a coffee](https://ko-fi.com/alan_jones) - note that [buying a book](alanjones2.github.io) is no more expensive than buying a coffee and you get something in return
