@@ -1,0 +1,6 @@
+packages = [ "pandas", "plotly",]
+name = "Data Viz with Plotly"
+
+[[fetch]]
+from = "https://raw.githubusercontent.com/alanjones2/CO2/master/data/world_df.csv"
+to_file = "./hadcrutworld.csv"
