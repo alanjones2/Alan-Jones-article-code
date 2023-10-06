@@ -38,14 +38,15 @@ with col2:
 
 st.header("Create a new template")
 st.info("""On reflection maybe the Plotly Dark template is a bit too dark
-         - let's change the background color to a lighter colour while keeping everything else the same""")
+         - let's change the background color to a lighter colour while keeping the rest of the theme the same""")
 
 import plotly.graph_objects as go
 import plotly.io as pio
 
 pio.templates["draft"] = go.layout.Template()
 
-bg = 'dimgrey' # still dark but not black
+bg = 'darkslategrey' # still dark but not black
+#bg = "#121212"
 pio.templates["draft"].layout.paper_bgcolor=bg
 pio.templates["draft"].layout.plot_bgcolor=bg
 
@@ -56,3 +57,15 @@ fig = px.bar(df, x='Year', y = period, color="JJA", title = f"{title} - {period}
        color_continuous_scale=scale, template=template, width=1600, height=400)
 
 stu.plotly_chart(fig)
+
+### Example component ###
+
+st.header("An example component")
+
+header = "Hamlet"
+text = """To be, or not to be, that is the question:
+Whether 'tis nobler in the mind to suffer
+The slings and arrows of outrageous fortune,
+Or to take Arms against a Sea of troubles,
+And by opposing end them"""
+stu.example_component(header, text)
