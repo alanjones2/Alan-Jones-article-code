@@ -23,7 +23,7 @@ title, df = read_file()
 period = 'JJA'
 scale = 'inferno'
 template = 'plotly_dark'
-fig = px.bar(df, x='Year', y = period, color="JJA", title = f"{title} - {period}", 
+fig = px.bar(df, x='Year', y = period, color=period, title = f"{title} - {period}", 
        color_continuous_scale=scale, template=template, width=800, height=400)
 
 col1, col2 = st.columns(2,gap="small")
@@ -46,7 +46,6 @@ import plotly.io as pio
 pio.templates["draft"] = go.layout.Template()
 
 bg = 'darkslategrey' # still dark but not black
-#bg = "#121212"
 pio.templates["draft"].layout.paper_bgcolor=bg
 pio.templates["draft"].layout.plot_bgcolor=bg
 
