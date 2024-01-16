@@ -2,3 +2,5 @@ pyscript/md/draft.md
 pyscript/md/plotlydraft.md
 tweetdash/.streamlit/secrets.toml
 st_surveyM/.streamlit/secrets.toml
+pandasai/.streamlit/secrets.toml
+pandasai/constants.py
