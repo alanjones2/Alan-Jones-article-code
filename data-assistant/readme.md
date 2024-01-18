@@ -15,7 +15,7 @@
 
 
 
-This folder contains the code and data to support the article above.
+This folder contains the code and data to support the article linked to the title above.
 
 ### Description and files
 
