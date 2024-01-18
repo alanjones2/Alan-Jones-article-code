@@ -1,4 +1,7 @@
-# [How to Use the Powerful New Assistants API for Data Analysis](#)
+# [How to Use the Powerful New Assistants API for Data Analysis](https://medium.com/towards-data-science/how-to-use-the-powerful-new-assistants-api-for-data-analysis-c9ea1cab0b53?sk=c8a84186e1438d48760e34c114dc2db5)
+
+
+<img src="https://miro.medium.com/v2/resize:fit:1100/format:webp/0*Os4M1zBevrurAaOz" width="50%" height="auto">
 
 ### OpenAI's Assistants API lets us create AI assistants which leverage tools that can operate on user-provided data
 
