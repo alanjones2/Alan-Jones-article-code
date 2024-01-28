@@ -1,3 +1,2 @@
-streamlit
 openai
 time
