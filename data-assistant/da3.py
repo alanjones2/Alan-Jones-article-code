@@ -6,7 +6,7 @@ from openai import OpenAI
 #### Utilities
 
 import time
-# This utility function waits for a rum to complete. The code is copied directly from the OpenAI Cookbook.
+# This utility function waits for a run to complete. The code is copied directly from the OpenAI Cookbook.
 
 def wait_on_run(run, thread):
     while run.status == "queued" or run.status == "in_progress":
