@@ -1,6 +1,6 @@
 ### Code to accompany the article:
 
-# [PyScript is Growing Up](#)
+# [PyScript is Growing Up](https://alanjones2.github.io/articles/pyscript-next/PyScript_is_Growing_Up.html)
  
 ## We build a data viz app with the new faster PyScript
 
