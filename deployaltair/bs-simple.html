@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@{{vega_version}}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@{{vegalite_version}}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@{{vegaembed_version}}"></script>
+</head>
+
+<body class="container">
+  <header class="bg-primary text-white text-center py-8">
+    <h1 class="display-4">{{title}}</h1>
+    <p class="lead">{{subtitle}}</p>
+  </header>
+  <div>{{description}}</div>
+  <div class = "p-5" style="width:80%" id="vis1"></div>
+
+  <script type="text/javascript">
+    vegaEmbed('#vis1', {{ spec | safe}}).catch(console.error);
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
