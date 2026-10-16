@@ -1,0 +1,25 @@
+review_id,product,review_number,rating,comment,concerns,strengths
+cloudstrider-sneakers-1,CloudStrider Sneakers,1,2,"The shoes were super comfortable initially, but after just two months, the sole started to peel off! Really disappointed with the durability.",Durability,Initial comfort
+cloudstrider-sneakers-2,CloudStrider Sneakers,2,1,"I ordered my usual size, but these sneakers were way too tight. Had to return them. The sizing is totally off.",Sizing / fit,
+cloudstrider-sneakers-3,CloudStrider Sneakers,3,3,"Great for short runs, but they hold onto odors even after washing. Not ideal for heavy use.",Odour retention,Short-run performance
+cloudstrider-sneakers-4,CloudStrider Sneakers,4,5,Extremely lightweight and breathable. Perfect for casual jogging. No issues so far!,,Lightweight / breathable
+peaktrek-hikers-1,PeakTrek Hikers,1,1,"These boots claim to be waterproof, but my feet were soaked after just walking through damp grass. Not worth it.",Waterproofing,
+peaktrek-hikers-2,PeakTrek Hikers,2,2,I slipped multiple times on rocky trails because the soles don’t grip well on wet surfaces. Not safe for serious hikes.,Wet-surface grip,
+peaktrek-hikers-3,PeakTrek Hikers,3,4,"The boots are sturdy and provide decent ankle support, but I wish the padding was thicker for longer treks.",Padding / comfort,Sturdiness / ankle support
+peaktrek-hikers-4,PeakTrek Hikers,4,5,"Used these for a weekend hike in the mountains, and they held up really well. No blisters, and they felt solid.",,Comfort; Sturdiness
+swiftshine-heels-1,SwiftShine Heels,1,2,"I wore these to a wedding, and the heel broke during the reception. Embarrassing and frustrating!",Heel integrity,
+swiftshine-heels-2,SwiftShine Heels,2,3,"While they look stunning, the glossy finish scratches so easily. They were scuffed after just one night out.",Finish durability,Appearance
+swiftshine-heels-3,SwiftShine Heels,3,1,The worst! My feet were in so much pain after an hour. Definitely not designed for comfort.,Comfort,
+swiftshine-heels-4,SwiftShine Heels,4,4,"Beautiful shoes, and I received so many compliments. Just don’t wear them if you’ll be on your feet all day.",Prolonged-wear comfort,Appearance
+luxelace-oxfords-1,LuxeLace Oxfords,1,5,"These oxfords are absolutely perfect for office wear. The leather feels premium, and they’ve held up beautifully after months of use.",,Material quality; Durability
+luxelace-oxfords-2,LuxeLace Oxfords,2,4,"Stylish and comfortable, but I wish they came in more color options. A great buy overall!",Colour choice,Style; Comfort
+luxelace-oxfords-3,LuxeLace Oxfords,3,5,Finally found dress shoes that don’t kill my feet after a full day at work. Great craftsmanship!,,Comfort; Craftsmanship
+luxelace-oxfords-4,LuxeLace Oxfords,4,4,"They’re a bit stiff out of the box, but after breaking them in, they’re incredibly comfortable and classy.",Initial stiffness,Comfort after break-in; Style
+ecostep-slip-ons-1,EcoStep Slip-Ons,1,5,"Love these slip-ons! They’re so easy to wear, and the fact that they’re made from recycled materials is a huge plus.",,Ease of wear; Sustainable materials
+ecostep-slip-ons-2,EcoStep Slip-Ons,2,4,Super comfy and stylish for casual outings. Only minor downside is that they aren’t ideal for rainy weather.,Rain suitability,Comfort; Style
+ecostep-slip-ons-3,EcoStep Slip-Ons,3,5,"These have quickly become my go-to everyday shoes. Lightweight, breathable, and eco-friendly!",,Lightweight / breathable; Sustainable materials
+ecostep-slip-ons-4,EcoStep Slip-Ons,4,4,"The fit is great, and I appreciate the sustainable design. They could use a bit more arch support, but otherwise fantastic.",Arch support,Fit; Sustainable design
+bouncemax-runners-1,BounceMax Runners,1,5,"These runners are a dream for long-distance running. The cushioning is excellent, and my feet feel great even after 10 miles!",,Cushioning; Long-distance comfort
+bouncemax-runners-2,BounceMax Runners,2,5,Absolutely love these! They provide just the right amount of support and bounce for my workouts.,,Support; Cushioning
+bouncemax-runners-3,BounceMax Runners,3,4,"Great performance shoes. Only minor complaint is that they’re slightly bulkier than expected, but it’s a small tradeoff for the comfort.",Bulk / weight,Performance; Comfort
+bouncemax-runners-4,BounceMax Runners,4,5,"I’ve tried many running shoes, and these are by far the best. Durable, comfortable, and stylish too.",,Durability; Comfort; Style

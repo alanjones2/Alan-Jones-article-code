@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 499" role="img" aria-labelledby="chart-title chart-desc">
+<title id="chart-title">Average customer rating by product</title>
+<desc id="chart-desc">Ranked average ratings on a zero-to-five scale. BounceMax Runners: 4.75 out of 5, 4 reviews; EcoStep Slip-Ons: 4.50 out of 5, 4 reviews; LuxeLace Oxfords: 4.50 out of 5, 4 reviews; PeakTrek Hikers: 3.00 out of 5, 4 reviews; CloudStrider Sneakers: 2.75 out of 5, 4 reviews; SwiftShine Heels: 2.50 out of 5, 4 reviews</desc>
+<rect width="900" height="100%" fill="#ffffff"/>
+<g font-family="system-ui, sans-serif" font-size="16" fill="#243649">
+<line x1="255" y1="35" x2="255" y2="444" stroke="#e5eaf0"/>
+<text x="255" y="471" text-anchor="middle">0</text>
+<line x1="355" y1="35" x2="355" y2="444" stroke="#e5eaf0"/>
+<text x="355" y="471" text-anchor="middle">1</text>
+<line x1="455" y1="35" x2="455" y2="444" stroke="#e5eaf0"/>
+<text x="455" y="471" text-anchor="middle">2</text>
+<line x1="555" y1="35" x2="555" y2="444" stroke="#e5eaf0"/>
+<text x="555" y="471" text-anchor="middle">3</text>
+<line x1="655" y1="35" x2="655" y2="444" stroke="#e5eaf0"/>
+<text x="655" y="471" text-anchor="middle">4</text>
+<line x1="755" y1="35" x2="755" y2="444" stroke="#e5eaf0"/>
+<text x="755" y="471" text-anchor="middle">5</text>
+<text x="240" y="70" text-anchor="end">BounceMax Runners</text>
+<rect x="255" y="48" width="475.0" height="34" rx="5" fill="#087f8c"/>
+<text x="740.0" y="70" font-weight="700">4.75</text>
+<text x="815" y="70" font-size="14">n = 4</text>
+<text x="240" y="134" text-anchor="end">EcoStep Slip-Ons</text>
+<rect x="255" y="112" width="450.0" height="34" rx="5" fill="#087f8c"/>
+<text x="715.0" y="134" font-weight="700">4.50</text>
+<text x="815" y="134" font-size="14">n = 4</text>
+<text x="240" y="198" text-anchor="end">LuxeLace Oxfords</text>
+<rect x="255" y="176" width="450.0" height="34" rx="5" fill="#087f8c"/>
+<text x="715.0" y="198" font-weight="700">4.50</text>
+<text x="815" y="198" font-size="14">n = 4</text>
+<text x="240" y="262" text-anchor="end">PeakTrek Hikers</text>
+<rect x="255" y="240" width="300" height="34" rx="5" fill="#b65920"/>
+<text x="565" y="262" font-weight="700">3.00</text>
+<text x="815" y="262" font-size="14">n = 4</text>
+<text x="240" y="326" text-anchor="end">CloudStrider Sneakers</text>
+<rect x="255" y="304" width="275.0" height="34" rx="5" fill="#b65920"/>
+<text x="540.0" y="326" font-weight="700">2.75</text>
+<text x="815" y="326" font-size="14">n = 4</text>
+<text x="240" y="390" text-anchor="end">SwiftShine Heels</text>
+<rect x="255" y="368" width="250.0" height="34" rx="5" fill="#b65920"/>
+<text x="515.0" y="390" font-weight="700">2.50</text>
+<text x="815" y="390" font-size="14">n = 4</text>
+<text x="505" y="496" text-anchor="middle" font-size="14">Average rating (out of 5)</text></g></svg>

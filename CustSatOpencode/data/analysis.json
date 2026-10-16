@@ -1,0 +1,469 @@
+{
+  "retailer": "StepSavvy",
+  "source": "data/shoes.md",
+  "source_sha256": "4d4e0fc9b8d1207795a16f250ee23c5317580230e4c364d8ea42e85e61757b40",
+  "generated_on": "2026-10-13",
+  "method": {
+    "positive_ratings": [
+      4,
+      5
+    ],
+    "low_ratings": [
+      1,
+      2
+    ],
+    "neutral_rating": 3,
+    "themes": "Manual analyst coding; multiple themes permitted per comment"
+  },
+  "overall": {
+    "review_count": 24,
+    "product_count": 6,
+    "average_rating": 3.6666666666666665,
+    "positive_count": 16,
+    "low_count": 6,
+    "neutral_count": 2
+  },
+  "products": [
+    {
+      "product": "BounceMax Runners",
+      "description": "High-cushion running shoes for long distances.",
+      "review_count": 4,
+      "average_rating": 4.75,
+      "positive_count": 4,
+      "positive_percent": 100.0,
+      "low_count": 0,
+      "low_percent": 0.0,
+      "neutral_count": 0,
+      "rating_distribution": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 1,
+        "5": 3
+      },
+      "concern_mentions": {
+        "Bulk / weight": 1
+      },
+      "rank": 1
+    },
+    {
+      "product": "EcoStep Slip-Ons",
+      "description": "Casual, eco-friendly slip-ons made from recycled materials.",
+      "review_count": 4,
+      "average_rating": 4.5,
+      "positive_count": 4,
+      "positive_percent": 100.0,
+      "low_count": 0,
+      "low_percent": 0.0,
+      "neutral_count": 0,
+      "rating_distribution": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 2,
+        "5": 2
+      },
+      "concern_mentions": {
+        "Rain suitability": 1,
+        "Arch support": 1
+      },
+      "rank": 2
+    },
+    {
+      "product": "LuxeLace Oxfords",
+      "description": "Classic leather oxfords for business attire.",
+      "review_count": 4,
+      "average_rating": 4.5,
+      "positive_count": 4,
+      "positive_percent": 100.0,
+      "low_count": 0,
+      "low_percent": 0.0,
+      "neutral_count": 0,
+      "rating_distribution": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 2,
+        "5": 2
+      },
+      "concern_mentions": {
+        "Colour choice": 1,
+        "Initial stiffness": 1
+      },
+      "rank": 2
+    },
+    {
+      "product": "PeakTrek Hikers",
+      "description": "Durable hiking boots with waterproof technology.",
+      "review_count": 4,
+      "average_rating": 3,
+      "positive_count": 2,
+      "positive_percent": 50.0,
+      "low_count": 2,
+      "low_percent": 50.0,
+      "neutral_count": 0,
+      "rating_distribution": {
+        "1": 1,
+        "2": 1,
+        "3": 0,
+        "4": 1,
+        "5": 1
+      },
+      "concern_mentions": {
+        "Waterproofing": 1,
+        "Wet-surface grip": 1,
+        "Padding / comfort": 1
+      },
+      "rank": 4
+    },
+    {
+      "product": "CloudStrider Sneakers",
+      "description": "Lightweight, breathable running shoes.",
+      "review_count": 4,
+      "average_rating": 2.75,
+      "positive_count": 1,
+      "positive_percent": 25.0,
+      "low_count": 2,
+      "low_percent": 50.0,
+      "neutral_count": 1,
+      "rating_distribution": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 0,
+        "5": 1
+      },
+      "concern_mentions": {
+        "Durability": 1,
+        "Sizing / fit": 1,
+        "Odour retention": 1
+      },
+      "rank": 5
+    },
+    {
+      "product": "SwiftShine Heels",
+      "description": "Comfortable high heels with a glossy finish.",
+      "review_count": 4,
+      "average_rating": 2.5,
+      "positive_count": 1,
+      "positive_percent": 25.0,
+      "low_count": 2,
+      "low_percent": 50.0,
+      "neutral_count": 1,
+      "rating_distribution": {
+        "1": 1,
+        "2": 1,
+        "3": 1,
+        "4": 1,
+        "5": 0
+      },
+      "concern_mentions": {
+        "Heel integrity": 1,
+        "Finish durability": 1,
+        "Comfort": 1,
+        "Prolonged-wear comfort": 1
+      },
+      "rank": 6
+    }
+  ],
+  "reviews": [
+    {
+      "review_id": "cloudstrider-sneakers-1",
+      "product": "CloudStrider Sneakers",
+      "review_number": 1,
+      "rating": 2,
+      "comment": "The shoes were super comfortable initially, but after just two months, the sole started to peel off! Really disappointed with the durability.",
+      "concerns": [
+        "Durability"
+      ],
+      "strengths": [
+        "Initial comfort"
+      ]
+    },
+    {
+      "review_id": "cloudstrider-sneakers-2",
+      "product": "CloudStrider Sneakers",
+      "review_number": 2,
+      "rating": 1,
+      "comment": "I ordered my usual size, but these sneakers were way too tight. Had to return them. The sizing is totally off.",
+      "concerns": [
+        "Sizing / fit"
+      ],
+      "strengths": []
+    },
+    {
+      "review_id": "cloudstrider-sneakers-3",
+      "product": "CloudStrider Sneakers",
+      "review_number": 3,
+      "rating": 3,
+      "comment": "Great for short runs, but they hold onto odors even after washing. Not ideal for heavy use.",
+      "concerns": [
+        "Odour retention"
+      ],
+      "strengths": [
+        "Short-run performance"
+      ]
+    },
+    {
+      "review_id": "cloudstrider-sneakers-4",
+      "product": "CloudStrider Sneakers",
+      "review_number": 4,
+      "rating": 5,
+      "comment": "Extremely lightweight and breathable. Perfect for casual jogging. No issues so far!",
+      "concerns": [],
+      "strengths": [
+        "Lightweight / breathable"
+      ]
+    },
+    {
+      "review_id": "peaktrek-hikers-1",
+      "product": "PeakTrek Hikers",
+      "review_number": 1,
+      "rating": 1,
+      "comment": "These boots claim to be waterproof, but my feet were soaked after just walking through damp grass. Not worth it.",
+      "concerns": [
+        "Waterproofing"
+      ],
+      "strengths": []
+    },
+    {
+      "review_id": "peaktrek-hikers-2",
+      "product": "PeakTrek Hikers",
+      "review_number": 2,
+      "rating": 2,
+      "comment": "I slipped multiple times on rocky trails because the soles don’t grip well on wet surfaces. Not safe for serious hikes.",
+      "concerns": [
+        "Wet-surface grip"
+      ],
+      "strengths": []
+    },
+    {
+      "review_id": "peaktrek-hikers-3",
+      "product": "PeakTrek Hikers",
+      "review_number": 3,
+      "rating": 4,
+      "comment": "The boots are sturdy and provide decent ankle support, but I wish the padding was thicker for longer treks.",
+      "concerns": [
+        "Padding / comfort"
+      ],
+      "strengths": [
+        "Sturdiness / ankle support"
+      ]
+    },
+    {
+      "review_id": "peaktrek-hikers-4",
+      "product": "PeakTrek Hikers",
+      "review_number": 4,
+      "rating": 5,
+      "comment": "Used these for a weekend hike in the mountains, and they held up really well. No blisters, and they felt solid.",
+      "concerns": [],
+      "strengths": [
+        "Comfort",
+        "Sturdiness"
+      ]
+    },
+    {
+      "review_id": "swiftshine-heels-1",
+      "product": "SwiftShine Heels",
+      "review_number": 1,
+      "rating": 2,
+      "comment": "I wore these to a wedding, and the heel broke during the reception. Embarrassing and frustrating!",
+      "concerns": [
+        "Heel integrity"
+      ],
+      "strengths": []
+    },
+    {
+      "review_id": "swiftshine-heels-2",
+      "product": "SwiftShine Heels",
+      "review_number": 2,
+      "rating": 3,
+      "comment": "While they look stunning, the glossy finish scratches so easily. They were scuffed after just one night out.",
+      "concerns": [
+        "Finish durability"
+      ],
+      "strengths": [
+        "Appearance"
+      ]
+    },
+    {
+      "review_id": "swiftshine-heels-3",
+      "product": "SwiftShine Heels",
+      "review_number": 3,
+      "rating": 1,
+      "comment": "The worst! My feet were in so much pain after an hour. Definitely not designed for comfort.",
+      "concerns": [
+        "Comfort"
+      ],
+      "strengths": []
+    },
+    {
+      "review_id": "swiftshine-heels-4",
+      "product": "SwiftShine Heels",
+      "review_number": 4,
+      "rating": 4,
+      "comment": "Beautiful shoes, and I received so many compliments. Just don’t wear them if you’ll be on your feet all day.",
+      "concerns": [
+        "Prolonged-wear comfort"
+      ],
+      "strengths": [
+        "Appearance"
+      ]
+    },
+    {
+      "review_id": "luxelace-oxfords-1",
+      "product": "LuxeLace Oxfords",
+      "review_number": 1,
+      "rating": 5,
+      "comment": "These oxfords are absolutely perfect for office wear. The leather feels premium, and they’ve held up beautifully after months of use.",
+      "concerns": [],
+      "strengths": [
+        "Material quality",
+        "Durability"
+      ]
+    },
+    {
+      "review_id": "luxelace-oxfords-2",
+      "product": "LuxeLace Oxfords",
+      "review_number": 2,
+      "rating": 4,
+      "comment": "Stylish and comfortable, but I wish they came in more color options. A great buy overall!",
+      "concerns": [
+        "Colour choice"
+      ],
+      "strengths": [
+        "Style",
+        "Comfort"
+      ]
+    },
+    {
+      "review_id": "luxelace-oxfords-3",
+      "product": "LuxeLace Oxfords",
+      "review_number": 3,
+      "rating": 5,
+      "comment": "Finally found dress shoes that don’t kill my feet after a full day at work. Great craftsmanship!",
+      "concerns": [],
+      "strengths": [
+        "Comfort",
+        "Craftsmanship"
+      ]
+    },
+    {
+      "review_id": "luxelace-oxfords-4",
+      "product": "LuxeLace Oxfords",
+      "review_number": 4,
+      "rating": 4,
+      "comment": "They’re a bit stiff out of the box, but after breaking them in, they’re incredibly comfortable and classy.",
+      "concerns": [
+        "Initial stiffness"
+      ],
+      "strengths": [
+        "Comfort after break-in",
+        "Style"
+      ]
+    },
+    {
+      "review_id": "ecostep-slip-ons-1",
+      "product": "EcoStep Slip-Ons",
+      "review_number": 1,
+      "rating": 5,
+      "comment": "Love these slip-ons! They’re so easy to wear, and the fact that they’re made from recycled materials is a huge plus.",
+      "concerns": [],
+      "strengths": [
+        "Ease of wear",
+        "Sustainable materials"
+      ]
+    },
+    {
+      "review_id": "ecostep-slip-ons-2",
+      "product": "EcoStep Slip-Ons",
+      "review_number": 2,
+      "rating": 4,
+      "comment": "Super comfy and stylish for casual outings. Only minor downside is that they aren’t ideal for rainy weather.",
+      "concerns": [
+        "Rain suitability"
+      ],
+      "strengths": [
+        "Comfort",
+        "Style"
+      ]
+    },
+    {
+      "review_id": "ecostep-slip-ons-3",
+      "product": "EcoStep Slip-Ons",
+      "review_number": 3,
+      "rating": 5,
+      "comment": "These have quickly become my go-to everyday shoes. Lightweight, breathable, and eco-friendly!",
+      "concerns": [],
+      "strengths": [
+        "Lightweight / breathable",
+        "Sustainable materials"
+      ]
+    },
+    {
+      "review_id": "ecostep-slip-ons-4",
+      "product": "EcoStep Slip-Ons",
+      "review_number": 4,
+      "rating": 4,
+      "comment": "The fit is great, and I appreciate the sustainable design. They could use a bit more arch support, but otherwise fantastic.",
+      "concerns": [
+        "Arch support"
+      ],
+      "strengths": [
+        "Fit",
+        "Sustainable design"
+      ]
+    },
+    {
+      "review_id": "bouncemax-runners-1",
+      "product": "BounceMax Runners",
+      "review_number": 1,
+      "rating": 5,
+      "comment": "These runners are a dream for long-distance running. The cushioning is excellent, and my feet feel great even after 10 miles!",
+      "concerns": [],
+      "strengths": [
+        "Cushioning",
+        "Long-distance comfort"
+      ]
+    },
+    {
+      "review_id": "bouncemax-runners-2",
+      "product": "BounceMax Runners",
+      "review_number": 2,
+      "rating": 5,
+      "comment": "Absolutely love these! They provide just the right amount of support and bounce for my workouts.",
+      "concerns": [],
+      "strengths": [
+        "Support",
+        "Cushioning"
+      ]
+    },
+    {
+      "review_id": "bouncemax-runners-3",
+      "product": "BounceMax Runners",
+      "review_number": 3,
+      "rating": 4,
+      "comment": "Great performance shoes. Only minor complaint is that they’re slightly bulkier than expected, but it’s a small tradeoff for the comfort.",
+      "concerns": [
+        "Bulk / weight"
+      ],
+      "strengths": [
+        "Performance",
+        "Comfort"
+      ]
+    },
+    {
+      "review_id": "bouncemax-runners-4",
+      "product": "BounceMax Runners",
+      "review_number": 4,
+      "rating": 5,
+      "comment": "I’ve tried many running shoes, and these are by far the best. Durable, comfortable, and stylish too.",
+      "concerns": [],
+      "strengths": [
+        "Durability",
+        "Comfort",
+        "Style"
+      ]
+    }
+  ]
+}

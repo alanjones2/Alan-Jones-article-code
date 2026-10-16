@@ -1,0 +1,7 @@
+rank,product,description,review_count,average_rating,positive_count,positive_percent,low_count,low_percent,neutral_count
+1,BounceMax Runners,High-cushion running shoes for long distances.,4,4.75,4,100.0,0,0.0,0
+2,EcoStep Slip-Ons,"Casual, eco-friendly slip-ons made from recycled materials.",4,4.5,4,100.0,0,0.0,0
+2,LuxeLace Oxfords,Classic leather oxfords for business attire.,4,4.5,4,100.0,0,0.0,0
+4,PeakTrek Hikers,Durable hiking boots with waterproof technology.,4,3,2,50.0,2,50.0,0
+5,CloudStrider Sneakers,"Lightweight, breathable running shoes.",4,2.75,1,25.0,2,50.0,1
+6,SwiftShine Heels,Comfortable high heels with a glossy finish.,4,2.5,1,25.0,2,50.0,1
